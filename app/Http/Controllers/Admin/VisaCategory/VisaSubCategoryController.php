@@ -47,8 +47,7 @@ class VisaSubCategoryController extends Controller
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $request->title[$key],
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [],
-                'date_modified'        => Carbon::now()->toDateTimeString(),
+                "bullets"              => $request->bullets[$key] ?? [], 
             ]);
         }
 
@@ -76,6 +75,7 @@ class VisaSubCategoryController extends Controller
         ]);
 
         $visaSubCategory = VisaSubCategory::findOrFail($id);
+
         $visaSubCategory->update([
             "category_id"   => $request->category_id,
             "title"         => $request->sub_title,
@@ -91,7 +91,6 @@ class VisaSubCategoryController extends Controller
         if (!empty($toDelete)) {
             SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
         }
-
         foreach ($request->title as $key => $title) {
             $tocId = $submittedTocIds[$key] ?? null;
             $data = [
@@ -100,7 +99,12 @@ class VisaSubCategoryController extends Controller
                 "description"          => $request->description[$key] ?? null,
                 "bullets"              => $request->bullets[$key] ?? [],
             ];
-
+            if ($request->content_type == 'description') {
+                $data['bullets'] = NULL;
+            }
+            if ($request->content_type == 'bullets') {
+                $data['description'] = NULL;
+            }
             if ($tocId) {
                 $toc = SubCategoryTableOfContent::find($tocId);
                 if ($toc) {
@@ -110,7 +114,6 @@ class VisaSubCategoryController extends Controller
                 SubCategoryTableOfContent::create($data);
             }
         }
-
         return redirect()->route('admin.visa-sub-category.index')->with('success', 'Visa Sub Category Updated Successfully');
     }
 

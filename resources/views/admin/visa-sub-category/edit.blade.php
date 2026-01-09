@@ -354,14 +354,14 @@
                                 <input type="text" name="title[]" class="form-control" required>
                                 <div class="mt-2 descBox">
                                     <label class="fw-bold">Description</label>
-                                    <textarea name="description[]" class="form-control" rows="2" required></textarea>
+                                    <textarea name="description[]" class="form-control" rows="2"  ></textarea>
                                 </div>
                                 <div class="mt-2 bulletsArea">
                                     <label class="fw-bold">Bullets</label>
                                     <div class="bulletWrapper">
                                         <div class="row bulletItem mb-2 align-items-center">
                                             <div class="col-10">
-                                                <input type="text" name="bullets[0][]" class="form-control" placeholder="Enter bullet" required>
+                                                <input type="text" name="bullets[0][]" class="form-control" placeholder="Enter bullet"  >
                                             </div>
                                             <div class="col-2 text-start">
                                                 <button type="button" class="bullet-remove-btn removeBullet">✕</button>

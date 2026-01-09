@@ -84,7 +84,7 @@
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
                                             <input type="text" name="bullets[]" class="form-control"
-                                                placeholder="Enter bullet">
+                                                placeholder="Enter bullet" required>
                                         </div>
                                         <div class="col-2 text-start mt-0 ">
                                             <button type="button" class="bullet-remove-btn removeBullet">
@@ -190,7 +190,7 @@
     let html = `
         <div class="row bulletItem mb-2 align-items-center">
             <div class="col-10">
-                <input type="text" name="bullets[]" class="form-control" placeholder="Enter bullet">
+                <input type="text" name="bullets[]" class="form-control" placeholder="Enter bullet" required>
             </div>
             <div class="col-2 text-start">
                 <button type="button" class="bullet-remove-btn removeBullet">✕</button>

@@ -27,8 +27,7 @@ class VisaController extends Controller
     {
         $visaSubCategories  = VisaSubCategory::with('table_of_content')
             ->where('id', $visaSubCategoryId)
-            ->where('publish_is', 2)
-            ->latest()
+            ->where('publish_is', 2) 
             ->first();
 
         return $this->success(true, 'Visa Sub Category Data retrieved successfully!', $visaSubCategories);

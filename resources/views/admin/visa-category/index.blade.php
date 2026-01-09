@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table align-middle fst-italic" style="min-width: 1000px;">
+                            <table id="example" class="table table-bordered align-middle fst-italic" style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
