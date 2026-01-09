@@ -5,7 +5,7 @@
 @section('content')
 
 
-<style>
+    <style>
         .bullet-remove-btn {
             width: 32px;
             height: 32px;
@@ -20,12 +20,29 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
+
+        .remove-subcategory-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ffc107;
+            border: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .remove-subcategory-btn:hover {
+            background: #e0a800;
+        }
     </style>
-
-
 
     <div class="content-wrapper d-flex justify-content-center  fw-bold fst-italic">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
@@ -45,16 +62,16 @@
                             <div class="col-lg-7 col-md-12">
                                 <div>
                                     <label class="form-label">Visa Title</label>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" class="form-control" name="main_title" id="title"
                                         value="{{ old('title', $visaCategory->title) }}" required>
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Short Description</label>
-                                    <textarea class="form-control" name="short_description" rows="2" required>{{ old('short_description', $visaCategory->short_description) }}</textarea>
+                                    <textarea class="form-control" name="main_short_description" rows="2" required>{{ old('short_description', $visaCategory->short_description) }}</textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Full Description</label>
-                                    <textarea id="editor" class="form-control" name="description" rows="5" required>{{ old('description', $visaCategory->description) }}</textarea>
+                                    <textarea id="editor" class="form-control" name="main_description" rows="5" required>{{ old('description', $visaCategory->description) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
@@ -81,46 +98,127 @@
                                         </div>
                                     @endif
                                 </div>
-                            </div>
+                                <div class="mt-4 bulletsArea">
+                                    <label class="fw-bold">Bullets</label>
 
-                            <div class="mt-4 bulletsArea">
-                                <label class="fw-bold">Bullets</label>
+                                    @php
+                                        $bullets = $visaCategory->bullets ?? [];
+                                    @endphp
 
-                                @php
-                                    $bullets =    $visaCategory->bullets ?? [] ;
-                                @endphp
-
-                                @if (count($bullets))
-                                    @foreach ($bullets as $bullet)
+                                    @if (count($bullets))
+                                        @foreach ($bullets as $bullet)
+                                            <div class="row bulletItem mb-2 align-items-center">
+                                                <div class="col-10">
+                                                    <input type="text" name="category_bullets[]" class="form-control"
+                                                        value="{{ $bullet }}" placeholder="Enter bullet">
+                                                </div>
+                                                <div class="col-2 text-start">
+                                                    <button type="button" class="bullet-remove-btn removeBullet">✕</button>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
                                         <div class="row bulletItem mb-2 align-items-center">
                                             <div class="col-10">
-                                                <input type="text" name="bullets[]" class="form-control"
-                                                    value="{{ $bullet }}" placeholder="Enter bullet">
+                                                <input type="text" name="category_bullets[]" class="form-control"
+                                                    placeholder="Enter bullet">
                                             </div>
                                             <div class="col-2 text-start">
                                                 <button type="button" class="bullet-remove-btn removeBullet">✕</button>
                                             </div>
                                         </div>
-                                    @endforeach
-                                @else
-                                    <div class="row bulletItem mb-2 align-items-center">
-                                        <div class="col-10">
-                                            <input type="text" name="bullets[]" class="form-control"
-                                                placeholder="Enter bullet">
+                                    @endif
+
+                                    <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-2">
+                                        + Add Bullet
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary addSubCategory mb-3 mt-3">+ Add Table Of Content</button>
+
+                    <div id="subCategoryWrapper">
+                        @php
+                            $subContents =  $visaCategory->main_table_of_content  ?? [];
+                        @endphp
+
+                        @if(count($subContents) > 0)
+                            @foreach($subContents as $i => $sub)
+                                <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm" data-index="{{ $i }}">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h4 class="fw-bold">Table Of Content</h4>
+                                        <button type="button" class="remove-subcategory-btn" title="Remove Table of Content">✕</button>
+                                    </div>
+
+                                    <input type="hidden" name="toc_id[]" value="{{ $sub['id'] ?? '' }}">
+                                    <label class="fw-bold">Title</label>
+                                    <input type="text" name="title[]" class="form-control" value="{{ $sub['title'] ?? '' }}" required>
+
+                                    <div class="mt-2 descBox">
+                                        <label class="fw-bold">Description</label>
+                                        <textarea name="description[]" class="form-control" rows="2" required>{{ $sub['description'] ?? '' }}</textarea>
+                                    </div>
+
+                                    <div class="mt-2 bulletsArea">
+                                        <label class="fw-bold">Bullets</label>
+                                        <div class="bulletWrapper">
+                                            @if(isset($sub['bullets']) && count($sub['bullets']) > 0)
+                                                @foreach($sub['bullets'] as $b)
+                                                    <div class="row bulletItem mb-2 align-items-center">
+                                                        <div class="col-10">
+                                                            <input type="text" name="bullets[{{ $i }}][]" class="form-control" value="{{ $b }}" placeholder="Enter bullet" required>
+                                                        </div>
+                                                        <div class="col-2 text-start">
+                                                            <button type="button" class="bullet-remove-btn removeBullet">✕</button>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <div class="row bulletItem mb-2 align-items-center">
+                                                    <div class="col-10">
+                                                        <input type="text" name="bullets[{{ $i }}][]" class="form-control" placeholder="Enter bullet" required>
+                                                    </div>
+                                                    <div class="col-2 text-start">
+                                                        <button type="button" class="bullet-remove-btn removeBullet">✕</button>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
-                                        <div class="col-2 text-start">
-                                            <button type="button" class="bullet-remove-btn removeBullet">✕</button>
+                                        <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-1">+ Add Bullet</button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <!-- Default empty block -->
+                            <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm" data-index="0">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h4 class="fw-bold">Table Of Content</h4>
+                                    <button type="button" class="remove-subcategory-btn" title="Remove Table of Content">✕</button>
+                                </div>
+                                <label class="fw-bold">Title</label>
+                                <input type="text" name="title[]" class="form-control" required>
+                                <div class="mt-2 descBox">
+                                    <label class="fw-bold">Description</label>
+                                    <textarea name="description[]" class="form-control" rows="2"  ></textarea>
+                                </div>
+                                <div class="mt-2 bulletsArea">
+                                    <label class="fw-bold">Bullets</label>
+                                    <div class="bulletWrapper">
+                                        <div class="row bulletItem mb-2 align-items-center">
+                                            <div class="col-10">
+                                                <input type="text" name="bullets[0][]" class="form-control" placeholder="Enter bullet"  >
+                                            </div>
+                                            <div class="col-2 text-start">
+                                                <button type="button" class="bullet-remove-btn removeBullet">✕</button>
+                                            </div>
                                         </div>
                                     </div>
-                                @endif
-
-                                <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-2">
-                                    + Add Bullet
-                                </button>
+                                    <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-1">+ Add Bullet</button>
+                                </div>
                             </div>
-
-
-                        </div>
+                        @endif
+                    </div>
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
                                 class="btn btn-secondary px-4 fst-italic">
@@ -213,33 +311,93 @@
         });
 
 
-       $(document).on("click", ".addBullet", function () {
+        $(document).on("click", ".addBullet", function() {
 
-    let bulletsArea = $(this).closest(".bulletsArea");
+            let bulletsArea = $(this).closest(".bulletsArea");
+            let html = `
+                <div class="row bulletItem mb-2 align-items-center">
+                    <div class="col-10">
+                        <input type="text"
+                            name="category_bullets[]"
+                            class="form-control"
+                            placeholder="Enter bullet">
+                    </div>
+                    <div class="col-2 text-start">
+                        <button type="button"
+                                class="bullet-remove-btn removeBullet">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            `;
 
-    let html = `
-        <div class="row bulletItem mb-2 align-items-center">
-            <div class="col-10">
-                <input type="text"
-                       name="bullets[]"
-                       class="form-control"
-                       placeholder="Enter bullet">
-            </div>
-            <div class="col-2 text-start">
-                <button type="button"
-                        class="bullet-remove-btn removeBullet">
-                    ✕
-                </button>
-            </div>
-        </div>
-    `;
+            bulletsArea.find(".addBullet").before(html);
+        });
 
-    bulletsArea.find(".addBullet").before(html);
-});
+        $(document).on("click", ".removeBullet", function() {
+            $(this).closest(".bulletItem").remove();
+        });
 
-$(document).on("click", ".removeBullet", function () {
-    $(this).closest(".bulletItem").remove();
-});
+
+
+
+
+
+
+    let index = $("#subCategoryWrapper .subCategoryBox").length;
+
+    function applyContentRule(box) {
+        let type = $("#contentType").val();
+        if(type === "description"){
+            box.find(".descBox").show();
+            box.find(".bulletsArea").hide();
+        } else if(type === "bullets"){
+            box.find(".descBox").hide();
+            box.find(".bulletsArea").show();
+        } else {
+            box.find(".descBox").show();
+            box.find(".bulletsArea").show();
+        }
+    }
+
+    $("#contentType").on("change", function(){
+        $(".subCategoryBox").each(function(){
+            applyContentRule($(this));
+        });
+    });
+    applyContentRule($(".subCategoryBox"));
+
+    // Add Table Of Content
+    $(".addSubCategory").on("click", function(){
+        let box = $(".subCategoryBox").first().clone();
+        box.find("input[type=text]").val("");
+        box.find("textarea").val("");
+        box.find(".bulletWrapper .bulletItem").not(":first").remove();
+
+        box.attr("data-index", index);
+
+        // Update bullet input name
+        box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
+
+        // Show remove button
+        box.find(".remove-subcategory-btn").show();
+
+        $("#subCategoryWrapper").append(box);
+        applyContentRule(box);
+        index++;
+    });
+
+    // Remove Table Of Content (only extra blocks)
+    $(document).on("click", ".remove-subcategory-btn", function(){
+        let boxes = $("#subCategoryWrapper .subCategoryBox");
+        if(boxes.length > 1){
+            $(this).closest(".subCategoryBox").remove();
+        } else {
+            alert("Cannot remove the last Table of Content.");
+        }
+    });
+
+      $("#subCategoryWrapper .subCategoryBox").first().find(".remove-subcategory-btn").hide();
     </script>
 
 @endsection

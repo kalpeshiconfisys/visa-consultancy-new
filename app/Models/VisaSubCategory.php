@@ -30,7 +30,7 @@ class VisaSubCategory extends Model
 
     public function table_of_content()
     {
-        return $this->hasMany(SubCategoryTableOfContent::class, 'visa_sub_category_id');
+        return $this->hasMany(SubCategoryTableOfContent::class, 'visa_sub_category_id', 'id');
     }
 
 }

@@ -24,9 +24,6 @@ class VisaCategoryController extends Controller
 
     public function store(Request $request)
     {
-
-
-
         $request->validate([
             "main_title" => "required",
             "main_short_description" => "required",
@@ -38,9 +35,9 @@ class VisaCategoryController extends Controller
         $input = $request->only("main_title", "main_short_description", "main_description", "publish_is");
         $input = [
             'title' => $request->main_title,
-             'short_description' => $request->main_short_description,
-             'main_description' => $request->main_description,
-             'publish_is' => $request->publish_is
+            'short_description' => $request->main_short_description,
+            'description' => $request->main_description,
+            'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
         $input['bullets'] = $request->category_bullets ?? [];
@@ -58,10 +55,7 @@ class VisaCategoryController extends Controller
             $file->move(public_path('uploads/category_logo'), $imgName);
             $input['category_logo'] = $imgName;
         }
-
-      $VisaCategory  =  VisaCategory::create($input);
-
-
+        $VisaCategory  =  VisaCategory::create($input);
         foreach ($request->title as $key => $value) {
             SubCategoryTableOfContent::create([
                 "visa_sub_category_id" => NULL,
@@ -78,7 +72,7 @@ class VisaCategoryController extends Controller
     public function edit($encodedId)
     {
         $id = base64_decode($encodedId);
-        $visaCategory = VisaCategory::findOrFail($id);
+        $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id);
         return view('admin.visa-category.edit', compact('visaCategory'));
     }
 
@@ -86,17 +80,20 @@ class VisaCategoryController extends Controller
     {
         $id = base64_decode($encodedId);
         $request->validate([
-            "title" => "required",
-            "short_description" => "required",
-            "description" => "required",
+            "main_title" => "required",
+            "main_short_description" => "required",
+            "main_description" => "required",
             "publish_is" => "required"
         ]);
-
         $visa = VisaCategory::findOrFail($id);
-        $input = $request->only("title", "short_description", "description", "publish_is");
+        $input = [
+            'title' => $request->main_title,
+            'short_description' => $request->main_short_description,
+            'main_description' => $request->main_description,
+            'publish_is' => $request->publish_is
+        ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
-        $input['bullets'] = $request->bullets ?? [];
-
+        $input['bullets'] = $request->category_bullets ?? [];
         if ($request->hasFile('image')) {
             if ($visa->image && File::exists(public_path('uploads/visa-category/' . basename($visa->image)))) {
                 File::delete(public_path('uploads/visa-category/' . basename($visa->image)));
@@ -106,7 +103,6 @@ class VisaCategoryController extends Controller
             $file->move(public_path('uploads/visa-category'), $imgName);
             $input['image'] = $imgName;
         }
-
         if ($request->hasFile('category_logo')) {
             if ($visa->category_logo && File::exists(public_path('uploads/category_logo/' . basename($visa->category_logo)))) {
                 File::delete(public_path('uploads/category_logo/' . basename($visa->category_logo)));
@@ -116,8 +112,30 @@ class VisaCategoryController extends Controller
             $file->move(public_path('uploads/category_logo'), $imgName);
             $input['category_logo'] = $imgName;
         }
-
         $visa->update($input);
+        $existingTocIds = SubCategoryTableOfContent::where('category_id', $id)->pluck('id')->toArray();
+        $submittedTocIds = $request->toc_id ?? [];
+        $toDelete = array_diff($existingTocIds, $submittedTocIds);
+        if (!empty($toDelete)) {
+            SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
+        }
+        foreach ($request->title as $key => $title) {
+            $tocId = $submittedTocIds[$key] ?? null;
+            $data = [
+                "category_id"          => $visa->id,
+                "title"                => $title,
+                "description"          => $request->description[$key] ?? null,
+                "bullets"              => $request->bullets[$key] ?? [],
+            ];
+            if ($tocId) {
+                $toc = SubCategoryTableOfContent::find($tocId);
+                if ($toc) {
+                    $toc->update($data);
+                }
+            } else {
+                SubCategoryTableOfContent::create($data);
+            }
+        }
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Updated Successfully');
     }
 
@@ -125,15 +143,12 @@ class VisaCategoryController extends Controller
     {
         $id = base64_decode($encodedId);
         $visa = VisaCategory::findOrFail($id);
-
         if (!empty($visa->image) && File::exists(public_path('uploads/visa-category/' . basename($visa->image)))) {
             File::delete(public_path('uploads/visa-category/' . basename($visa->image)));
         }
-
         if (!empty($visa->category_logo) && File::exists(public_path('uploads/category_logo/' . basename($visa->category_logo)))) {
             File::delete(public_path('uploads/category_logo/' . basename($visa->category_logo)));
         }
-
         $visa->delete();
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Deleted Successfully');
     }
