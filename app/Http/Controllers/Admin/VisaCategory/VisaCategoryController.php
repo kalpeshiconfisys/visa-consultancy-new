@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\VisaCategory;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubCategoryTableOfContent;
 use App\Models\VisaCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,17 +24,26 @@ class VisaCategoryController extends Controller
 
     public function store(Request $request)
     {
+
+
+
         $request->validate([
-            "title" => "required",
-            "short_description" => "required",
-            "description" => "required",
+            "main_title" => "required",
+            "main_short_description" => "required",
+            "main_description" => "required",
             "image" => "required|image|mimes:png,jpg,jpeg,webp",
             "publish_is" => "required"
         ]);
 
-        $input = $request->only("title", "short_description", "description", "publish_is");
+        $input = $request->only("main_title", "main_short_description", "main_description", "publish_is");
+        $input = [
+            'title' => $request->main_title,
+             'short_description' => $request->main_short_description,
+             'main_description' => $request->main_description,
+             'publish_is' => $request->publish_is
+        ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
-        $input['bullets'] = $request->bullets ?? [];
+        $input['bullets'] = $request->category_bullets ?? [];
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -49,7 +59,19 @@ class VisaCategoryController extends Controller
             $input['category_logo'] = $imgName;
         }
 
-        VisaCategory::create($input);
+      $VisaCategory  =  VisaCategory::create($input);
+
+
+        foreach ($request->title as $key => $value) {
+            SubCategoryTableOfContent::create([
+                "visa_sub_category_id" => NULL,
+                "category_id"          => $VisaCategory->id,
+                "title"                => $request->title[$key],
+                "description"          => $request->description[$key] ?? null,
+                "bullets"              => $request->bullets[$key] ?? [],
+                'type'                 => 'category'
+            ]);
+        }
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Created Successfully');
     }
 

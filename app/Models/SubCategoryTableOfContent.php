@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class SubCategoryTableOfContent extends Model
 {
     protected $fillable = [
+        'category_id',
         'visa_sub_category_id',
         'title',
         'description',
-        'bullets'
+        'bullets',
+        'type'
     ];
 
     protected $casts = [

@@ -47,7 +47,8 @@ class VisaSubCategoryController extends Controller
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $request->title[$key],
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [], 
+                "bullets"              => $request->bullets[$key] ?? [],
+                'type'                 => 'sub_category'
             ]);
         }
 
