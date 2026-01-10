@@ -62,7 +62,7 @@ class VisaCategoryController extends Controller
                 "category_id"          => $VisaCategory->id,
                 "title"                => $request->title[$key],
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [],
+                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 'type'                 => 'category'
             ]);
         }
@@ -128,7 +128,7 @@ class VisaCategoryController extends Controller
                 "category_id"          => $visa->id,
                 "title"                => $title,
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [],
+                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 'type'                 => 'category'
             ];
             if ($tocId) {

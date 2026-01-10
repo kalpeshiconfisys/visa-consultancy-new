@@ -1797,7 +1797,7 @@
      font-size: 14px;
  }
 
-      
+
 
  .site-toggle:hover,
  .site-dropdown.open .site-toggle {
@@ -1870,3 +1870,11 @@
      background-color: #ccc;
      border-radius: 3px;
  }
+
+
+ .toc-card {
+        border: 1px dashed #cfd4da;
+        border-radius: 10px;
+        padding: 15px;
+        background: #fafafa;
+    }

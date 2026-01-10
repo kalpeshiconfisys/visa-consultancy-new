@@ -58,20 +58,20 @@
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
-                         <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
+                        <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
                             <div class="col-lg-7 col-md-12">
                                 <div>
-                                    <label class="form-label">Visa Title</label>
+                                    <label class="form-label">Visa Title <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="main_title" id="title"
                                         value="{{ old('title', $visaCategory->title) }}" required>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label">Short Description</label>
+                                    <label class="form-label">Short Description <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="main_short_description" rows="2" required>{{ old('short_description', $visaCategory->short_description) }}</textarea>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label">Full Description</label>
-                                    <textarea   class="form-control" name="main_description" rows="5"   style="height:400px" required>{{ old('description', $visaCategory->description) }}</textarea>
+                                    <label class="form-label">Full Description <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="main_description" rows="5" style="height:400px" required>{{ old('description', $visaCategory->description) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
@@ -99,7 +99,7 @@
                                     @endif
                                 </div>
                                 <div class="mt-4 bulletsArea">
-                                    <label class="fw-bold">Bullets</label>
+                                    <label class="fw-bold">Bullets <span class="text-danger">*</span></label>
 
                                     @php
                                         $bullets = $visaCategory->bullets ?? [];
@@ -110,7 +110,7 @@
                                             <div class="row bulletItem mb-2 align-items-center">
                                                 <div class="col-10">
                                                     <input type="text" name="category_bullets[]" class="form-control"
-                                                        value="{{ $bullet }}" placeholder="Enter bullet">
+                                                        value="{{ $bullet }}" placeholder="Enter bullet" required>
                                                 </div>
                                                 <div class="col-2 text-start">
                                                     <button type="button" class="bullet-remove-btn removeBullet">✕</button>
@@ -121,7 +121,7 @@
                                         <div class="row bulletItem mb-2 align-items-center">
                                             <div class="col-10">
                                                 <input type="text" name="category_bullets[]" class="form-control"
-                                                    placeholder="Enter bullet">
+                                                    placeholder="Enter bullet" required>
                                             </div>
                                             <div class="col-2 text-start">
                                                 <button type="button" class="bullet-remove-btn removeBullet">✕</button>
@@ -129,15 +129,18 @@
                                         </div>
                                     @endif
 
-                                    <button type="button" class="btn btn-sm btn-success addOutSideBullet  mt-2">
+                                    <button type="button" class="btn btn-sm btn-outline-success addOutSideBullet  mt-2">
                                         + Add Bullet
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class=" d-flex  justify-content-end col-12-sm">
-                            <button type="button" class="btn btn-primary addSubCategory mb-3 mt-3">+ Add Table Of
+
+                        <hr>
+                        <div class=" d-flex  justify-content-between col-12-sm">
+                            <h4 class="fw-bold">Table Of Content</h4>
+                            <button type="button" class="btn btn-outline-primary addSubCategory mb-3 mt-3">+ Add Table Of
                                 Content</button>
                         </div>
 
@@ -148,23 +151,22 @@
 
                             @if (count($subContents) > 0)
                                 @foreach ($subContents as $i => $sub)
-                                    <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm"
-                                        data-index="{{ $i }}">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <h4 class="fw-bold">Table Of Content</h4>
+                                    <div class="subCategoryBox toc-card p-3 mb-3  " data-index="{{ $i }}">
+                                        <div class="d-flex justify-content-end align-items-center mb-2">
+                                            {{-- <h4 class="fw-bold">Table Of Content</h4> --}}
                                             <button type="button" class="remove-subcategory-btn"
                                                 title="Remove Table of Content">✕</button>
                                         </div>
 
                                         {{-- <input type="hidden" name="toc_id[]" value="{{ $sub['id'] ?? '' }}"> --}}
                                         <input type="hidden" name="id[]" value="{{ $sub['id'] ?? '' }}">
-                                        <label class="fw-bold">Title</label>
+                                        <label class="fw-bold">Title <span class="text-danger">*</span></label>
                                         <input type="text" name="title[]" class="form-control"
                                             value="{{ $sub['title'] ?? '' }}" required>
 
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
-                                            <textarea name="description[]" class="form-control" rows="2"  >{{ $sub['description'] ?? '' }}</textarea>
+                                            <textarea name="description[]" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>
                                         </div>
 
                                         <div class="mt-2 bulletsArea">
@@ -177,7 +179,7 @@
                                                                 <input type="text"
                                                                     name="bullets[{{ $i }}][]"
                                                                     class="form-control" value="{{ $b }}"
-                                                                    placeholder="Enter bullet"  >
+                                                                    placeholder="Enter bullet">
                                                             </div>
                                                             <div class="col-2 text-start">
                                                                 <button type="button"
@@ -189,7 +191,7 @@
                                                     <div class="row bulletItem mb-2 align-items-center">
                                                         <div class="col-10">
                                                             <input type="text" name="bullets[{{ $i }}][]"
-                                                                class="form-control" placeholder="Enter bullet"  >
+                                                                class="form-control" placeholder="Enter bullet">
                                                         </div>
                                                         <div class="col-2 text-start">
                                                             <button type="button"
@@ -199,20 +201,20 @@
                                                 @endif
                                             </div>
                                             <button type="button"
-                                                class="btn btn-sm btn-success addBullet  mt-1">+ Add
+                                                class="btn btn-sm btn-outline-success addBullet  mt-1">+ Add
                                                 Bullet</button>
                                         </div>
                                     </div>
                                 @endforeach
                             @else
                                 <!-- Default empty block -->
-                                <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm" data-index="0">
+                                <div class="subCategoryBox toc-card p-3 mb-3  " data-index="0">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <h4 class="fw-bold">Table Of Content</h4>
                                         <button type="button" class="remove-subcategory-btn"
                                             title="Remove Table of Content">✕</button>
                                     </div>
-                                    <label class="fw-bold">Title</label>
+                                    <label class="fw-bold">Title <span class="text-danger">*</span></label>
                                     <input type="text" name="title[]" class="form-control" required>
                                     <div class="mt-2 descBox">
                                         <label class="fw-bold">Description</label>
@@ -232,22 +234,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-success addBullet  mt-1">+
+                                        <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+
                                             Add Bullet</button>
                                     </div>
                                 </div>
                             @endif
                         </div>
+
                         <div class="mt-4 d-flex gap-2">
-                            <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4 ">
-                                Draft
-                            </button>
+                            {{-- <button type="submit" name="publish_is" value="1"
+                                class="btn btn-outline-primary px-4 ">Draft</button> --}}
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4 ">
-                                Update
-                            </button>
+                                class="btn btn-outline-success px-4 ">Update</button>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -330,7 +330,7 @@
         });
 
 
-         $(document).on("click", ".addOutSideBullet", function() {
+        $(document).on("click", ".addOutSideBullet", function() {
             let bulletBox = $(this).closest(".bulletsArea");
             let html = `
                 <div class="row bulletItem mb-2 align-items-center">
@@ -418,7 +418,7 @@
             let html = `
             <div class="row bulletItem mb-2 align-items-center">
                 <div class="col-10">
-                    <input type="text" name="bullets[` + parentIndex + `][]" class="form-control" placeholder="Enter bullet" required>
+                    <input type="text" name="bullets[` + parentIndex + `][]" class="form-control" placeholder="Enter bullet"  >
                 </div>
                 <div class="col-2 text-start">
                     <button type="button" class="bullet-remove-btn removeBullet">✕</button>

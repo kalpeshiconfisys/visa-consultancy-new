@@ -38,6 +38,13 @@
         .remove-subcategory-btn:hover {
             background: #e0a800;
         }
+
+        .toc-card {
+        border: 1px dashed #cfd4da;
+        border-radius: 10px;
+        padding: 15px;
+        background: #fafafa;
+    }
     </style>
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
@@ -55,25 +62,25 @@
                         <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
                             <div class="col-lg-7 col-md-12 ">
                                 <div>
-                                    <label class="form-label fw-bold">Visa Title</label>
+                                    <label class="form-label fw-bold">Visa Title<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="main_title" id="title" required>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label fw-bold">Short Description</label>
+                                    <label class="form-label fw-bold">Short Description<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="main_short_description" rows="2" placeholder="Write short introduction..."
                                         required> </textarea>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label fw-bold">Full Description</label>
+                                    <label class="form-label fw-bold">Full Description<span class="text-danger">*</span></label>
                                     <textarea  class="form-control" name="main_description" rows="5"    style="height:400px" placeholder="Write full details..."
                                         required> </textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
                                 <div class="mt-0">
-                                    <label class="form-label fw-bold">Featured Image</label>
+                                    <label class="form-label fw-bold">Featured Image <span class="text-danger">*</span></label>
                                     <input type="file" class="form-control" name="image" id="imageInput"
-                                        accept="image/png,image/jpeg,image/webp">
+                                        accept="image/png,image/jpeg,image/webp" required>
                                     <div class="mt-3">
                                         <img id="previewImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                                             class="img-fluid rounded shadow-sm border"
@@ -81,9 +88,9 @@
                                     </div>
                                 </div>
                                 <div class="mt-1">
-                                    <label class="form-label fw-bold mt-1">Category Logo</label>
+                                    <label class="form-label fw-bold mt-1">Category Logo <span class="text-danger">*</span> </label>
                                     <input type="file" class="form-control" name="category_logo" id="imageInputLogo"
-                                        accept="image/png,image/jpeg,image/webp">
+                                        accept="image/png,image/jpeg,image/webp" required>
                                     <div class="mt-3">
                                         <img id="previewImageLogo"
                                             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
@@ -93,7 +100,7 @@
                                 </div>
 
                                 <div class="mt-2 bulletsArea">
-                                    <label class="fw-bold">Bullets</label>
+                                    <label class="fw-bold">Bullets <span class="text-danger">*</span></label>
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
                                             <input type="text" name="category_bullets[]" class="form-control"
@@ -105,7 +112,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addOutSideBullet  ">
+                                    <button type="button" class="btn btn-sm btn-outline-success addOutSideBullet  ">
                                         + Add Bullet
                                     </button>
                                 </div>
@@ -113,21 +120,25 @@
 
                         </div>
 
-                        <div class=" d-flex  justify-content-end col-12-sm">
-                               <button type="button" class="btn btn-primary   addSubCategory mt-3 mb-3">+ Add
+
+                        <hr>
+
+                        <div class=" d-flex  justify-content-between col-12-sm">
+                              <h4 class="fw-bold">Table Of Content</h4>
+                               <button type="button" class="btn btn-outline-primary   addSubCategory mt-3 mb-3">+ Add
                             Table Of Content</button>
                         </div>
 
 
                         <div id="subCategoryWrapper">
-                            <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h4 class="fw-bold">Table Of Content</h4>
+                            <div class="subCategoryBox toc-card p-3 mb-3  ">
+                                <div class="d-flex justify-content-end align-items-center mb-2">
+                                    {{-- <h4 class="fw-bold">Table Of Content</h4> --}}
                                     <button type="button" class="remove-subcategory-btn" title="Remove Table of Content"
                                         style="display:none;">✕</button>
                                 </div>
                                 <div class="mt-2">
-                                    <label class="fw-bold">Title</label>
+                                    <label class="fw-bold">Title <span class="text-danger">*</span></label>
                                     <input type="text" name="title[]" class="form-control" placeholder="Enter Title"
                                         required>
                                 </div>
@@ -146,20 +157,17 @@
                                             <button type="button" class="bullet-remove-btn removeBullet">✕</button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addBullet ">+ Add
+                                    <button type="button" class="btn btn-sm btn-outline-success addBullet ">+ Add
                                         Bullet</button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4 ">
-                                Draft
-                            </button>
+                                class="btn btn-outline-primary px-4 ">Draft</button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4 ">
-                                Publish
-                            </button>
+                                class="btn btn-outline-success px-4 ">Publish</button>
                         </div>
                     </form>
                 </div>
@@ -322,7 +330,7 @@
             let html = `
             <div class="row bulletItem mb-2 align-items-center">
                 <div class="col-10">
-                    <input type="text" name="bullets[` + parentIndex + `][]" class="form-control" placeholder="Enter bullet" required>
+                    <input type="text" name="bullets[` + parentIndex + `][]" class="form-control" placeholder="Enter bullet" >
                 </div>
                 <div class="col-2 text-start">
                     <button type="button" class="bullet-remove-btn removeBullet">✕</button>

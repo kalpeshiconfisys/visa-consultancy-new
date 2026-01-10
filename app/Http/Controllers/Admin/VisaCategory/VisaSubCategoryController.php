@@ -8,7 +8,6 @@ use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 class VisaSubCategoryController extends Controller
 {
     public function index()
@@ -47,7 +46,7 @@ class VisaSubCategoryController extends Controller
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $request->title[$key],
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [],
+                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 'type'                 => 'sub_category'
             ]);
         }
@@ -65,6 +64,8 @@ class VisaSubCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+
+     
 
         $request->validate([
             "category_id"   => "required|exists:visa_categories,id",
@@ -99,7 +100,7 @@ class VisaSubCategoryController extends Controller
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $title,
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => $request->bullets[$key] ?? [],
+                 "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 'type'                 => 'sub_category'
             ];
             if ($request->content_type == 'description') {
