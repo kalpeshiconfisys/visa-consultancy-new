@@ -99,6 +99,7 @@ class VisaSubCategoryController extends Controller
                 "title"                => $title,
                 "description"          => $request->description[$key] ?? null,
                 "bullets"              => $request->bullets[$key] ?? [],
+                'type'                 => 'sub_category'
             ];
             if ($request->content_type == 'description') {
                 $data['bullets'] = NULL;

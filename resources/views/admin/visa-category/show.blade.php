@@ -191,16 +191,4 @@
 
 @endsection
 
-@push('script')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var viewImageModal = document.getElementById('viewImageModal');
-            viewImageModal.addEventListener('show.bs.modal', function(event) {
-                var button = event.relatedTarget;
-                var img = button.src || button.getAttribute('src');
-                var previewImage = document.getElementById('previewImage');
-                previewImage.src = img;
-            });
-        });
-    </script>
-@endpush
+

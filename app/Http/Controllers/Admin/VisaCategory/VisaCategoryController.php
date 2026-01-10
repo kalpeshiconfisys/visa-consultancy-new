@@ -73,11 +73,14 @@ class VisaCategoryController extends Controller
     {
         $id = base64_decode($encodedId);
         $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id);
+
         return view('admin.visa-category.edit', compact('visaCategory'));
     }
 
     public function update(Request $request, $encodedId)
     {
+
+
         $id = base64_decode($encodedId);
         $request->validate([
             "main_title" => "required",
@@ -119,13 +122,16 @@ class VisaCategoryController extends Controller
         if (!empty($toDelete)) {
             SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
         }
+
         foreach ($request->title as $key => $title) {
             $tocId = $submittedTocIds[$key] ?? null;
+            
             $data = [
                 "category_id"          => $visa->id,
                 "title"                => $title,
                 "description"          => $request->description[$key] ?? null,
                 "bullets"              => $request->bullets[$key] ?? [],
+                'type'                 => 'category'
             ];
             if ($tocId) {
                 $toc = SubCategoryTableOfContent::find($tocId);

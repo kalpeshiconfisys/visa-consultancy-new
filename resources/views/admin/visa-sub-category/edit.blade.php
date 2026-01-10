@@ -195,12 +195,8 @@
 @endsection --}}
 
 
-
-
 @extends('admin.layouts.app')
-
 @section('title', 'Edit Visa Sub Category')
-
 @section('content')
 
 <style>
@@ -289,8 +285,9 @@
                                 <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description"   required>{{$subCategories->description}}</textarea>
                             </div>
 
-
+                     <div class=" d-flex  justify-content-end col-12-sm">
                     <button type="button" class="btn btn-primary addSubCategory mb-3">+ Add Table Of Content</button>
+                     </div>
 
                     <div id="subCategoryWrapper">
                         @php

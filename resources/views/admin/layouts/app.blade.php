@@ -10,38 +10,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/css/portal.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('assets/css/portal.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.css" rel="stylesheet">
-
     @stack('css')
 </head>
 
-<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 99999;">
-    @if (session('success'))
-        <div class="toast align-items-center text-white bg-success border-0 show custom-alert" role="alert"
-            aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body fw-semibold">
-                    {{ session('success') }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-            </div>
-        </div>
-    @endif
-    @if (session('error'))
-        <div class="toast align-items-center text-white bg-danger border-0 show custom-alert" role="alert"
-            aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body fw-semibold">
-                    {{ session('error') }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-            </div>
-        </div>
-    @endif
-</div>
+
 
 <body>
+
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+        @if (session('success'))
+            <div class="toast show bg-success text-white custom-alert ">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ session('success') }}
+                    </div>
+                    <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="toast show bg-danger text-white custom-alert">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ session('error') }}
+                    </div>
+                    <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        @endif
+    </div>
     <div class="d-flex">
         @include('admin.layouts.sidebar')
         <div class="sidebar-overlay"></div>

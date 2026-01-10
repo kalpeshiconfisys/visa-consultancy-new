@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Visa Category')
+@section('title', 'Add Visa Category')
 
 @section('content')
 
@@ -97,28 +97,31 @@
                                 </div>
 
                                 <div class="mt-2 bulletsArea">
-                                <label class="fw-bold">Bullets</label>
-                                <div class="row bulletItem mb-2 align-items-center">
-                                    <div class="col-10">
-                                        <input type="text" name="category_bullets[]" class="form-control"
-                                            placeholder="Enter bullet" required>
+                                    <label class="fw-bold">Bullets</label>
+                                    <div class="row bulletItem mb-2 align-items-center">
+                                        <div class="col-10">
+                                            <input type="text" name="category_bullets[]" class="form-control"
+                                                placeholder="Enter bullet" required>
+                                        </div>
+                                        <div class="col-2 text-start mt-0 ">
+                                            <button type="button" class="bullet-remove-btn removeBullet">
+                                                ✕
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-2 text-start mt-0 ">
-                                        <button type="button" class="bullet-remove-btn removeBullet">
-                                            ✕
-                                        </button>
-                                    </div>
+                                    <button type="button" class="btn btn-sm btn-success addOutSideBullet  fst-italic">
+                                        + Add Bullet
+                                    </button>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-success addOutSideBullet  fst-italic">
-                                    + Add Bullet
-                                </button>
-                            </div>
                             </div>
 
                         </div>
 
-                        <button type="button" class="btn btn-primary justify-content-end  addSubCategory mt-2 mb-3">+ Add
+                        <div class=" d-flex  justify-content-end col-12-sm">
+                               <button type="button" class="btn btn-primary   addSubCategory mt-2 mb-3">+ Add
                             Table Of Content</button>
+                        </div>
+
 
                         <div id="subCategoryWrapper">
                             <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm">
