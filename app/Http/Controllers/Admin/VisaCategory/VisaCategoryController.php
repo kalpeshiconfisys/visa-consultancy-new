@@ -79,9 +79,6 @@ class VisaCategoryController extends Controller
 
     public function update(Request $request, $encodedId)
     {
-
-
-
         $id = base64_decode($encodedId);
         $request->validate([
             "main_title" => "required",
@@ -93,7 +90,7 @@ class VisaCategoryController extends Controller
         $input = [
             'title' => $request->main_title,
             'short_description' => $request->main_short_description,
-            'main_description' => $request->main_description,
+            'description' => $request->main_description,
             'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
@@ -165,7 +162,7 @@ class VisaCategoryController extends Controller
         $id = base64_decode($encodedId);
         $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id);
 
-            
+
         return view('admin.visa-category.show', compact('visaCategory'));
     }
 }

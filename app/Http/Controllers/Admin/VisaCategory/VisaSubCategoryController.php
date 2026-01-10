@@ -38,7 +38,7 @@ class VisaSubCategoryController extends Controller
             "title"         => $request->sub_title,
             "description"   => $request->sub_description,
             "publish_is"    => $request->publish_is,
-            'content_type'  => $request->content_type,
+            'content_type'  => $request->content_type  ?? 'both',
             'date_modified' => Carbon::now()->toDateTimeString(),
         ]);
 
@@ -72,7 +72,7 @@ class VisaSubCategoryController extends Controller
             "title.*"       => "required|string|max:255",
             "description"   => "nullable|array",
             "publish_is"    => "required|in:1,2",
-            "content_type"  => "required|in:description,bullets,both",
+            // "content_type"  => "required|in:description,bullets,both",
             "toc_id"        => "nullable|array"
         ]);
 
@@ -83,7 +83,7 @@ class VisaSubCategoryController extends Controller
             "title"         => $request->sub_title,
             "description"   => $request->sub_description,
             "publish_is"    => $request->publish_is,
-            "content_type"  => $request->content_type,
+            "content_type"  => $request->content_type ?? 'both',
             "date_modified" => now(),
         ]);
 
@@ -132,7 +132,7 @@ class VisaSubCategoryController extends Controller
     {
         $id = base64_decode($encodedId);
         $visaSubCategory = VisaSubCategory::with('table_of_content')->findOrFail($id);
-          
+
         return view('admin.visa-sub-category.show', compact('visaSubCategory'));
     }
 }

@@ -58,7 +58,7 @@
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
-                        <div class="row g-4">
+                         <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
                             <div class="col-lg-7 col-md-12">
                                 <div>
                                     <label class="form-label">Visa Title</label>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Full Description</label>
-                                    <textarea id="editor" class="form-control" name="main_description" rows="5" required>{{ old('description', $visaCategory->description) }}</textarea>
+                                    <textarea   class="form-control" name="main_description" rows="5"   style="height:400px" required>{{ old('description', $visaCategory->description) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
@@ -164,7 +164,7 @@
 
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
-                                            <textarea name="description[]" class="form-control" rows="2" required>{{ $sub['description'] ?? '' }}</textarea>
+                                            <textarea name="description[]" class="form-control" rows="2"  >{{ $sub['description'] ?? '' }}</textarea>
                                         </div>
 
                                         <div class="mt-2 bulletsArea">
@@ -177,7 +177,7 @@
                                                                 <input type="text"
                                                                     name="bullets[{{ $i }}][]"
                                                                     class="form-control" value="{{ $b }}"
-                                                                    placeholder="Enter bullet" required>
+                                                                    placeholder="Enter bullet"  >
                                                             </div>
                                                             <div class="col-2 text-start">
                                                                 <button type="button"
@@ -189,7 +189,7 @@
                                                     <div class="row bulletItem mb-2 align-items-center">
                                                         <div class="col-10">
                                                             <input type="text" name="bullets[{{ $i }}][]"
-                                                                class="form-control" placeholder="Enter bullet" required>
+                                                                class="form-control" placeholder="Enter bullet"  >
                                                         </div>
                                                         <div class="col-2 text-start">
                                                             <button type="button"
@@ -296,7 +296,7 @@
         $(document).ready(function() {
 
             $('#editor').summernote({
-                height: 600,
+                height: 400,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear', 'italic']],

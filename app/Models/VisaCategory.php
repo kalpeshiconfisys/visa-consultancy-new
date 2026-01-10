@@ -43,7 +43,7 @@ class VisaCategory extends Model
 
     public function sub_category()
     {
-        return $this->hasMany(VisaSubCategory::class, 'category_id' , 'id');
+        return $this->hasMany(VisaSubCategory::class, 'category_id' , 'id')->where('publish_is' , 2);
     }
 
     public function main_table_of_content()

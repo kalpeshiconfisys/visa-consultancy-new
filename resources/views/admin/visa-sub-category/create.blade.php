@@ -245,44 +245,51 @@
                     </div>
                     <form action="{{ route('admin.visa-sub-category.store') }}" method="POST">
                         @csrf
-                        <div class="row">
-                            <div class="col-6 mb-4">
-                                <label class="fw-bold mb-1">Select Visa Category</label>
-                                <select name="category_id" class="form-control" required>
-                                    <option value="" disabled selected>Select Category</option>
-                                    @foreach ($categories as $cat)
-                                        <option class="fw-bold" value="{{ $cat->id }}">{{ $cat->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-6 mb-4">
+                        <div class="row g-4 border rounded shadow-sm mt-3 p-3">
+                            <div class="row">
+                                <div class="col-6 mb-4">
+                                    <label class="fw-bold mb-1">Select Visa Category</label>
+                                    <select name="category_id" class="form-control" required>
+                                        <option value="" disabled selected>Select Category</option>
+                                        @foreach ($categories as $cat)
+                                            <option class="fw-bold" value="{{ $cat->id }}">{{ $cat->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- <div class="col-6 mb-4">
                                 <label class="fw-bold mb-1">Content Type</label>
                                 <select id="contentType" class="form-control" name="content_type" required>
                                     <option class="fw-bold" value="both">Description + Bullets</option>
                                     <option class="fw-bold" value="description">Only Description</option>
                                     <option class="fw-bold" value="bullets">Only Bullets</option>
                                 </select>
+                            </div> --}}
+                            </div>
+
+                            <div class="m-0">
+                                <label class="fw-bold">Title</label>
+                                <input type="text" name="sub_title" class="form-control" placeholder="Enter Title"
+                                    required>
+                            </div>
+                            <div class="mt-2 descBox">
+                                <label class="fw-bold">Description</label>
+                                <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description" required></textarea>
                             </div>
                         </div>
 
-                        <div class="mt-2">
-                            <label class="fw-bold">Title</label>
-                            <input type="text" name="sub_title" class="form-control" placeholder="Enter Title" required>
-                        </div>
-                        <div class="mt-2 descBox">
-                            <label class="fw-bold">Description</label>
-                            <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description" required></textarea>
-                        </div>
-
-                        <div class=" d-flex  justify-content-end col-12-sm">
-                        <button type="button" class="btn btn-primary justify-content-end  addSubCategory mt-2 mb-3">+ Add
-                            Table Of Content</button>
+                    <hr>
+                     
+                        <div class=" d-flex  justify-content-between col-12-sm">
+                             <h4 class="fw-bold">Table Of Content</h4>
+                            <button type="button" class="btn btn-primary justify-content-end  addSubCategory mt-2 mb-3">+
+                                Add
+                                Table Of Content</button>
                         </div>
 
                         <div id="subCategoryWrapper">
                             <div class="subCategoryBox card p-3 mb-3 border rounded shadow-sm">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h4 class="fw-bold">Table Of Content</h4>
+                                <div class="d-flex justify-content-end align-items-center mb-2">
+                                    {{-- <h4 class="fw-bold">Table Of Content</h4> --}}
                                     <button type="button" class="remove-subcategory-btn" title="Remove Table of Content"
                                         style="display:none;">✕</button>
                                 </div>
@@ -293,14 +300,14 @@
                                 </div>
                                 <div class="mt-2 descBox">
                                     <label class="fw-bold">Description</label>
-                                    <textarea name="description[]" class="form-control" rows="2" placeholder="Enter Description"  ></textarea>
+                                    <textarea name="description[]" class="form-control" rows="2" placeholder="Enter Description"></textarea>
                                 </div>
                                 <div class="mt-2 bulletsArea">
                                     <label class="fw-bold">Bullets</label>
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
                                             <input type="text" name="bullets[0][]" class="form-control"
-                                                placeholder="Enter bullet"  >
+                                                placeholder="Enter bullet">
                                         </div>
                                         <div class="col-2 text-start mt-0">
                                             <button type="button" class="bullet-remove-btn removeBullet">✕</button>
@@ -316,9 +323,9 @@
 
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4 ">Draft</button>
+                                class="btn btn-outline-primary px-4 ">Draft</button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4 ">Publish</button>
+                                class="btn btn-outline-success px-4 ">Publish</button>
                         </div>
                     </form>
                 </div>

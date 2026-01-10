@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <style>
         .bullet-remove-btn {
             width: 32px;
@@ -20,11 +19,9 @@
             cursor: pointer;
             transition: 0.2s;
         }
-
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
-
         .remove-subcategory-btn {
             width: 32px;
             height: 32px;
@@ -38,15 +35,14 @@
             align-items: center;
             cursor: pointer;
         }
-
         .remove-subcategory-btn:hover {
             background: #e0a800;
         }
     </style>
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
-            <div class="card shadow-sm border-0 rounded-4 my-4">
-                <div class="card-body p-4">
+            <div class="card shadow-sm rounded-4 my-4 main-category-card">
+                <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="fw-bold m-0">Add Visa Category</h4>
                         <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
@@ -56,8 +52,8 @@
                     <form action="{{ url('admin/visa-category/add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
-                        <div class="row g-4">
-                            <div class="col-lg-7 col-md-12">
+                        <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
+                            <div class="col-lg-7 col-md-12 ">
                                 <div>
                                     <label class="form-label fw-bold">Visa Title</label>
                                     <input type="text" class="form-control" name="main_title" id="title" required>
@@ -69,7 +65,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label fw-bold">Full Description</label>
-                                    <textarea id="editor" class="form-control" name="main_description" rows="5" placeholder="Write full details..."
+                                    <textarea  class="form-control" name="main_description" rows="5"    style="height:400px" placeholder="Write full details..."
                                         required> </textarea>
                                 </div>
                             </div>
@@ -118,7 +114,7 @@
                         </div>
 
                         <div class=" d-flex  justify-content-end col-12-sm">
-                               <button type="button" class="btn btn-primary   addSubCategory mt-2 mb-3">+ Add
+                               <button type="button" class="btn btn-primary   addSubCategory mt-3 mb-3">+ Add
                             Table Of Content</button>
                         </div>
 
@@ -209,7 +205,7 @@
 
         $(document).ready(function() {
             $('#editor').summernote({
-                height: 600,
+                height: 400,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear', 'italic']],
