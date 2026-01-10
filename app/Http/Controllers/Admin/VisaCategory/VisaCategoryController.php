@@ -81,6 +81,7 @@ class VisaCategoryController extends Controller
     {
 
 
+     
         $id = base64_decode($encodedId);
         $request->validate([
             "main_title" => "required",
@@ -125,7 +126,7 @@ class VisaCategoryController extends Controller
 
         foreach ($request->title as $key => $title) {
             $tocId = $submittedTocIds[$key] ?? null;
-            
+
             $data = [
                 "category_id"          => $visa->id,
                 "title"                => $title,

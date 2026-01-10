@@ -65,6 +65,7 @@ class VisaSubCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+         
         $request->validate([
             "category_id"   => "required|exists:visa_categories,id",
             "title"         => "required|array",

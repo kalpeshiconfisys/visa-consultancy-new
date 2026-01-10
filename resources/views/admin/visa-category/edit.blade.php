@@ -156,7 +156,8 @@
                                                 title="Remove Table of Content">✕</button>
                                         </div>
 
-                                        <input type="hidden" name="toc_id[]" value="{{ $sub['id'] ?? '' }}">
+                                        {{-- <input type="hidden" name="toc_id[]" value="{{ $sub['id'] ?? '' }}"> --}}
+                                        <input type="hidden" name="id[]" value="{{ $sub['id'] ?? '' }}">
                                         <label class="fw-bold">Title</label>
                                         <input type="text" name="title[]" class="form-control"
                                             value="{{ $sub['title'] ?? '' }}" required>
