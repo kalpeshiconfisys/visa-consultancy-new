@@ -17,7 +17,7 @@
                     class="sidenav-menu__link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-gauge-high"></i>
-                        <span class="ms-2 fw-bold fst-italic">Dashboard</span>
+                        <span class="ms-2 fw-bold ">Dashboard</span>
                     </div>
                 </a>
             </li>
@@ -35,7 +35,7 @@
                     class="sidenav-menu__link {{ request()->is('admin/visa-category*') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-globe "></i>
-                        <span class="ms-2 fw-bold fst-italic">Visa Category</span>
+                        <span class="ms-2 fw-bold ">Visa Category</span>
                     </div>
                 </a>
             </li>
@@ -46,7 +46,7 @@
                     class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-list-check"></i>
-                        <span class="ms-2 fw-bold fst-italic">Visa Sub Category</span>
+                        <span class="ms-2 fw-bold ">Visa Sub Category</span>
                     </div>
                 </a>
             </li>

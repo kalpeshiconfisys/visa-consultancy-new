@@ -24,7 +24,7 @@
         }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center fw-bold fst-italic">
+    <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -97,7 +97,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addBullet  fst-italic">
+                                    <button type="button" class="btn btn-sm btn-success addBullet  ">
                                         + Add Bullet
                                     </button>
                                 </div>
@@ -105,11 +105,11 @@
                         </div>
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4   fst-italic">
+                                class="btn btn-secondary px-4   ">
                                 Draft
                             </button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4   fst-italic">
+                                class="btn btn-secondary px-4   ">
                                 Publish
                             </button>
                         </div>
@@ -233,7 +233,7 @@
         }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center fw-bold fst-italic">
+    <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -306,7 +306,7 @@
                                             <button type="button" class="bullet-remove-btn removeBullet">✕</button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addBullet fst-italic">+ Add
+                                    <button type="button" class="btn btn-sm btn-success addBullet ">+ Add
                                         Bullet</button>
                                 </div>
                             </div>
@@ -316,9 +316,9 @@
 
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4 fst-italic">Draft</button>
+                                class="btn btn-secondary px-4 ">Draft</button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4 fst-italic">Publish</button>
+                                class="btn btn-secondary px-4 ">Publish</button>
                         </div>
                     </form>
                 </div>

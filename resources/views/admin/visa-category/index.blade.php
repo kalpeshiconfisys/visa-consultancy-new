@@ -7,7 +7,7 @@
                 <div class="card-body p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0 fst-italic">Visa Category List</h4>
+                            <h4 class="card-title text-dark fw-bold m-0 ">Visa Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-category/create') }}"
                             class="btn app-btn-primary rounded-circle d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary rounded-pill px-2  "
@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-bordered align-middle fst-italic" style="min-width: 1000px;">
+                            <table id="example" class="table table-bordered align-middle " style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>

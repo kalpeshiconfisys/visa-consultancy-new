@@ -25,7 +25,7 @@
         }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center fw-bold fst-italic">
+    <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -120,7 +120,7 @@
                                         @endif
 
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-1">
+                                    <button type="button" class="btn btn-sm btn-success addBullet  mt-1">
                                         + Add Bullet
                                     </button>
                                 </div>
@@ -128,11 +128,11 @@
                         </div>
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-secondary px-4   fst-italic">
+                                class="btn btn-secondary px-4   ">
                                 Draft
                             </button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-secondary px-4   fst-italic">
+                                class="btn btn-secondary px-4   ">
                                 Update
                             </button>
                         </div>
@@ -236,7 +236,7 @@
     }
 </style>
 
-<div class="content-wrapper d-flex justify-content-center fw-bold fst-italic">
+<div class="content-wrapper d-flex justify-content-center fw-bold ">
     <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
         <div class="card shadow-sm border-0 rounded-4 my-4">
             <div class="card-body p-4">
@@ -336,7 +336,7 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-1">+ Add Bullet</button>
+                                        <button type="button" class="btn btn-sm btn-success addBullet  mt-1">+ Add Bullet</button>
                                     </div>
                                 </div>
                             @endforeach
@@ -365,15 +365,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-sm btn-success addBullet fst-italic mt-1">+ Add Bullet</button>
+                                    <button type="button" class="btn btn-sm btn-success addBullet  mt-1">+ Add Bullet</button>
                                 </div>
                             </div>
                         @endif
                     </div>
 
                     <div class="mt-4 d-flex gap-2">
-                        <button type="submit" name="publish_is" value="1" class="btn btn-secondary px-4 fst-italic">Draft</button>
-                        <button type="submit" name="publish_is" value="2" class="btn btn-secondary px-4 fst-italic">Update</button>
+                        <button type="submit" name="publish_is" value="1" class="btn btn-secondary px-4 ">Draft</button>
+                        <button type="submit" name="publish_is" value="2" class="btn btn-secondary px-4 ">Update</button>
                     </div>
 
                 </form>

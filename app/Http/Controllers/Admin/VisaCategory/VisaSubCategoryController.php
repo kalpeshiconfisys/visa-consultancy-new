@@ -65,7 +65,7 @@ class VisaSubCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-         
+
         $request->validate([
             "category_id"   => "required|exists:visa_categories,id",
             "title"         => "required|array",
@@ -131,7 +131,8 @@ class VisaSubCategoryController extends Controller
     public function show($encodedId)
     {
         $id = base64_decode($encodedId);
-        $visaSubCategory = VisaSubCategory::findOrFail($id);
+        $visaSubCategory = VisaSubCategory::with('table_of_content')->findOrFail($id);
+          
         return view('admin.visa-sub-category.show', compact('visaSubCategory'));
     }
 }

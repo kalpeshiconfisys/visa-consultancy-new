@@ -1797,9 +1797,7 @@
      font-size: 14px;
  }
 
- body {
-    font-style: italic;
-}
+      
 
  .site-toggle:hover,
  .site-dropdown.open .site-toggle {
