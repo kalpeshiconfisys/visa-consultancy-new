@@ -1247,9 +1247,12 @@
      color: #0d6efd;
  }
 
- .table td .fa-eye:hover {
-     color: #0dcaf0;
- }
+ .btn-outline-info:hover i {
+    color: #fff;
+}
+
+
+
 
  .table td .fa-edit:hover {
      color: #0d6efd;
@@ -1877,3 +1880,9 @@
         padding: 15px;
         background: #fafafa;
     }
+
+
+    .scroll {
+    max-height: 400px;   /* તને જેટલી height જોઈતી હોય */
+    overflow-y: auto;    /* vertical scroll */
+}

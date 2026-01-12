@@ -10,7 +10,7 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Visa Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-category/create') }}"
-                            class="btn app-btn-primary rounded-circle d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary rounded-pill px-2  "
+                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-primary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -44,29 +44,24 @@
                                                     ? \Carbon\Carbon::parse($category->date_modified)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
                                                     : '-' }}
                                             </td>
-
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-
                                                     {{-- VIEW --}}
                                                     <a href="{{ url('admin/visa-category/show/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary rounded-pill px-2  ">
+                                                        class="btn btn-sm btn-outline-info   px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
-
                                                     {{-- EDIT --}}
                                                     <a href="{{ url('admin/visa-category/edit/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary rounded-pill px-2">
+                                                        class="btn btn-sm btn-outline-primary   px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
-
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-2"
+                                                    <button class="btn btn-sm btn-outline-danger   px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $category->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>
                                                     </button>
-
                                                 </div>
                                                 {{-- Delete Modal --}}
                                                 <div class="modal fade" id="deleteModal{{ $category->id }}" tabindex="-1"
@@ -74,7 +69,6 @@
                                                     aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
-
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title"
                                                                     id="deleteModalLabel{{ $category->id }}">
@@ -83,33 +77,27 @@
                                                                 <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-
                                                             <div class="modal-body">
                                                                 Are you sure you want to delete this category?
                                                             </div>
-
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">
                                                                     Cancel
                                                                 </button>
-
                                                                 <form
                                                                     action="{{ url('admin/visa-category/delete/' . trim(base64_encode($category->id), '=')) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-
                                                                     <button type="submit" class="btn btn-danger">
                                                                         Yes, Delete
                                                                     </button>
                                                                 </form>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </td>
                                         </tr>
                                     @empty
@@ -119,8 +107,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                        </div>
-
+                        </div> 
                         <!-- Pagination -->
                         <div class="d-flex justify-content-end mt-1">
                             {{ $visaCategories->onEachSide(1)->links('pagination::bootstrap-4') }}
