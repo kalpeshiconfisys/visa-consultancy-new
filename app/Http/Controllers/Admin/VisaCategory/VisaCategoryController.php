@@ -155,7 +155,7 @@ class VisaCategoryController extends Controller
             File::delete(public_path('uploads/category_logo/' . basename($visa->category_logo)));
         }
         VisaSubCategory::where('category_id',$visa->id)->delete();
-        SubCategoryTableOfContent::where('category_id',$visa->id)->where('type','category')->delete();
+        SubCategoryTableOfContent::where('category_id',$visa->id)->delete();
         $visa->delete();
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Deleted Successfully');
     }
@@ -163,7 +163,7 @@ class VisaCategoryController extends Controller
     public function show($encodedId)
     {
         $id = base64_decode($encodedId);
-        $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id); 
+        $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id);
         return view('admin.visa-category.show', compact('visaCategory'));
     }
 }

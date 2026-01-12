@@ -1799,8 +1799,7 @@
 
 
 
- .site-toggle:hover,
- .site-dropdown.open .site-toggle {
+ .site-toggle:hover, .site-dropdown.open .site-toggle {
      border-color: #22262c;
      background-color: #f8f9ff;
  }
@@ -1834,7 +1833,7 @@
  }
 
  .site-menu li {
-     padding: 0;
+    padding: 0;
  }
 
  .site-item {

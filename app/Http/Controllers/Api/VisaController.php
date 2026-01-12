@@ -11,7 +11,7 @@ class VisaController extends Controller
 {
     public function visa_category_list()
     {
-        $visaCategories  = VisaCategory::where('publish_is', 2)->latest()->get();
+        $visaCategories  = VisaCategory::with('sub_category')->where('publish_is', 2)->latest()->get();
         return $this->success(true, 'Visa Category Data retrieved successfully!', $visaCategories);
     }
 

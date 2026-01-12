@@ -125,7 +125,7 @@ class VisaSubCategoryController extends Controller
     {
         $id = base64_decode($id);
         $sub = VisaSubCategory::findOrFail($id);
-        SubCategoryTableOfContent::where('visa_sub_category_id',$sub->id)->where('type','sub_category')->delete();
+        SubCategoryTableOfContent::where('visa_sub_category_id',$sub->id)->delete();
         $sub->delete();
         return redirect()->route('admin.visa-sub-category.index')->with('success', 'Visa Sub Category Deleted Successfully');
     }
