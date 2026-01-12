@@ -238,14 +238,14 @@
         }
 
         .toc-card {
-        border: 1px dashed #cfd4da;
-        border-radius: 10px;
-        padding: 15px;
-        background: #fafafa;
-    }
+            border: 1px dashed #cfd4da;
+            border-radius: 10px;
+            padding: 15px;
+            background: #fafafa;
+        }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center fw-bold ">
+    <div class="content-wrapper d-flex justify-content-center fw-bold">
         <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -261,7 +261,8 @@
                         <div class="row g-4 border rounded shadow-sm mt-3 p-3">
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <label class="fw-bold mb-1">Select Visa Category <span class="text-danger">*</span></label>
+                                    <label class="fw-bold mb-1">Select Visa Category <span
+                                            class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" required>
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $cat)
@@ -273,7 +274,7 @@
                                     </select>
                                 </div>
 
-                            {{-- <div class="col-6">
+                                {{-- <div class="col-6">
                             <label class="fw-bold mb-1">Content Type</label>
                                 <select id="contentType" class="form-control" name="content_type" required>
                                     <option value="both" {{ $subCategories->content_type=='both'?'selected':'' }}>Description + Bullets</option>
@@ -295,7 +296,7 @@
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm mt-3">
                             <h4 class="fw-bold">Table Of Content</h4>
-                            <button type="button" class="btn btn-primary addSubCategory mb-3">+ Add Table Of
+                            <button type="button" class="btn btn-outline-primary addSubCategory mb-3">+ Add Table Of
                                 Content</button>
                         </div>
                         <div id="subCategoryWrapper">
@@ -305,8 +306,7 @@
 
                             @if (count($subContents) > 0)
                                 @foreach ($subContents as $i => $sub)
-                                    <div class="subCategoryBox toc-card p-3 mb-3  "
-                                        data-index="{{ $i }}">
+                                    <div class="subCategoryBox toc-card p-3 mb-3  " data-index="{{ $i }}">
                                         <div class="d-flex justify-content-end align-items-center mb-2">
                                             {{-- <h4 class="fw-bold">Table Of Content</h4> --}}
                                             <button type="button" class="remove-subcategory-btn"
@@ -320,7 +320,7 @@
 
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
-                                            <textarea name="description[]" class="form-control" rows="2" >{{ $sub['description'] ?? '' }}</textarea>
+                                            <textarea name="description[]" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>
                                         </div>
 
                                         <div class="mt-2 bulletsArea">
@@ -332,7 +332,7 @@
                                                             <div class="col-10">
                                                                 <input type="text" name="bullets[{{ $i }}][]"
                                                                     class="form-control" value="{{ $b }}"
-                                                                    placeholder="Enter bullet" >
+                                                                    placeholder="Enter bullet">
                                                             </div>
                                                             <div class="col-2 text-start">
                                                                 <button type="button"
@@ -344,7 +344,7 @@
                                                     <div class="row bulletItem mb-2 align-items-center">
                                                         <div class="col-10">
                                                             <input type="text" name="bullets[{{ $i }}][]"
-                                                                class="form-control" placeholder="Enter bullet" >
+                                                                class="form-control" placeholder="Enter bullet">
                                                         </div>
                                                         <div class="col-2 text-start">
                                                             <button type="button"
@@ -353,7 +353,8 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+ Add
+                                            <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+
+                                                Add
                                                 Bullet</button>
                                         </div>
                                     </div>
@@ -386,7 +387,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+ Add
+                                        <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+
+                                            Add
                                             Bullet</button>
                                     </div>
                                 </div>

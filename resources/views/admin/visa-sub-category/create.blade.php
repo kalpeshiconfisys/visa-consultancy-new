@@ -208,12 +208,10 @@
             align-items: center;
             cursor: pointer;
             transition: 0.2s;
-        }
-
+        } 
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
-
         .remove-subcategory-btn {
             width: 32px;
             height: 32px;
@@ -227,11 +225,9 @@
             align-items: center;
             cursor: pointer;
         }
-
         .remove-subcategory-btn:hover {
             background: #e0a800;
         }
-
         .toc-card {
             border: 1px dashed #cfd4da;
             border-radius: 10px;
@@ -283,11 +279,11 @@
                                 <label class="fw-bold">Description <span class="text-danger">*</span></label>
                                 <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description" required></textarea>
                             </div>
-                        </div> 
+                        </div>
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
                             <h4 class="fw-bold">Table Of Content</h4>
-                            <button type="button" class="btn btn-primary justify-content-end  addSubCategory mt-2 mb-3">+
+                            <button type="button" class="btn btn-outline-primary justify-content-end  addSubCategory mt-2 mb-3">+
                                 Add
                                 Table Of Content</button>
                         </div>
