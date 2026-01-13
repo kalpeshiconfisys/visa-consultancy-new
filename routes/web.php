@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
 
@@ -63,9 +64,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // VISA SUB CATEGORY (IMPORTANT)
         Route::resource('visa-sub-category', Admin\VisaCategory\VisaSubCategoryController::class);
+
+        Route::get('/enquiry-list', [DashboardController::class, 'enquiryList']);
+
+        Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
     });
 
 });
+
+
 
 
 

@@ -51,16 +51,24 @@
                 </a>
             </li>
 
-            {{-- Optional Future Items Example (Delete if not needed) --}}
-            {{-- <li>
-            <a href="#" class="sidenav-menu__link">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-file-circle-check"></i>
-                    <span class="ms-2">Approved Visas</span>
-                </div>
-            </a>
-        </li> --}}
+
+
+
+
         </ul>
+
+           <h4 class="h5">My Appointment</h4>
+           <li>
+                <a href="{{ url('admin/preferred-time') }}"
+                    class="sidenav-menu__link {{ request()->is('admin/preferred-time*') ? 'active' : '' }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="ms-2 fw-bold ">Appointment Time</span>
+                    </div>
+                </a>
+            </li>
+
+
     </div>
 
 </div>

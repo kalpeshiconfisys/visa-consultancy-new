@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Visa Category List')
+@section('title', 'Preferred Time List')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
@@ -7,73 +7,58 @@
                 <div class="card-body p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0  ">Visa Sub Category List</h4>
+                            <h4 class="card-title text-dark fw-bold m-0 ">Appointment Time List</h4>
                         </div>
-                        <a href="{{ url('admin/visa-sub-category/create') }}"
-                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary   px-2  "
+                        <a href="{{ route('admin.preferred-time.create') }}"
+                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table align-middle " style="min-width: 1000px;">
+                            <table id="example" class="table table-bordered align-middle " style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
-                                        <th class="text-dark">Visa Category</th>
-                                        <th class="text-dark"> Status</th>
-                                        <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($subCategories as $key => $category)
+                                    @forelse ($preferredTimes as $key => $i)
                                         <tr>
-                                            <td class=" ">{{ $subCategories->firstItem() + $key }}</td>
-                                            <td class=" ">{{ $category->title }}</td>
-                                            <td class=" ">{{ $category->category->title }}</td>
-                                            <td class=" " >
-                                                @if ($category->publish_is == 1)
-                                                    <span class="text-danger">Draft</span>
-                                                @else
-                                                    <span class="text-success">Publish</span>
-                                                @endif
-                                            </td>
-                                            <td class=" ">
-                                                {{ $category->date_modified
-                                                    ? \Carbon\Carbon::parse($category->date_modified)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
-                                                    : '-' }}
-                                            </td>
+                                            <td class="">{{ $preferredTimes->firstItem() + $key }}</td>
+                                            <td class="" >{{ $i->title }}</td>
+
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
-                                                    <a href="{{ route('admin.visa-sub-category.show' , trim(base64_encode($category->id), '=')) }}"
+                                                    <a href="{{ route('admin.preferred-time.show' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary   px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
-                                                    <a href="{{ route('admin.visa-sub-category.edit', trim(base64_encode($category->id), '=')) }}"
+                                                    <a href="{{ route('admin.preferred-time.edit', trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary   px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
                                                     <button class="btn btn-sm btn-outline-secondary   px-2"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $category->id }}">
+                                                        data-bs-target="#deleteModal{{ $i->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>
                                                     </button>
                                                 </div>
                                                 {{-- Delete Modal --}}
-                                                <div class="modal fade" id="deleteModal{{ $category->id }}" tabindex="-1"
-                                                    aria-labelledby="deleteModalLabel{{ $category->id }}"
+                                                <div class="modal fade" id="deleteModal{{ $i->id }}" tabindex="-1"
+                                                    aria-labelledby="deleteModalLabel{{ $i->id }}"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title"
-                                                                    id="deleteModalLabel{{ $category->id }}">
+                                                                    id="deleteModalLabel{{ $i->id }}">
                                                                     Confirm Delete
                                                                 </h5>
                                                                 <button type="button" class="btn-close"
@@ -89,7 +74,7 @@
                                                                 </button>
 
                                                                 <form
-                                                                    action="{{ route('admin.visa-sub-category.destroy' , trim(base64_encode($category->id), '=')) }}"
+                                                                    action="{{ route('admin.preferred-time.destroy' , trim(base64_encode($i->id), '=')) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -111,10 +96,9 @@
                                 </tbody>
                             </table>
                         </div>
-
                         <!-- Pagination -->
                         <div class="d-flex justify-content-end mt-1">
-                            {{ $subCategories->onEachSide(1)->links('pagination::bootstrap-4') }}
+                            {{ $preferredTimes->onEachSide(1)->links('pagination::bootstrap-4') }}
                         </div>
 
                     </div>

@@ -10,7 +10,7 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Visa Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-category/create') }}"
-                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-primary  px-2  "
+                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -30,16 +30,16 @@
                                 <tbody>
                                     @forelse ($visaCategories as $key => $category)
                                         <tr>
-                                            <td class="fw-bold">{{ $visaCategories->firstItem() + $key }}</td>
-                                            <td class="fw-bold" >{{ $category->title }}</td>
-                                            <td class="fw-bold" >
+                                            <td class="">{{ $visaCategories->firstItem() + $key }}</td>
+                                            <td class="" >{{ $category->title }}</td>
+                                            <td class="" >
                                                 @if ($category->publish_is == 1)
                                                     <span class="text-danger">Draft</span>
                                                 @else
                                                     <span class="text-success">Publish</span>
                                                 @endif
                                             </td>
-                                            <td class="fw-bold italic" >
+                                            <td class="" >
                                                 {{ $category->date_modified
                                                     ? \Carbon\Carbon::parse($category->date_modified)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
                                                     : '-' }}
@@ -48,16 +48,16 @@
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
                                                     <a href="{{ url('admin/visa-category/show/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-info   px-2  ">
+                                                        class="btn btn-sm btn-outline-secondary   px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
                                                     <a href="{{ url('admin/visa-category/edit/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-primary   px-2">
+                                                        class="btn btn-sm btn-outline-secondary   px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-danger   px-2"
+                                                    <button class="btn btn-sm btn-outline-secondary   px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $category->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>
@@ -107,7 +107,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                        </div> 
+                        </div>
                         <!-- Pagination -->
                         <div class="d-flex justify-content-end mt-1">
                             {{ $visaCategories->onEachSide(1)->links('pagination::bootstrap-4') }}

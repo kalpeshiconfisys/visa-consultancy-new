@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enquiry;
+use App\Models\PreferredTime;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
-use Illuminate\Support\Facades\Cache;
+
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class VisaController extends Controller
 {
@@ -51,5 +58,46 @@ class VisaController extends Controller
             return $this->error('Data Not found');
         }
         return $this->success(true, 'Visa Sub Category Data retrieved successfully!', $visaSubCategories);
+    }
+
+
+    public function enquiryAdd(Request $request)
+    {
+        $validator =   Validator::make($request->all(), [
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email|max:255',
+            'phone'     => 'nullable|string|max:20',
+            'visa_type' => 'required|string|max:255',
+            'message'   => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->errors()
+            ], 422);
+        }
+
+        $visaCheck = VisaCategory::where('id',$request->visa_type)->first();
+
+        if(!$visaCheck){
+            return $this->error('Visa Category id invalid !');
+        }
+        $input = [
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'phone'     => $request->phone,
+            'visa_id' => $request->visa_type,
+            'message'   => $request->message
+        ];
+
+        Enquiry::create($input);
+        return $this->success(true, 'Enquiry submitted successfully!', []);
+    }
+
+    public function PreferredTime(Request $request)
+    {
+         $preferredTime = PreferredTime::all();
+        return $this->success(true, 'Enquiry submitted successfully!', $preferredTime);
     }
 }

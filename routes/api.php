@@ -20,11 +20,11 @@
         return $request->user();
     });
 
- 
-use App\Http\Controllers\Api\VisaController;
 
-Route::get('/visa-category-list', [VisaController::class, 'visa_category_list']);
-Route::get('/visa-category-details/{id}', [VisaController::class, 'visa_category_details']);
-Route::get('/visa-sub-category-details/{sub_category_id}', [VisaController::class, 'visa_sub_category_details']);
+    use App\Http\Controllers\Api\VisaController;
 
-
+    Route::get('/visa-category-list', [VisaController::class, 'visa_category_list']);
+    Route::get('/visa-category-details/{id}', [VisaController::class, 'visa_category_details']);
+    Route::get('/visa-sub-category-details/{sub_category_id}', [VisaController::class, 'visa_sub_category_details']);
+    Route::post('/enquiry-add', [VisaController::class, 'enquiryAdd']);
+    Route::get('/preferred-time', [VisaController::class, 'PreferredTime']);
