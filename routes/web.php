@@ -68,16 +68,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/enquiry-list', [DashboardController::class, 'enquiryList']);
 
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
+        Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
     });
 
 });
-
-
-
-
-
-
-
+ 
 
 Route::get('/admin/forgot-password', function () {
     return view('admin.auth.forgot-password');

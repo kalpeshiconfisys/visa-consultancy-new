@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppointmentRequest;
+use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
 use App\Models\PreferredTime;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
-
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -95,9 +96,51 @@ class VisaController extends Controller
         return $this->success(true, 'Enquiry submitted successfully!', []);
     }
 
-    public function PreferredTime(Request $request)
+    public function preferredTime(Request $request)
     {
          $preferredTime = PreferredTime::all();
         return $this->success(true, 'Enquiry submitted successfully!', $preferredTime);
+    }
+    public function consultationMethod(Request $request)
+    {
+         $consultationMethod = ConsultationMethod::all();
+        return $this->success(true, ' Consultation Method successfully!', $consultationMethod);
+    }
+
+
+    public function appointmentRequest(Request $request)
+    {
+        $validator =   Validator::make($request->all(), [
+           'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            // 'phone' => 'nullable|string|max:20',
+            'preferred_date' => 'nullable|date_format:d-m-Y',
+            'preferred_time_id' => 'nullable|exists:preferred_time,id',
+            'consultation_method_id' => 'nullable|exists:consultation_methods,id',
+            'message' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->errors()
+            ], 422);
+        }
+
+        $input = [
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'phone'     => $request->phone,
+            'preferred_date' => $request->preferred_date
+            ? Carbon::createFromFormat('d-m-Y', $request->preferred_date)->format('Y-m-d')
+            : null,
+            'preferred_time_id'   => $request->preferred_time_id,
+            'consultation_method_id'   => $request->consultation_method_id,
+            'message'   => $request->message,
+        ];
+
+        AppointmentRequest::create($input);
+
+        return $this->success(true, 'Appointment Request submitted successfully!', []);
     }
 }
