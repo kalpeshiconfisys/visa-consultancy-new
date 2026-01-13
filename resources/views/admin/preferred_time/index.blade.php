@@ -1,6 +1,10 @@
 @extends('admin.layouts.app')
 @section('title', 'Preferred Time List')
 @section('content')
+<style>
+
+
+</style>
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
@@ -10,14 +14,14 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Appointment Time List</h4>
                         </div>
                         <a href="{{ route('admin.preferred-time.create') }}"
-                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
+                            class="btn   custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-bordered align-middle " style="min-width: 1000px;">
+                            <table id="example" class="table table-bordered align-middle" style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
@@ -35,19 +39,19 @@
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
                                                     <a href="{{ route('admin.preferred-time.show' , trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary   px-2  ">
+                                                        class="btn btn-sm btn-outline-secondary custom-show   px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
                                                     <a href="{{ route('admin.preferred-time.edit', trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary   px-2">
+                                                        class="btn btn-sm btn-outline-secondary custom-edit   px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-secondary   px-2"
+                                                    <button class="btn btn-sm btn-outline-secondary  custom-trash  px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $i->id }}">
-                                                        <i class="fa-solid fa-trash me-1"></i>
+                                                        <i class="fa-solid fa-trash  me-1"></i>
                                                     </button>
                                                 </div>
                                                 {{-- Delete Modal --}}

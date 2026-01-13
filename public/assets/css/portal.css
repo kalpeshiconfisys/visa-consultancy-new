@@ -1252,8 +1252,6 @@
 }
 
 
-
-
  .table td .fa-edit:hover {
      color: #0d6efd;
  }
@@ -1261,6 +1259,8 @@
  .table td .fa-trash-alt:hover {
      color: #dc3545;
  }
+
+
 
  .dataTables_wrapper .dataTables_paginate .paginate_button {
      /* padding: 0.3rem 0.6rem;
@@ -1885,4 +1885,22 @@
     .scroll {
     max-height: 400px;   /* તને જેટલી height જોઈતી હોય */
     overflow-y: auto;    /* vertical scroll */
+}
+
+
+
+.custom-trash:hover {
+    color: #ffffff;          /* icon + text red */
+    border-color: #dc3545;   /* outline red */
+    background-color: #dc3545;
+}
+.custom-edit:hover {
+    color: #ffffff;          /* icon + text red */
+    border-color: #1848e6;   /* outline red */
+    background-color: #1848e6;
+}
+.custom-show:hover {
+    color: #ffffff;          /* icon + text red */
+    border-color: #70cfe7;   /* outline red */
+    background-color: #70cfe7;
 }

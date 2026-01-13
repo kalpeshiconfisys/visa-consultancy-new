@@ -10,7 +10,7 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Consultation Method List</h4>
                         </div>
                         <a href="{{ route('admin.consultation-method.create') }}"
-                            class="btn app-btn-primary   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
+                            class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -35,16 +35,16 @@
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
                                                     <a href="{{ route('admin.consultation-method.show' , trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary   px-2  ">
+                                                        class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
                                                     <a href="{{ route('admin.consultation-method.edit', trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary   px-2">
+                                                        class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-secondary   px-2"
+                                                    <button class="btn btn-sm btn-outline-secondary  custom-trash  px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $i->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>

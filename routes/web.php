@@ -33,25 +33,17 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
-
     Route::get('/login', [Admin\Auth\AuthController::class, 'login'])->name('login');
     Route::post('login', [Admin\Auth\AuthController::class, 'loginSubmit'])->name('login.submit');
-
     Route::get('/register', [Admin\Auth\AuthController::class, 'register']);
     Route::post('register', [Admin\Auth\AuthController::class, 'registerSubmit'])->name('register.submit');
-
     Route::get('/logout', [Admin\Auth\AuthController::class, 'logout']);
 
     Route::middleware(['auth:admin'])->group(function () {
-
         Route::get('/dashboard', function () {
             return view('dashboard');
         });
-
-        // VISA CATEGORY
         Route::resource('visa-category', Admin\VisaCategory\VisaCategoryController::class);
-
-        // OLD MANUAL ROUTES → YOU CAN DELETE (OPTIONAL)
         Route::prefix('visa-category')->group(function () {
             Route::get('list', [Admin\VisaCategory\VisaCategoryController::class, 'index']);
             Route::get('show/{id}',[Admin\VisaCategory\VisaCategoryController::class, 'show']);
@@ -61,18 +53,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('update/{id}', [Admin\VisaCategory\VisaCategoryController::class, 'update']);
             Route::delete('delete/{id}', [Admin\VisaCategory\VisaCategoryController::class, 'destroy']);
         });
-
-        // VISA SUB CATEGORY (IMPORTANT)
         Route::resource('visa-sub-category', Admin\VisaCategory\VisaSubCategoryController::class);
-
         Route::get('/enquiry-list', [DashboardController::class, 'enquiryList']);
-
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
     });
 
 });
- 
+
 
 Route::get('/admin/forgot-password', function () {
     return view('admin.auth.forgot-password');

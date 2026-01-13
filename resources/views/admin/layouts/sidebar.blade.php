@@ -58,7 +58,7 @@
                 </div>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{ url('admin/consultation-method') }}"
                 class="sidenav-menu__link {{ request()->is('admin/consultation-method*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
@@ -66,7 +66,7 @@
                     <span class="ms-2 fw-bold ">Consultation Method</span>
                 </div>
             </a>
-        </li>
+        </li> --}}
     </div>
 
 </div>
