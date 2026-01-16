@@ -11,7 +11,7 @@
     <!-- Dashboard Section -->
     <div class="sidenav-menu">
         <h4 class="h5">Dashboard</h4>
-        <ul>
+
             <li>
                 <a href="{{ url('admin/dashboard') }}"
                     class="sidenav-menu__link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
@@ -21,12 +21,12 @@
                     </div>
                 </a>
             </li>
-        </ul>
+
     </div>
     <!-- My Content Section -->
     <div class="sidenav-menu">
         <h4 class="h5">My Content</h4>
-        <ul>
+
             {{-- Visa Category --}}
             <li>
                 <a href="{{ url('admin/visa-category') }}"
@@ -47,7 +47,7 @@
                     </div>
                 </a>
             </li>
-        </ul>
+         
         <h4 class="h5">My Appointment</h4>
         <li>
             <a href="{{ url('admin/preferred-time') }}"
@@ -58,7 +58,7 @@
                 </div>
             </a>
         </li>
-        {{-- <li>
+        <li>
             <a href="{{ url('admin/consultation-method') }}"
                 class="sidenav-menu__link {{ request()->is('admin/consultation-method*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
@@ -66,7 +66,7 @@
                     <span class="ms-2 fw-bold ">Consultation Method</span>
                 </div>
             </a>
-        </li> --}}
+        </li>
     </div>
 
 </div>

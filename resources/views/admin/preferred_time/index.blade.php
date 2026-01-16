@@ -34,7 +34,6 @@
                                         <tr>
                                             <td class="">{{ $preferredTimes->firstItem() + $key }}</td>
                                             <td class="" >{{ $i->title }}</td>
-
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}

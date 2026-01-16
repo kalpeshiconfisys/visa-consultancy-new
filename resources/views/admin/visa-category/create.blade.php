@@ -19,9 +19,11 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
+
         .remove-subcategory-btn {
             width: 32px;
             height: 32px;
@@ -35,16 +37,18 @@
             align-items: center;
             cursor: pointer;
         }
+
         .remove-subcategory-btn:hover {
             background: #e0a800;
         }
 
         .toc-card {
-        border: 1px dashed #cfd4da;
-        border-radius: 10px;
-        padding: 15px;
-        background: #fafafa;
-    }
+            border: 1px dashed #cfd4da;
+            border-radius: 10px;
+            padding: 15px;
+            background: #fafafa;
+        }
+        
     </style>
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
@@ -66,19 +70,22 @@
                                     <input type="text" class="form-control" name="main_title" id="title" required>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label fw-bold">Short Description<span class="text-danger">*</span></label>
+                                    <label class="form-label fw-bold">Short Description<span
+                                            class="text-danger">*</span></label>
                                     <textarea class="form-control" name="main_short_description" rows="2" placeholder="Write short introduction..."
                                         required> </textarea>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label fw-bold">Full Description<span class="text-danger">*</span></label>
-                                    <textarea  class="form-control" name="main_description" rows="5"    style="height:400px" placeholder="Write full details..."
-                                        required> </textarea>
+                                    <label class="form-label fw-bold">Full Description<span
+                                            class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="editor" name="main_description" rows="5" style="height:400px"
+                                        placeholder="Write full details..." required> </textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
                                 <div class="mt-0">
-                                    <label class="form-label fw-bold">Featured Image <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-bold">Featured Image <span
+                                            class="text-danger">*</span></label>
                                     <input type="file" class="form-control" name="image" id="imageInput"
                                         accept="image/png,image/jpeg,image/webp" required>
                                     <div class="mt-3">
@@ -88,7 +95,8 @@
                                     </div>
                                 </div>
                                 <div class="mt-1">
-                                    <label class="form-label fw-bold mt-1">Category Logo <span class="text-danger">*</span> </label>
+                                    <label class="form-label fw-bold mt-1">Category Logo <span class="text-danger">*</span>
+                                    </label>
                                     <input type="file" class="form-control" name="category_logo" id="imageInputLogo"
                                         accept="image/png,image/jpeg,image/webp" required>
                                     <div class="mt-3">
@@ -117,19 +125,13 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
-
-
                         <hr>
-
                         <div class=" d-flex  justify-content-between col-12-sm">
-                              <h4 class="fw-bold">Table Of Content</h4>
-                               <button type="button" class="btn btn-outline-primary   addSubCategory mt-3 mb-3">+ Add
-                            Table Of Content</button>
+                            <h4 class="fw-bold">Table Of Content</h4>
+                            <button type="button" class="btn btn-outline-primary   addSubCategory mt-3 mb-3">+ Add
+                                Table Of Content</button>
                         </div>
-
-
                         <div id="subCategoryWrapper">
                             <div class="subCategoryBox toc-card p-3 mb-3  ">
                                 <div class="d-flex justify-content-end align-items-center mb-2">
@@ -144,9 +146,10 @@
                                 </div>
                                 <div class="mt-2 descBox">
                                     <label class="fw-bold">Description</label>
-                                    <textarea name="description[]" class="form-control" rows="2" placeholder="Enter Description"></textarea>
+                                    <textarea name="description[]" id="toc-description" class="form-control" rows="2"
+                                        placeholder="Enter Description"></textarea>
                                 </div>
-                                <div class="mt-2 bulletsArea">
+                                {{-- <div class="mt-2 bulletsArea">
                                     <label class="fw-bold">Bullets</label>
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
@@ -159,7 +162,7 @@
                                     </div>
                                     <button type="button" class="btn btn-sm btn-outline-success addBullet ">+ Add
                                         Bullet</button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -174,45 +177,11 @@
             </div>
         </div>
     </div>
-    <!-- CKEditor -->
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-            // CKEDITOR
-            // ClassicEditor
-            //     .create(document.querySelector('#editor'))
-            //     .catch(error => console.error(error));
-
-            // IMAGE PREVIEW
-            const imgInput = document.getElementById("imageInput");
-            const preview = document.getElementById("previewImage");
-
-            imgInput.addEventListener("change", function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    preview.src = URL.createObjectURL(file);
-                }
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-
-            // IMAGE PREVIEW
-            const imgInput = document.getElementById("imageInputLogo");
-            const preview = document.getElementById("previewImageLogo");
-
-            imgInput.addEventListener("change", function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    preview.src = URL.createObjectURL(file);
-                }
-            });
-        });
-
         $(document).ready(function() {
-            $('#editor').summernote({
+            $('#editor , #toc-description').summernote({
                 height: 400,
                 toolbar: [
                     ['style', ['style']],
@@ -223,29 +192,61 @@
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['codeview', 'help']]
                 ],
+
                 callbacks: {
                     onImageUpload: function(files) {
-                        var maxFileSize = 3 * 1024 * 1024;
-
+                        var maxFileSize = 3 * 1024 * 1024; // 3 MB
                         for (var i = 0; i < files.length; i++) {
                             var file = files[i];
-
                             if (file.size <= maxFileSize) {
                                 var reader = new FileReader();
                                 reader.onload = function(e) {
-                                    $('#post_content').summernote('insertImage', e.target.result);
-                                };
+                                    // Use current editor reference
+                                    $(this).summernote('insertImage', e.target.result);
+                                }.bind(this);
                                 reader.readAsDataURL(file);
                             } else {
                                 alert('Image size exceeds the 3 MB limit.');
                             }
                         }
+                    },
+                    // Remove this if you want to preserve formatting
+                    onPaste: function(e) {
+                        e.preventDefault();
+                        let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+                        // Preserve new lines
+                        text = text.replace(/\n/g, '<br>');
+
+                        $(this).summernote('pasteHTML', text);
                     }
+
                 }
             });
         });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            const imgInput = document.getElementById("imageInput");
+            const preview = document.getElementById("previewImage");
+            imgInput.addEventListener("change", function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    preview.src = URL.createObjectURL(file);
+                }
+            });
+        });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            // IMAGE PREVIEW
+            const imgInput = document.getElementById("imageInputLogo");
+            const preview = document.getElementById("previewImageLogo");
+            imgInput.addEventListener("change", function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    preview.src = URL.createObjectURL(file);
+                }
+            });
+        });
 
         // bahar ni side na bulllets
 
@@ -269,8 +270,6 @@
             $(this).closest(".bulletItem").remove();
         });
 
-
-
         // table of content jquery
 
         function applyContentRule(box) {
@@ -292,23 +291,65 @@
                 applyContentRule($(this));
             });
         });
-        $(".addSubCategory").click(function() {
-            let firstBox = $(".subCategoryBox").first();
-            let newBox = firstBox.clone();
 
-            newBox.find("input, textarea").val("");
-            newBox.find(".bulletItem").not(":first").remove();
+        // $(".addSubCategory").click(function() {
+        //     let firstBox = $(".subCategoryBox").first();
+        //     let newBox = firstBox.clone();
 
-            // Update data-index
-            newBox.attr("data-index", index);
-            // Update bullet input name
-            newBox.find(".bulletItem input").attr("name", "bullets[" + index + "][]");
+        //     newBox.find("input, textarea").val("");
+        //     newBox.find(".bulletItem").not(":first").remove();
 
-            // Show remove button for new block
-            newBox.find(".remove-subcategory-btn").show();
+        //     // Update data-index
+        //     newBox.attr("data-index", index);
+        //     // Update bullet input name
+        //     newBox.find(".bulletItem input").attr("name", "bullets[" + index + "][]");
 
-            $("#subCategoryWrapper").append(newBox);
-            index++;
+        //     // Show remove button for new block
+        //     newBox.find(".remove-subcategory-btn").show();
+
+        //     $("#subCategoryWrapper").append(newBox);
+        //     index++;
+        // });
+
+        $(".addSubCategory").on("click", function() {
+
+            // 1️⃣ Destroy summernote before cloning
+            $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
+
+            let box = $(".subCategoryBox").first().clone();
+
+            // 2️⃣ Clear normal inputs
+            box.find("input[type=text]").val("");
+
+            // 3️⃣ Properly reset textarea (THIS IS IMPORTANT)
+            box.find("textarea")
+                .val("") // backend ma NULL jase
+                .html("") // editor empty rehse
+                .removeAttr("id");
+
+            box.find(".remove-subcategory-btn").show();
+            // 4️⃣ Remove extra bullets
+            box.find(".bulletWrapper .bulletItem").not(":first").remove();
+
+            $("#subCategoryWrapper").append(box);
+
+            // 5️⃣ Re-init Summernote (editor visible rehse)
+            $("#subCategoryWrapper textarea[name='description[]']").each(function() {
+                if (!$(this).next('.note-editor').length) {
+                    $(this).summernote({
+                        height: 400,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear', 'italic']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['codeview', 'help']]
+                        ]
+                    });
+                }
+            });
         });
 
         // Remove Table of Content block

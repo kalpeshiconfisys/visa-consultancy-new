@@ -25,6 +25,7 @@ class VisaCategoryController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             "main_title" => "required",
             "main_short_description" => "required",
@@ -63,7 +64,8 @@ class VisaCategoryController extends Controller
                 "category_id"          => $VisaCategory->id,
                 "title"                => $request->title[$key],
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                // "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "bullets"              => [],
                 'type'                 => 'category'
             ]);
         }
@@ -72,6 +74,7 @@ class VisaCategoryController extends Controller
 
     public function edit($encodedId)
     {
+
         $id = base64_decode($encodedId);
         $visaCategory = VisaCategory::with('main_table_of_content')->findOrFail($id);
 
@@ -80,6 +83,8 @@ class VisaCategoryController extends Controller
 
     public function update(Request $request, $encodedId)
     {
+
+
         $id = base64_decode($encodedId);
         $request->validate([
             "main_title" => "required",
@@ -118,9 +123,17 @@ class VisaCategoryController extends Controller
         $existingTocIds = SubCategoryTableOfContent::where('category_id', $id)->pluck('id')->toArray();
         $submittedTocIds = $request->toc_id ?? [];
         $toDelete = array_diff($existingTocIds, $submittedTocIds);
+         
         if (!empty($toDelete)) {
             SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
         }
+
+        //  $descriptions = $request->input('description', []);
+
+        //     $descriptions = array_map(function($desc){
+        //         return $desc !== null ? html_entity_decode($desc) : null;
+        //     }, $descriptions);
+
 
         foreach ($request->title as $key => $title) {
             $tocId = $submittedTocIds[$key] ?? null;
@@ -129,7 +142,8 @@ class VisaCategoryController extends Controller
                 "category_id"          => $visa->id,
                 "title"                => $title,
                 "description"          => $request->description[$key] ?? null,
-                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                // "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "bullets"              => [],
                 'type'                 => 'category'
             ];
             if ($tocId) {

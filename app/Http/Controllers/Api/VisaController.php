@@ -79,6 +79,7 @@ class VisaController extends Controller
             ], 422);
         }
 
+
         $visaCheck = VisaCategory::where('id',$request->visa_type)->first();
 
         if(!$visaCheck){
@@ -114,7 +115,7 @@ class VisaController extends Controller
            'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             // 'phone' => 'nullable|string|max:20',
-            'preferred_date' => 'nullable|date_format:d-m-Y',
+            'preferred_date' => 'nullable|date_format:Y-m-d',
             'preferred_time_id' => 'nullable|exists:preferred_time,id',
             'consultation_method_id' => 'nullable|exists:consultation_methods,id',
             'message' => 'required|string',
@@ -127,12 +128,13 @@ class VisaController extends Controller
             ], 422);
         }
 
+
         $input = [
             'name'      => $request->name,
             'email'     => $request->email,
             'phone'     => $request->phone,
             'preferred_date' => $request->preferred_date
-            ? Carbon::createFromFormat('d-m-Y', $request->preferred_date)->format('Y-m-d')
+            ? Carbon::createFromFormat('Y-m-d', $request->preferred_date)->format('Y-m-d')
             : null,
             'preferred_time_id'   => $request->preferred_time_id,
             'consultation_method_id'   => $request->consultation_method_id,

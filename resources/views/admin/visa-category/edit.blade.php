@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="form-label">Full Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="main_description" rows="5" style="height:400px" required>{{ old('description', $visaCategory->description) }}</textarea>
+                                    <textarea class="form-control" id="editor" name="main_description" rows="5" style="height:400px" required>{{ old('description', $visaCategory->description) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
@@ -166,10 +166,10 @@
 
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
-                                            <textarea name="description[]" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>
+                                            <textarea name="description[]" id="toc-description" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>
                                         </div>
 
-                                        <div class="mt-2 bulletsArea">
+                                        {{-- <div class="mt-2 bulletsArea">
                                             <label class="fw-bold">Bullets</label>
                                             <div class="bulletWrapper">
                                                 @if (isset($sub['bullets']) && count($sub['bullets']) > 0)
@@ -203,7 +203,7 @@
                                             <button type="button"
                                                 class="btn btn-sm btn-outline-success addBullet  mt-1">+ Add
                                                 Bullet</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 @endforeach
                             @else
@@ -218,9 +218,9 @@
                                     <input type="text" name="title[]" class="form-control" required>
                                     <div class="mt-2 descBox">
                                         <label class="fw-bold">Description</label>
-                                        <textarea name="description[]" class="form-control" rows="2"></textarea>
+                                        <textarea name="description[]" id="toc-description" class="form-control" rows="2"></textarea>
                                     </div>
-                                    <div class="mt-2 bulletsArea">
+                                    {{-- <div class="mt-2 bulletsArea">
                                         <label class="fw-bold">Bullets</label>
                                         <div class="bulletWrapper">
                                             <div class="row bulletItem mb-2 align-items-center">
@@ -236,7 +236,7 @@
                                         </div>
                                         <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+
                                             Add Bullet</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             @endif
                         </div>
@@ -254,22 +254,12 @@
         </div>
     </div>
 
-    <!-- CKEditor -->
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-
-            // // CKEDITOR
-            // ClassicEditor
-            //     .create(document.querySelector('#editor'))
-            //     .catch(error => console.error(error));
-
-            // IMAGE PREVIEW
             const imgInput = document.getElementById("imageInput");
             const preview = document.getElementById("previewImage");
-
             imgInput.addEventListener("change", function(e) {
                 const file = e.target.files[0];
                 if (file) {
@@ -278,13 +268,10 @@
             });
         });
 
-
         document.addEventListener("DOMContentLoaded", function() {
-
             // IMAGE PREVIEW
             const imgInput = document.getElementById("imageInputLogo");
             const preview = document.getElementById("previewImageLogo");
-
             imgInput.addEventListener("change", function(e) {
                 const file = e.target.files[0];
                 if (file) {
@@ -294,8 +281,7 @@
         });
 
         $(document).ready(function() {
-
-            $('#editor').summernote({
+            $('#editor , #toc-description').summernote({
                 height: 400,
                 toolbar: [
                     ['style', ['style']],
@@ -306,29 +292,39 @@
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['codeview', 'help']]
                 ],
+
                 callbacks: {
                     onImageUpload: function(files) {
-                        var maxFileSize = 3 * 1024 * 1024;
-
+                        var maxFileSize = 3 * 1024 * 1024; // 3 MB
                         for (var i = 0; i < files.length; i++) {
                             var file = files[i];
-
                             if (file.size <= maxFileSize) {
                                 var reader = new FileReader();
                                 reader.onload = function(e) {
-                                    $('#post_content').summernote('insertImage', e.target.result);
-                                };
+                                    // Use current editor reference
+                                    $(this).summernote('insertImage', e.target.result);
+                                }.bind(this);
                                 reader.readAsDataURL(file);
                             } else {
                                 alert('Image size exceeds the 3 MB limit.');
                             }
                         }
+                    },
+                    // Remove this if you want to preserve formatting
+                    onPaste: function(e) {
+                        e.preventDefault();
+                        let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+                        // Preserve new lines
+                        text = text.replace(/\n/g, '<br>');
+
+                        $(this).summernote('pasteHTML', text);
                     }
+
                 }
             });
 
         });
-
 
         $(document).on("click", ".addOutSideBullet", function() {
             let bulletBox = $(this).closest(".bulletsArea");
@@ -347,12 +343,6 @@
         $(document).on("click", ".removeBullet", function() {
             $(this).closest(".bulletItem").remove();
         });
-
-
-
-
-
-
 
         let index = $("#subCategoryWrapper .subCategoryBox").length;
 
@@ -378,24 +368,67 @@
         applyContentRule($(".subCategoryBox"));
 
         // Add Table Of Content
+        // $(".addSubCategory").on("click", function() {
+        //     let box = $(".subCategoryBox").first().clone();
+        //     box.find("input[type=text]").val("");
+        //     box.find("textarea").val("");
+        //     box.find(".bulletWrapper .bulletItem").not(":first").remove();
+
+        //     box.attr("data-index", index);
+
+        //     // Update bullet input name
+        //     box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
+
+        //     // Show remove button
+        //     box.find(".remove-subcategory-btn").show();
+
+        //     $("#subCategoryWrapper").append(box);
+        //     applyContentRule(box);
+        //     index++;
+        // });
+
+
         $(".addSubCategory").on("click", function() {
+
+            // 1️⃣ Destroy summernote before cloning
+            $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
+
             let box = $(".subCategoryBox").first().clone();
+
+            // 2️⃣ Clear normal inputs
             box.find("input[type=text]").val("");
-            box.find("textarea").val("");
+
+            // 3️⃣ Properly reset textarea (THIS IS IMPORTANT)
+            box.find("textarea")
+                .val("") // backend ma NULL jase
+                .html("") // editor empty rehse
+                .removeAttr("id");
+
+                box.find(".remove-subcategory-btn").show();
+            // 4️⃣ Remove extra bullets
             box.find(".bulletWrapper .bulletItem").not(":first").remove();
 
-            box.attr("data-index", index);
-
-            // Update bullet input name
-            box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
-
-            // Show remove button
-            box.find(".remove-subcategory-btn").show();
-
             $("#subCategoryWrapper").append(box);
-            applyContentRule(box);
-            index++;
+
+            // 5️⃣ Re-init Summernote (editor visible rehse)
+            $("#subCategoryWrapper textarea[name='description[]']").each(function() {
+                if (!$(this).next('.note-editor').length) {
+                    $(this).summernote({
+                        height: 400,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear', 'italic']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['codeview', 'help']]
+                        ]
+                    });
+                }
+            });
         });
+
 
         // Remove Table Of Content (only extra blocks)
         $(document).on("click", ".remove-subcategory-btn", function() {

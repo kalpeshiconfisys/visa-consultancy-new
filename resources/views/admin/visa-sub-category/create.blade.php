@@ -208,7 +208,7 @@
             align-items: center;
             cursor: pointer;
             transition: 0.2s;
-        } 
+        }
         .bullet-remove-btn:hover {
             background: #b02a37;
         }

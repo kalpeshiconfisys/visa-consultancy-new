@@ -4,7 +4,7 @@
      box-sizing: border-box;
  }
 
- ul,
+ /* ul,
  ol {
      margin: 0;
      padding: 0;
@@ -14,7 +14,7 @@
  a {
      text-decoration: none;
      color: #171717;
- }
+ } */
 
  body {
      font-family: "Rubik", sans-serif;
@@ -1248,8 +1248,8 @@
  }
 
  .btn-outline-info:hover i {
-    color: #fff;
-}
+     color: #fff;
+ }
 
 
  .table td .fa-edit:hover {
@@ -1617,12 +1617,7 @@
  }
 
  /* ------------------------------------------Add company css end------------------------------------------ */
-
-
-
-
-
-
+ 
  .power-icon-wrapper:hover,
  .power-icon:hover {
      background-color: rgb(228, 65, 65);
@@ -1635,7 +1630,7 @@
 
  /* ------------------------------------------action message css ------------------------------------------ */
 
- .custom-alert {
+ /* .custom-alert {
      position: fixed;
      top: 0;
      left: 0;
@@ -1645,7 +1640,7 @@
      z-index: 9999;
      animation: slideDown 0.5s ease-out;
 
- }
+ } */
 
  @keyframes slideDown {
      from {
@@ -1802,7 +1797,8 @@
 
 
 
- .site-toggle:hover, .site-dropdown.open .site-toggle {
+ .site-toggle:hover,
+ .site-dropdown.open .site-toggle {
      border-color: #22262c;
      background-color: #f8f9ff;
  }
@@ -1836,7 +1832,7 @@
  }
 
  .site-menu li {
-    padding: 0;
+     padding: 0;
  }
 
  .site-item {
@@ -1875,32 +1871,42 @@
 
 
  .toc-card {
-        border: 1px dashed #cfd4da;
-        border-radius: 10px;
-        padding: 15px;
-        background: #fafafa;
-    }
+     border: 1px dashed #cfd4da;
+     border-radius: 10px;
+     padding: 15px;
+     background: #fafafa;
+ }
 
 
-    .scroll {
-    max-height: 400px;   /* તને જેટલી height જોઈતી હોય */
-    overflow-y: auto;    /* vertical scroll */
-}
+ .scroll {
+     max-height: 400px;
+     /* તને જેટલી height જોઈતી હોય */
+     overflow-y: auto;
+     /* vertical scroll */
+ }
 
 
 
-.custom-trash:hover {
-    color: #ffffff;          /* icon + text red */
-    border-color: #dc3545;   /* outline red */
-    background-color: #dc3545;
-}
-.custom-edit:hover {
-    color: #ffffff;          /* icon + text red */
-    border-color: #1848e6;   /* outline red */
-    background-color: #1848e6;
-}
-.custom-show:hover {
-    color: #ffffff;          /* icon + text red */
-    border-color: #70cfe7;   /* outline red */
-    background-color: #70cfe7;
-}
+ .custom-trash:hover {
+     color: #ffffff;
+     /* icon + text red */
+     border-color: #dc3545;
+     /* outline red */
+     background-color: #dc3545;
+ }
+
+ .custom-edit:hover {
+     color: #ffffff;
+     /* icon + text red */
+     border-color: #1848e6;
+     /* outline red */
+     background-color: #1848e6;
+ }
+
+ .custom-show:hover {
+     color: #ffffff;
+     /* icon + text red */
+     border-color: #70cfe7;
+     /* outline red */
+     background-color: #70cfe7;
+ }
