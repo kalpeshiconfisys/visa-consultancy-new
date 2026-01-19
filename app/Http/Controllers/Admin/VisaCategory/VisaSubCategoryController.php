@@ -32,10 +32,11 @@ class VisaSubCategoryController extends Controller
             "publish_is"    => "required|in:1,2"
         ]);
 
+        $subContent = $this->processEditorImages($request->sub_description, $request);
         $visaSubCategory = VisaSubCategory::create([
             "category_id"   => $request->category_id,
             "title"         => $request->sub_title,
-            "description"   => $request->sub_description,
+            "description"   => $subContent,
             "publish_is"    => $request->publish_is,
             'content_type'  => $request->content_type  ?? 'both',
             'date_modified' => Carbon::now()->toDateTimeString(),
@@ -78,11 +79,11 @@ class VisaSubCategoryController extends Controller
         ]);
 
         $visaSubCategory = VisaSubCategory::findOrFail($id);
-
+        $subContent = $this->processEditorImages($request->sub_description, $request);
         $visaSubCategory->update([
             "category_id"   => $request->category_id,
             "title"         => $request->sub_title,
-            "description"   => $request->sub_description,
+            "description"   => $subContent,
             "publish_is"    => $request->publish_is,
             "content_type"  => $request->content_type ?? 'both',
             "date_modified" => now(),

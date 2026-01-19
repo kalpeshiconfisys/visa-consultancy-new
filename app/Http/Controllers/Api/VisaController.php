@@ -32,7 +32,7 @@ class VisaController extends Controller
         // [$id, $salt] = explode('|', $decoded);
         $visaCategory = VisaCategory::with([
             'main_table_of_content',
-            'sub_category.table_of_content'  
+            'sub_category.table_of_content'
         ])->where('publish_is', 2)->where('id', $randomId)->first();
 
         if (empty($visaCategory)) {
@@ -60,8 +60,7 @@ class VisaController extends Controller
         }
         return $this->success(true, 'Visa Sub Category Data retrieved successfully!', $visaSubCategories);
     }
-
-
+    
     public function enquiryAdd(Request $request)
     {
         $validator =   Validator::make($request->all(), [
@@ -107,7 +106,6 @@ class VisaController extends Controller
          $consultationMethod = ConsultationMethod::all();
         return $this->success(true, ' Consultation Method successfully!', $consultationMethod);
     }
-
 
     public function appointmentRequest(Request $request)
     {

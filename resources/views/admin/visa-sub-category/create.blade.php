@@ -369,25 +369,19 @@
                             }
                         }
                     },
-
                     // Remove this if you want to preserve formatting
                     onPaste: function(e) {
                         e.preventDefault();
                         let text = (e.originalEvent || e).clipboardData.getData('text/plain');
-
                         // Preserve new lines
                         text = text.replace(/\n/g, '<br>');
-
                         $(this).summernote('pasteHTML', text);
                     }
-
                 }
             });
         });
 
-
         let index = 1; // for bullets array
-
         function applyContentRule(box) {
             let type = $("#contentType").val();
             if (type === "description") {
@@ -425,8 +419,7 @@
         //     $("#subCategoryWrapper").append(newBox);
         //     index++;
         // });
-
-         $(".addSubCategory").on("click", function() {
+        $(".addSubCategory").on("click", function() {
 
             // 1️⃣ Destroy summernote before cloning
             $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
