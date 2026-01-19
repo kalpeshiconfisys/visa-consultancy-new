@@ -48,7 +48,7 @@
             padding: 15px;
             background: #fafafa;
         }
-        
+
     </style>
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">

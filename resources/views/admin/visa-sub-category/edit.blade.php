@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.app')
 @section('title', 'Edit Visa Sub Category')
 @section('content')
@@ -18,6 +17,7 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
@@ -64,7 +64,8 @@
                         <div class="row g-4 border rounded shadow-sm mt-3 p-3">
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <label class="fw-bold mb-1">Select Visa Category <span class="text-danger">*</span></label>
+                                    <label class="fw-bold mb-1">Select Visa Category <span
+                                            class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" required>
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $cat)
@@ -75,7 +76,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            {{-- <div class="col-6">
+                                {{-- <div class="col-6">
                             <label class="fw-bold mb-1">Content Type</label>
                                 <select id="contentType" class="form-control" name="content_type" required>
                                     <option value="both" {{ $subCategories->content_type=='both'?'selected':'' }}>Description + Bullets</option>
@@ -91,7 +92,8 @@
                             </div>
                             <div class="mt-2 descBox">
                                 <label class="fw-bold">Description <span class="text-danger">*</span></label>
-                                <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description" required>{{ $subCategories->description }}</textarea>
+                                <textarea name="sub_description" class="form-control" id="editor" rows="2" placeholder="Enter Description"
+                                    required>{{ $subCategories->description }}</textarea>
                             </div>
                         </div>
                         <hr>
@@ -121,10 +123,10 @@
 
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
-                                            <textarea name="description[]" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>
+                                            <textarea name="description[]" class="form-control" id="toc-description" rows="2">{{ $sub['description'] ?? '' }}</textarea>
                                         </div>
 
-                                        <div class="mt-2 bulletsArea">
+                                        {{-- <div class="mt-2 bulletsArea">
                                             <label class="fw-bold">Bullets</label>
                                             <div class="bulletWrapper">
                                                 @if (isset($sub['bullets']) && count($sub['bullets']) > 0)
@@ -157,7 +159,7 @@
                                             <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+
                                                 Add
                                                 Bullet</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 @endforeach
                             @else
@@ -172,9 +174,9 @@
                                     <input type="text" name="title[]" class="form-control" required>
                                     <div class="mt-2 descBox">
                                         <label class="fw-bold">Description</label>
-                                        <textarea name="description[]" class="form-control" rows="2"></textarea>
+                                        <textarea name="description[]" class="form-control" id="toc-description" rows="2"></textarea>
                                     </div>
-                                    <div class="mt-2 bulletsArea">
+                                    {{-- <div class="mt-2 bulletsArea">
                                         <label class="fw-bold">Bullets</label>
                                         <div class="bulletWrapper">
                                             <div class="row bulletItem mb-2 align-items-center">
@@ -189,7 +191,7 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-sm btn-outline-success addBullet  mt-1">+ Add Bullet</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             @endif
                         </div>
@@ -208,6 +210,51 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#editor , #toc-description').summernote({
+                height: 400,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear', 'italic']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['codeview', 'help']]
+                ],
+
+                callbacks: {
+                    onImageUpload: function(files) {
+                        var maxFileSize = 3 * 1024 * 1024; // 3 MB
+                        for (var i = 0; i < files.length; i++) {
+                            var file = files[i];
+                            if (file.size <= maxFileSize) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    // Use current editor reference
+                                    $(this).summernote('insertImage', e.target.result);
+                                }.bind(this);
+                                reader.readAsDataURL(file);
+                            } else {
+                                alert('Image size exceeds the 3 MB limit.');
+                            }
+                        }
+                    },
+                    // Remove this if you want to preserve formatting
+                    onPaste: function(e) {
+                        e.preventDefault();
+                        let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+                        // Preserve new lines
+                        text = text.replace(/\n/g, '<br>');
+
+                        $(this).summernote('pasteHTML', text);
+                    }
+
+                }
+            });
+        });
+
         let index = $("#subCategoryWrapper .subCategoryBox").length;
 
         function applyContentRule(box) {
@@ -232,23 +279,64 @@
         applyContentRule($(".subCategoryBox"));
 
         // Add Table Of Content
+        // $(".addSubCategory").on("click", function() {
+        //     let box = $(".subCategoryBox").first().clone();
+        //     box.find("input[type=text]").val("");
+        //     box.find("textarea").val("");
+        //     box.find(".bulletWrapper .bulletItem").not(":first").remove();
+
+        //     box.attr("data-index", index);
+
+        //     // Update bullet input name
+        //     box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
+
+        //     // Show remove button
+        //     box.find(".remove-subcategory-btn").show();
+
+        //     $("#subCategoryWrapper").append(box);
+        //     applyContentRule(box);
+        //     index++;
+        // });
+
         $(".addSubCategory").on("click", function() {
+
+            // 1️⃣ Destroy summernote before cloning
+            $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
+
             let box = $(".subCategoryBox").first().clone();
+
+            // 2️⃣ Clear normal inputs
             box.find("input[type=text]").val("");
-            box.find("textarea").val("");
+
+            // 3️⃣ Properly reset textarea (THIS IS IMPORTANT)
+            box.find("textarea")
+                .val("") // backend ma NULL jase
+                .html("") // editor empty rehse
+                .removeAttr("id");
+
+            box.find(".remove-subcategory-btn").show();
+            // 4️⃣ Remove extra bullets
             box.find(".bulletWrapper .bulletItem").not(":first").remove();
 
-            box.attr("data-index", index);
-
-            // Update bullet input name
-            box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
-
-            // Show remove button
-            box.find(".remove-subcategory-btn").show();
-
             $("#subCategoryWrapper").append(box);
-            applyContentRule(box);
-            index++;
+
+            // 5️⃣ Re-init Summernote (editor visible rehse)
+            $("#subCategoryWrapper textarea[name='description[]']").each(function() {
+                if (!$(this).next('.note-editor').length) {
+                    $(this).summernote({
+                        height: 400,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear', 'italic']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['codeview', 'help']]
+                        ]
+                    });
+                }
+            });
         });
 
         // Remove Table Of Content (only extra blocks)

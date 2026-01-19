@@ -42,11 +42,13 @@ class VisaSubCategoryController extends Controller
         ]);
 
         foreach ($request->title as $key => $value) {
+                 $content = $this->processEditorImages($request->description[$key], $request);
             SubCategoryTableOfContent::create([
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $request->title[$key],
-                "description"          => $request->description[$key] ?? null,
-                "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "description"          => $content ?? null,
+                // "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "bullets"              => [],
                 'type'                 => 'sub_category'
             ]);
         }
@@ -64,7 +66,7 @@ class VisaSubCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
- 
+
         $request->validate([
             "category_id"   => "required|exists:visa_categories,id",
             "title"         => "required|array",
@@ -93,12 +95,14 @@ class VisaSubCategoryController extends Controller
             SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
         }
         foreach ($request->title as $key => $title) {
+            $content = $this->processEditorImages($request->description[$key], $request);
             $tocId = $submittedTocIds[$key] ?? null;
             $data = [
                 "visa_sub_category_id" => $visaSubCategory->id,
                 "title"                => $title,
-                "description"          => $request->description[$key] ?? null,
-                 "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "description"          => $content ?? null,
+                //  "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
+                "bullets"              => [],
                 'type'                 => 'sub_category'
             ];
             if ($request->content_type == 'description') {
@@ -117,6 +121,57 @@ class VisaSubCategoryController extends Controller
             }
         }
         return redirect()->route('admin.visa-sub-category.index')->with('success', 'Visa Sub Category Updated Successfully');
+    }
+
+     function processEditorImages($html, $request)
+    {
+        $content = html_entity_decode($html ?? '');
+
+        // Find all base64 images
+        $pattern = '/<img[^>]+src="data:image\/([^;]+);base64,([^"]+)"[^>]*>/i';
+        preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+
+            $imageFormat = strtolower($match[1]);   // jpeg, png, webp etc
+            $base64Image = $match[2];
+
+            // Allow only safe formats
+            $allowed = ['jpeg', 'jpg', 'png', 'gif', 'webp'];
+            if (!in_array($imageFormat, $allowed)) {
+                continue;
+            }
+
+            // Decode
+            $imageData = base64_decode($base64Image);
+            if ($imageData === false) {
+                continue;
+            }
+
+            // Unique name
+            $filename = 'image_' . uniqid() . '.' . $imageFormat;
+
+            // Folder
+            $destinationPath = public_path('uploads/content_img');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            // Save image
+            file_put_contents($destinationPath . '/' . $filename, $imageData);
+
+            // Full public URL (API + LIVE SAFE)
+            $publicImageUrl = $request->getSchemeAndHttpHost() . '/uploads/content_img/' . $filename;
+
+            // Replace base64 with URL
+            $content = str_replace(
+                'data:image/' . $imageFormat . ';base64,' . $base64Image,
+                $publicImageUrl,
+                $content
+            );
+        }
+
+        return $content;
     }
 
     public function destroy($id)

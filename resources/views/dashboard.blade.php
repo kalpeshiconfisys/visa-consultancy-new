@@ -20,6 +20,7 @@
             transition: 0.3s;
         }
     </style>
+    
     <div class="container-fluid py-4">
         {{-- Welcome Card --}}
         <div class="row mb-4">
@@ -63,7 +64,7 @@
                     View More
                     <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
-            </div>
+                 </div>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-light fw-bold">
@@ -101,6 +102,54 @@
                     </div>
                 </div>
             </div>
+            {{-- <div class="col-6">
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0">Appointment List</h6>
+
+                <a href="{{url('admin/enquiry-list')}}"
+                   class="btn btn-sm btn-outline-primary ">
+                    View More
+                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+                 </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light fw-bold">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Visa Category</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $enquiries = \App\Models\AppointmentRequest::latest()->take(5)->get();
+                                @endphp
+
+                                @forelse($enquiries as $key => $enquiry)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $enquiry->visa_category->title }}</td>
+                                        <td>{{ $enquiry->name }}</td>
+                                        <td>{{ $enquiry->email }}</td>
+                                        <td>{{ $enquiry->phone ?? '-' }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted">
+                                            No enquiries found
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
 @endsection

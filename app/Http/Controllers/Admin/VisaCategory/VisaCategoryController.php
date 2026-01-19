@@ -35,10 +35,11 @@ class VisaCategoryController extends Controller
         ]);
 
         $input = $request->only("main_title", "main_short_description", "main_description", "publish_is");
+        $mainContent = $this->processEditorImages($request->main_description, $request);
         $input = [
             'title' => $request->main_title,
             'short_description' => $request->main_short_description,
-            'description' => $request->main_description,
+            'description' => $mainContent,
             'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
@@ -58,12 +59,13 @@ class VisaCategoryController extends Controller
             $input['category_logo'] = $imgName;
         }
         $VisaCategory  =  VisaCategory::create($input);
-        foreach ($request->title as $key => $value) {
+        foreach ($request->title as $key => $value) { 
+            $content = $this->processEditorImages($request->description[$key], $request);
             SubCategoryTableOfContent::create([
                 "visa_sub_category_id" => NULL,
                 "category_id"          => $VisaCategory->id,
                 "title"                => $request->title[$key],
-                "description"          => $request->description[$key] ?? null,
+                "description"          => $content,
                 // "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 "bullets"              => [],
                 'type'                 => 'category'
@@ -84,7 +86,6 @@ class VisaCategoryController extends Controller
     public function update(Request $request, $encodedId)
     {
 
-
         $id = base64_decode($encodedId);
         $request->validate([
             "main_title" => "required",
@@ -93,10 +94,11 @@ class VisaCategoryController extends Controller
             "publish_is" => "required"
         ]);
         $visa = VisaCategory::findOrFail($id);
+        $mainContent = $this->processEditorImages($request->main_description, $request);
         $input = [
             'title' => $request->main_title,
             'short_description' => $request->main_short_description,
-            'description' => $request->main_description,
+            'description' => $mainContent,
             'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
@@ -123,25 +125,58 @@ class VisaCategoryController extends Controller
         $existingTocIds = SubCategoryTableOfContent::where('category_id', $id)->pluck('id')->toArray();
         $submittedTocIds = $request->toc_id ?? [];
         $toDelete = array_diff($existingTocIds, $submittedTocIds);
-         
+
         if (!empty($toDelete)) {
             SubCategoryTableOfContent::whereIn('id', $toDelete)->delete();
         }
 
-        //  $descriptions = $request->input('description', []);
-
-        //     $descriptions = array_map(function($desc){
-        //         return $desc !== null ? html_entity_decode($desc) : null;
-        //     }, $descriptions);
-
-
         foreach ($request->title as $key => $title) {
+            // $content = html_entity_decode($request->description[$key] ?? '');
+
+            // // Find all base64 images inside this description only
+            // $pattern = '/<img[^>]+src="data:image\/(jpeg|jpg|png|gif);base64,([^"]+)"[^>]*>/i';
+            // preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
+            // foreach ($matches as $match) {
+
+            //     $imageFormat = $match[1];   // jpeg / png / gif
+            //     $base64Image = $match[2];   // base64 data
+
+            //     // Decode image
+            //     $imageData = base64_decode($base64Image);
+
+            //     // Unique file name
+            //     $filename = 'image_' . uniqid() . '.' . $imageFormat;
+
+            //     // Save image
+            //     $destinationPath = public_path('uploads/content_img');
+            //     if (!file_exists($destinationPath)) {
+            //         mkdir($destinationPath, 0777, true);
+            //     }
+
+            //     file_put_contents($destinationPath . '/' . $filename, $imageData);
+
+            //     // Public URL
+            //     // $publicImageUrl = asset('uploads/content_img/' . $filename);
+
+            //     $publicImageUrl = $request->getSchemeAndHttpHost() . '/uploads/content_img/' . $filename;
+
+            //     // Replace only this base64 part inside THIS description
+            //     $content = str_replace(
+            //         'data:image/' . $imageFormat . ';base64,' . $base64Image,
+            //         $publicImageUrl,
+            //         $content
+            //     );
+            // }
+
+            $content = $this->processEditorImages($request->description[$key], $request);
+
             $tocId = $submittedTocIds[$key] ?? null;
 
             $data = [
                 "category_id"          => $visa->id,
                 "title"                => $title,
-                "description"          => $request->description[$key] ?? null,
+                "description"          => $content ?? null,
                 // "bullets"              => is_array($request->bullets[$key] ?? null) && count($request->bullets[$key]) === 1 && $request->bullets[$key][0] === null  ? [] : ($request->bullets[$key] ?? []),
                 "bullets"              => [],
                 'type'                 => 'category'
@@ -158,6 +193,58 @@ class VisaCategoryController extends Controller
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Updated Successfully');
     }
 
+    function processEditorImages($html, $request)
+    {
+        $content = html_entity_decode($html ?? '');
+
+        // Find all base64 images
+        $pattern = '/<img[^>]+src="data:image\/([^;]+);base64,([^"]+)"[^>]*>/i';
+        preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+
+            $imageFormat = strtolower($match[1]);   // jpeg, png, webp etc
+            $base64Image = $match[2];
+
+            // Allow only safe formats
+            $allowed = ['jpeg', 'jpg', 'png', 'gif', 'webp'];
+            if (!in_array($imageFormat, $allowed)) {
+                continue;
+            }
+
+            // Decode
+            $imageData = base64_decode($base64Image);
+            if ($imageData === false) {
+                continue;
+            }
+
+            // Unique name
+            $filename = 'image_' . uniqid() . '.' . $imageFormat;
+
+            // Folder
+            $destinationPath = public_path('uploads/content_img');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            // Save image
+            file_put_contents($destinationPath . '/' . $filename, $imageData);
+
+            // Full public URL (API + LIVE SAFE)
+            $publicImageUrl = $request->getSchemeAndHttpHost() . '/uploads/content_img/' . $filename;
+
+            // Replace base64 with URL
+            $content = str_replace(
+                'data:image/' . $imageFormat . ';base64,' . $base64Image,
+                $publicImageUrl,
+                $content
+            );
+        }
+
+        return $content;
+    }
+
+
     public function destroy($encodedId)
     {
         $id = base64_decode($encodedId);
@@ -168,8 +255,8 @@ class VisaCategoryController extends Controller
         if (!empty($visa->category_logo) && File::exists(public_path('uploads/category_logo/' . basename($visa->category_logo)))) {
             File::delete(public_path('uploads/category_logo/' . basename($visa->category_logo)));
         }
-        VisaSubCategory::where('category_id',$visa->id)->delete();
-        SubCategoryTableOfContent::where('category_id',$visa->id)->delete();
+        VisaSubCategory::where('category_id', $visa->id)->delete();
+        SubCategoryTableOfContent::where('category_id', $visa->id)->delete();
         $visa->delete();
         return redirect()->route('admin.visa-category.index')->with('success', 'Visa Category Deleted Successfully');
     }

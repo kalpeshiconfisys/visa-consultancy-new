@@ -32,7 +32,7 @@ class VisaController extends Controller
         // [$id, $salt] = explode('|', $decoded);
         $visaCategory = VisaCategory::with([
             'main_table_of_content',
-            'sub_category.table_of_content'
+            'sub_category.table_of_content'  
         ])->where('publish_is', 2)->where('id', $randomId)->first();
 
         if (empty($visaCategory)) {

@@ -209,9 +209,11 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         .bullet-remove-btn:hover {
             background: #b02a37;
         }
+
         .remove-subcategory-btn {
             width: 32px;
             height: 32px;
@@ -225,9 +227,11 @@
             align-items: center;
             cursor: pointer;
         }
+
         .remove-subcategory-btn:hover {
             background: #e0a800;
         }
+
         .toc-card {
             border: 1px dashed #cfd4da;
             border-radius: 10px;
@@ -277,13 +281,15 @@
                             </div>
                             <div class="mt-2 descBox">
                                 <label class="fw-bold">Description <span class="text-danger">*</span></label>
-                                <textarea name="sub_description" class="form-control" rows="2" placeholder="Enter Description" required></textarea>
+                                <textarea name="sub_description" class="form-control" id="editor" rows="2" placeholder="Enter Description"
+                                    required></textarea>
                             </div>
                         </div>
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
                             <h4 class="fw-bold">Table Of Content</h4>
-                            <button type="button" class="btn btn-outline-primary justify-content-end  addSubCategory mt-2 mb-3">+
+                            <button type="button"
+                                class="btn btn-outline-primary justify-content-end  addSubCategory mt-2 mb-3">+
                                 Add
                                 Table Of Content</button>
                         </div>
@@ -301,9 +307,9 @@
                                 </div>
                                 <div class="mt-2 descBox">
                                     <label class="fw-bold">Description</label>
-                                    <textarea name="description[]" class="form-control" rows="2" placeholder="Enter Description"></textarea>
+                                    <textarea name="description[]" id="toc-description" class="form-control" rows="2" placeholder="Enter Description"></textarea>
                                 </div>
-                                <div class="mt-2 bulletsArea">
+                                {{-- <div class="mt-2 bulletsArea">
                                     <label class="fw-bold">Bullets</label>
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
@@ -316,7 +322,7 @@
                                     </div>
                                     <button type="button" class="btn btn-sm btn-outline-success addBullet ">+ Add
                                         Bullet</button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="mt-4 d-flex gap-2">
@@ -333,6 +339,53 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#editor , #toc-description').summernote({
+                height: 400,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear', 'italic']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['codeview', 'help']]
+                ],
+
+                callbacks: {
+                    onImageUpload: function(files) {
+                        var maxFileSize = 3 * 1024 * 1024; // 3 MB
+                        for (var i = 0; i < files.length; i++) {
+                            var file = files[i];
+                            if (file.size <= maxFileSize) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    // Use current editor reference
+                                    $(this).summernote('insertImage', e.target.result);
+                                }.bind(this);
+                                reader.readAsDataURL(file);
+                            } else {
+                                alert('Image size exceeds the 3 MB limit.');
+                            }
+                        }
+                    },
+
+                    // Remove this if you want to preserve formatting
+                    onPaste: function(e) {
+                        e.preventDefault();
+                        let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+                        // Preserve new lines
+                        text = text.replace(/\n/g, '<br>');
+
+                        $(this).summernote('pasteHTML', text);
+                    }
+
+                }
+            });
+        });
+
+
         let index = 1; // for bullets array
 
         function applyContentRule(box) {
@@ -354,23 +407,64 @@
                 applyContentRule($(this));
             });
         });
-        $(".addSubCategory").click(function() {
-            let firstBox = $(".subCategoryBox").first();
-            let newBox = firstBox.clone();
+        // $(".addSubCategory").click(function() {
+        //     let firstBox = $(".subCategoryBox").first();
+        //     let newBox = firstBox.clone();
 
-            newBox.find("input, textarea").val("");
-            newBox.find(".bulletItem").not(":first").remove();
+        //     newBox.find("input, textarea").val("");
+        //     newBox.find(".bulletItem").not(":first").remove();
 
-            // Update data-index
-            newBox.attr("data-index", index);
-            // Update bullet input name
-            newBox.find(".bulletItem input").attr("name", "bullets[" + index + "][]");
+        //     // Update data-index
+        //     newBox.attr("data-index", index);
+        //     // Update bullet input name
+        //     newBox.find(".bulletItem input").attr("name", "bullets[" + index + "][]");
 
-            // Show remove button for new block
-            newBox.find(".remove-subcategory-btn").show();
+        //     // Show remove button for new block
+        //     newBox.find(".remove-subcategory-btn").show();
 
-            $("#subCategoryWrapper").append(newBox);
-            index++;
+        //     $("#subCategoryWrapper").append(newBox);
+        //     index++;
+        // });
+
+         $(".addSubCategory").on("click", function() {
+
+            // 1️⃣ Destroy summernote before cloning
+            $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
+
+            let box = $(".subCategoryBox").first().clone();
+
+            // 2️⃣ Clear normal inputs
+            box.find("input[type=text]").val("");
+
+            // 3️⃣ Properly reset textarea (THIS IS IMPORTANT)
+            box.find("textarea")
+                .val("") // backend ma NULL jase
+                .html("") // editor empty rehse
+                .removeAttr("id");
+
+            box.find(".remove-subcategory-btn").show();
+            // 4️⃣ Remove extra bullets
+            box.find(".bulletWrapper .bulletItem").not(":first").remove();
+
+            $("#subCategoryWrapper").append(box);
+
+            // 5️⃣ Re-init Summernote (editor visible rehse)
+            $("#subCategoryWrapper textarea[name='description[]']").each(function() {
+                if (!$(this).next('.note-editor').length) {
+                    $(this).summernote({
+                        height: 400,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear', 'italic']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['codeview', 'help']]
+                        ]
+                    });
+                }
+            });
         });
 
         // Remove Table of Content block
