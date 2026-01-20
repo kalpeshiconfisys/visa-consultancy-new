@@ -20,7 +20,7 @@
             transition: 0.3s;
         }
     </style>
-    
+
     <div class="container-fluid py-4">
         {{-- Welcome Card --}}
         <div class="row mb-4">
@@ -102,12 +102,12 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-6">
+            <div class="col-6">
                 <div class="card border-0 shadow-sm rounded-4 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">Appointment List</h6>
 
-                <a href="{{url('admin/enquiry-list')}}"
+                <a href="{{url('admin/appointment-list')}}"
                    class="btn btn-sm btn-outline-primary ">
                     View More
                     <i class="fa-solid fa-arrow-right ms-1"></i>
@@ -118,24 +118,30 @@
                             <thead class="table-light fw-bold">
                                 <tr>
                                     <th>#</th>
-                                    <th>Visa Category</th>
+
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Preferred Date</th>
+                                    <th>preferred_time</th>
+                                    <th>consultation_method</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
-                                    $enquiries = \App\Models\AppointmentRequest::latest()->take(5)->get();
+                                    $enquiries = \App\Models\AppointmentRequest::with(['preferredtime','consultationmethod'])->latest()->take(5)->get();
                                 @endphp
 
                                 @forelse($enquiries as $key => $enquiry)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $enquiry->visa_category->title }}</td>
+
                                         <td>{{ $enquiry->name }}</td>
                                         <td>{{ $enquiry->email }}</td>
                                         <td>{{ $enquiry->phone ?? '-' }}</td>
+                                        <td>{{ $enquiry->preferred_date ?? '-' }}</td>
+                                        <td>{{ $enquiry->preferredtime->title ?? '-' }}</td>
+                                        <td>{{ $enquiry->consultationmethod->title ?? '-' }}</td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -149,7 +155,7 @@
 
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

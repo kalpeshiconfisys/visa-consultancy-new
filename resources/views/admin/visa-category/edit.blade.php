@@ -44,7 +44,7 @@
         }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center  fw-bold ">
+    <div class="content-wrapper d-flex justify-content-center    ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -289,7 +289,7 @@
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
+                    ['insert', ['link', 'picture' ]],
                     ['view', ['codeview', 'help']]
                 ],
 
@@ -421,7 +421,7 @@
                             ['color', ['color']],
                             ['para', ['ul', 'ol', 'paragraph']],
                             ['table', ['table']],
-                            ['insert', ['link', 'picture', 'video']],
+                            ['insert', ['link', 'picture']],
                             ['view', ['codeview', 'help']]
                         ]
                     });

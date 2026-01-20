@@ -55,6 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         Route::resource('visa-sub-category', Admin\VisaCategory\VisaSubCategoryController::class);
         Route::get('/enquiry-list', [DashboardController::class, 'enquiryList']);
+        Route::get('/appointment-list', [DashboardController::class, 'appointmentlist']);
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
     });

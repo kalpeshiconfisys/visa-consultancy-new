@@ -5,6 +5,7 @@
 @section('content')
 
     <style>
+        
         .bullet-remove-btn {
             width: 32px;
             height: 32px;
@@ -50,7 +51,7 @@
         }
 
     </style>
-    <div class="content-wrapper d-flex justify-content-center fw-bold ">
+    <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
@@ -86,8 +87,7 @@
                                 <div class="mt-0">
                                     <label class="form-label fw-bold">Featured Image <span
                                             class="text-danger">*</span></label>
-                                    <input type="file" class="form-control" name="image" id="imageInput"
-                                        accept="image/png,image/jpeg,image/webp" required>
+                                    <input type="file" class="form-control" name="image" id="imageInput" accept="image/png,image/jpeg,image/webp" required>
                                     <div class="mt-3">
                                         <img id="previewImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                                             class="img-fluid rounded shadow-sm border"
@@ -189,7 +189,7 @@
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
+                    ['insert', ['link', 'picture']],
                     ['view', ['codeview', 'help']]
                 ],
 
@@ -344,7 +344,7 @@
                             ['color', ['color']],
                             ['para', ['ul', 'ol', 'paragraph']],
                             ['table', ['table']],
-                            ['insert', ['link', 'picture', 'video']],
+                            ['insert', ['link', 'picture']],
                             ['view', ['codeview', 'help']]
                         ]
                     });
@@ -381,9 +381,6 @@
             bulletBox.find(".addBullet").before(html);
         });
     </script>
-
-
-
 
 
 @endsection

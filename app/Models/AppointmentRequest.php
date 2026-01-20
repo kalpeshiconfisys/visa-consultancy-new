@@ -15,6 +15,15 @@ class AppointmentRequest extends Model
         'preferred_date',
         'preferred_time_id',
         'consultation_method_id',
-        'message' 
+        'message'
     ];
+
+    public function preferredtime()
+    {
+        return $this->belongsTo(PreferredTime::class, 'preferred_time_id', 'id');
+    }
+    public function consultationmethod()
+    {
+        return $this->belongsTo(ConsultationMethod::class, 'consultation_method_id', 'id');
+    }
 }
