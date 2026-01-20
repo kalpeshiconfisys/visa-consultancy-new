@@ -20,7 +20,7 @@ Route::get('/admin', function () {
     if (Session::has('admin_id')) {
         return redirect(url('admin/dashboard'));
     }
-    return redirect(url('admin/login'));
+    return redirect(route('admin.login'));
 });
 
 
@@ -28,7 +28,7 @@ Route::get('/', function () {
     if (Session::has('admin_id')) {
         return redirect(url('admin/dashboard'));
     }
-    return redirect(url('admin/login'));
+       return redirect(route('admin.login'));
 });
 
 
@@ -40,9 +40,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/logout', [Admin\Auth\AuthController::class, 'logout']);
 
     Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        });
+        Route::get('/dashboard', [DashboardController::class , 'dashboard']);
         Route::resource('visa-category', Admin\VisaCategory\VisaCategoryController::class);
         Route::prefix('visa-category')->group(function () {
             Route::get('list', [Admin\VisaCategory\VisaCategoryController::class, 'index']);

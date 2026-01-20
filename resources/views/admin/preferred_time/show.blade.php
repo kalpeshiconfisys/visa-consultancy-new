@@ -45,16 +45,13 @@
                     <div class="col-lg-8">
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body">
-                                
+
                                 <p class="text-muted fs-6">
                                     {{ $preferredTime->title }}
                                 </p>
-
                             </div>
                         </div>
-
-                    </div>
-
+                    </div> 
                 </div>
             </div>
         </div>

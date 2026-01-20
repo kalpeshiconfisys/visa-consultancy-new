@@ -5,7 +5,7 @@
 @section('content')
 
     <style>
-        
+
         .bullet-remove-btn {
             width: 32px;
             height: 32px;
@@ -52,7 +52,7 @@
 
     </style>
     <div class="content-wrapper d-flex justify-content-center  ">
-        <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
+        <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -128,7 +128,7 @@
                         </div>
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
-                            <h4 class="fw-bold">Table Of Content</h4>
+                            <h4 class="fw-bold align-content-center">Table Of Content</h4>
                             <button type="button" class="btn btn-outline-primary   addSubCategory mt-3 mb-3">+ Add
                                 Table Of Content</button>
                         </div>

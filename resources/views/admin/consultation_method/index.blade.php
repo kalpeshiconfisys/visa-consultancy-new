@@ -29,28 +29,23 @@
                                     @forelse ($methods as $key => $i)
                                         <tr>
                                             <td class="">{{ $methods->firstItem() + $key }}</td>
-                                            <td class="" >{{ $i->title }}</td>
-
+                                            <td class="">{{ $i->title }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    {{-- VIEW --}}
-                                                    <a href="{{ route('admin.consultation-method.show' , trim(base64_encode($i->id), '=')) }}"
+                                                    {{-- <a href="{{ route('admin.consultation-method.show', trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
-                                                    </a>
-                                                    {{-- EDIT --}}
+                                                    </a> --}}
                                                     <a href="{{ route('admin.consultation-method.edit', trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
-                                                    {{-- DELETE --}}
                                                     <button class="btn btn-sm btn-outline-secondary  custom-trash  px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $i->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>
                                                     </button>
                                                 </div>
-                                                {{-- Delete Modal --}}
                                                 <div class="modal fade" id="deleteModal{{ $i->id }}" tabindex="-1"
                                                     aria-labelledby="deleteModalLabel{{ $i->id }}"
                                                     aria-hidden="true">
@@ -72,9 +67,8 @@
                                                                     data-bs-dismiss="modal">
                                                                     Cancel
                                                                 </button>
-
                                                                 <form
-                                                                    action="{{ route('admin.consultation-method.destroy' , trim(base64_encode($i->id), '=')) }}"
+                                                                    action="{{ route('admin.consultation-method.destroy', trim(base64_encode($i->id), '=')) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -96,7 +90,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Pagination -->
+
                         <div class="d-flex justify-content-end mt-1">
                             {{ $methods->onEachSide(1)->links('pagination::bootstrap-4') }}
                         </div>

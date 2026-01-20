@@ -4,7 +4,7 @@
 
 @section('content')
 
-     
+
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
         <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 d-flex gap-2">
+                        <div class="mt-1 d-flex gap-2">
                             <button type="submit"
                                 class="btn btn-outline-success px-4 ">Update</button>
                         </div>

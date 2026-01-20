@@ -139,7 +139,7 @@
 
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
-                            <h4 class="fw-bold">Table Of Content</h4>
+                            <h4 class="fw-bold align-content-center">Table Of Content</h4>
                             <button type="button" class="btn btn-outline-primary addSubCategory mb-3 mt-3">+ Add Table Of
                                 Content</button>
                         </div>

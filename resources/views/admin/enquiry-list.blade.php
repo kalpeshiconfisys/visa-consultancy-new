@@ -21,7 +21,7 @@
                                         <th class="text-dark"> Email</th>
                                         <th class="text-dark"> Phone</th>
                                         <th class="text-dark">Message</th>
-                                    </tr>
+                                        </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($enquiry as $key => $i)

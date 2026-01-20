@@ -20,16 +20,14 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Preferred Date</th>
-                                    <th>preferred_time_id</th>
-                                    <th>consultation_method_id</th>
+                                    <th>preferred time</th>
+                                    <th>consultation method</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-
                                 @forelse($appointmentlist as $key => $i)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td> 
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $i->name }}</td>
                                         <td>{{ $i->email }}</td>
                                         <td>{{ $i->phone ?? '-' }}</td>
@@ -46,15 +44,11 @@
                                 @endforelse
                             </tbody>
                         </table>
-
                     </div>
-                        <!-- Pagination -->
                         <div class="d-flex justify-content-end mt-1">
                             {{ $appointmentlist->onEachSide(1)->links('pagination::bootstrap-4') }}
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

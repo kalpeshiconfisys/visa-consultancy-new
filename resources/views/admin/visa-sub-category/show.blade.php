@@ -3,7 +3,7 @@
 @section('title', 'Visa Sub Category Details')
 
 @section('content')
-    <div class="container-fluid"> 
+    <div class="container-fluid">
         <!-- PAGE HEADER -->
         <div class="row mb-4">
             <div class="col-lg-11 m-auto">
@@ -75,11 +75,12 @@
                                             </span>
                                         </div>
                                         <div>
+                                            
                                             <h6 class="fw-bold mb-1">
                                                 {{ $toc['title'] }}
                                             </h6>
                                             <p class="text-muted mb-2">
-                                                {{ $toc['description'] }}
+                                                {!! $toc['description'] !!}
                                             </p>
                                             @if (!empty($toc['bullets']))
                                                 <ul class="ps-3 mb-0">

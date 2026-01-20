@@ -3,104 +3,209 @@
 @section('title', 'Visa Category Details')
 
 @section('content')
-    <div class="container-fluid">
+    <style>
+        .toc-scroll {
+            max-height: 450px;
+            overflow-y: auto;
+            overflow-x: hidden !important;
+        }
+
+        .toc-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+
+        .toc-number {
+            min-width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0d6efd;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+        .toc-content {
+            flex: 1;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+
+        .toc-desc,
+        .toc-desc * {
+            max-width: 100% !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+
+        .toc-desc img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+
+        .toc-desc table,
+        .toc-desc pre,
+        .toc-desc code {
+            max-width: 100%;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .content-area p {
+            line-height: 1.9;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .content-area ul {
+            padding-left: 22px;
+        }
+
+        .content-area li {
+            margin-bottom: 6px;
+        }
+
+        .toc-scroll {
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .toc-item {
+            background: #f9fafc;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .toc-item:hover {
+            background: #eef4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .toc-number {
+            width: 32px;
+            height: 32px;
+            background: #0d6efd;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+        .sticky-box {
+            position: sticky;
+            top: 90px;
+        }
+
+
+        .toc-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .toc-scroll::-webkit-scrollbar-thumb {
+            background: #cfd8e3;
+            border-radius: 10px;
+        }
+
+
+        @media (max-width: 992px) {
+            .sticky-box {
+                position: relative;
+                top: auto;
+            }
+
+            .toc-scroll {
+                max-height: none;
+            }
+        }
+    </style>
+    <div class="container-fluid py-4">
         <div class="row mb-4">
-            <div class="col-lg-11 m-auto">
-                <div class="card border-0 shadow-sm bg-light">
-                    <div class="card-body py-4 px-4 d-flex flex-wrap justify-content-between align-items-center">
+            <div class="col-12 col-xl-11 m-auto">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-3">
                         <div>
-                            <h2 class="fw-bold text-primary mb-1">
+                            <h3 class="fw-bold text-primary mb-1">
                                 <i class="fas fa-passport me-2"></i>
                                 {{ $visaCategory->title }}
-                            </h2>
-                            <p class="text-muted mb-0">
-                                Visa Category – Detailed Overview
-                            </p>
+                            </h3>
+                            <small class="text-muted">Visa Category – Detailed Overview</small>
                         </div>
-                        <div class="d-flex gap-2 mt-3 mt-md-0 justify-content-center">
+                        <div class="d-flex gap-2">
                             <a href="{{ url('admin/visa-category/edit', trim(base64_encode($visaCategory->id), '=')) }}"
-                                class="btn btn-outline-primary  ">
+                                class="btn btn-primary btn-sm px-3">
                                 <i class="fas fa-edit me-1"></i> Edit
                             </a>
-                            <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
-                                <i class="bi bi-arrow-left"></i> Back
+                            <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger btn-sm px-3">
+                                <i class="bi bi-arrow-left me-1"></i> Back
                             </a>
-                            {{-- <form action="{{ url('admin/visa-category/destroy', trim(base64_encode($visaCategory->id), '=')) }}"
-                              method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm px-4">
-                                    <i class="fas fa-trash me-1"></i> Delete
-                                </button>
-                        </form> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row mb-3">
-            <div class="col-lg-11 m-auto">
+        <div class="row">
+            <div class="col-12 col-xl-11 m-auto">
                 <div class="row g-4">
                     <div class="col-lg-8">
-                        <div class="card border-0 shadow-sm mb-4">
-                            <div class="card-body">
-                                <h5 class="fw-bold mb-3">
-                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                        <div class="card border-0 shadow-sm rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold border-bottom pb-2 mb-3 text-primary">
                                     About This Visa
                                 </h5>
                                 <p class="text-muted fs-6">
                                     {{ $visaCategory->short_description }}
                                 </p>
-                                <div class="mt-3">
+                                <div class="content-area mt-3">
                                     {!! $visaCategory->description !!}
                                 </div>
                             </div>
                         </div>
                         @if (!empty($visaCategory->main_table_of_content))
-                            <div class="card border-0 shadow-sm scroll">
-                                <div class="card-body">
-
-                                    <h5 class="fw-bold mb-4">
-                                        <i class="fas fa-list-ul text-primary me-2"></i>
+                            <div class="card border-0 shadow-sm rounded-4">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3 text-primary">
+                                        <i class="fas fa-list-ul me-2"></i>
                                         Table Of Content
                                     </h5>
-
-                                    @foreach ($visaCategory->main_table_of_content as $index => $toc)
-                                        <div class="mb-4">
-
-                                            <div class="d-flex align-items-start mb-2">
-                                                <div class="me-3">
-                                                    <span class="badge bg-primary rounded-circle"
-                                                        style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;">
+                                    <div class="toc-scroll">
+                                        @foreach ($visaCategory->main_table_of_content as $index => $toc)
+                                            <div class="toc-item mb-3 p-3">
+                                                <div class="d-flex gap-3 align-items-start toc-row">
+                                                    <div class="toc-number">
                                                         {{ $index + 1 }}
-                                                    </span>
+                                                    </div>
+                                                    <div class="toc-content">
+                                                        <h6 class="fw-bold mb-1">
+                                                            {{ $toc['title'] }}
+                                                        </h6>
+                                                        <div class="text-muted small toc-desc">
+                                                            {!! $toc['description'] !!}
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                                <div>
-                                                    <h6 class="fw-bold mb-1">
-                                                        {{ $toc['title'] }}
-                                                    </h6>
-                                                    <p class="text-muted mb-2">
-                                                        {{ $toc['description'] }}
-                                                    </p>
-
-                                                    @if (!empty($toc['bullets']))
-                                                        <ul class="ps-3 mb-0">
-                                                            @foreach ($toc['bullets'] as $b)
-                                                                <li class="mb-1">
-                                                                    <i class="fas fa-angle-right text-primary me-1"></i>
-                                                                    {{ $b }}
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                </div>
+                                                
                                             </div>
-
-                                        </div>
-                                    @endforeach
-
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -109,54 +214,57 @@
 
                         <!-- HIGHLIGHTS -->
                         @if (!empty($visaCategory->bullets))
-                            <div class="card border-0 shadow-sm mb-4">
-                                <div class="card-body">
-                                    <h6 class="fw-bold mb-3">
-                                        <i class="fas fa-star text-warning me-1"></i>
+                            <div class="card border-0 shadow-sm rounded-4 mb-4 sticky-box">
+                                <div class="card-body p-3">
+
+                                    <h6 class="fw-bold mb-3 text-warning">
+                                        <i class="fas fa-star me-1"></i>
                                         Key Highlights
                                     </h6>
 
                                     <ul class="list-unstyled mb-0">
                                         @foreach ($visaCategory->bullets as $bullet)
-                                            <li class="mb-2 d-flex">
+                                            <li class="mb-2 d-flex align-items-start">
                                                 <i class="fas fa-check-circle text-success me-2 mt-1"></i>
                                                 <span>{{ $bullet }}</span>
                                             </li>
                                         @endforeach
                                     </ul>
+
                                 </div>
                             </div>
                         @endif
 
-                        <!-- IMAGES -->
+                        <!-- MEDIA -->
                         @if ($visaCategory->image || $visaCategory->category_logo)
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h6 class="fw-bold mb-3">
-                                        <i class="fas fa-image text-primary me-1"></i>
+                            <div class="card border-0 shadow-sm rounded-4 sticky-box">
+                                <div class="card-body p-3">
+
+                                    <h6 class="fw-bold mb-3 text-primary">
+                                        <i class="fas fa-image me-1"></i>
                                         Media
                                     </h6>
 
                                     <div class="row g-3">
+
                                         @if ($visaCategory->image)
                                             <div class="col-6 text-center">
-                                                <img src="{{ $visaCategory->image }}" class="img-fluid rounded w-50">
-                                                <small class="text-muted d-block mt-1 text-center">
-                                                    Featured Image
-                                                </small>
+                                                <img src="{{ $visaCategory->image }}" class="img-fluid rounded shadow-sm "
+                                                    style="width:100px; height:80px; object-fit:cover;">
+                                                <small class="text-muted d-block mt-1">Featured Image</small>
                                             </div>
                                         @endif
 
                                         @if ($visaCategory->category_logo)
                                             <div class="col-6 text-center">
                                                 <img src="{{ $visaCategory->category_logo }}"
-                                                    class="img-fluid rounded w-500">
-                                                <small class="text-muted d-block mt-1 text-center">
-                                                    Category Logo
-                                                </small>
+                                                    class="img-fluid rounded shadow-sm">
+                                                <small class="text-muted d-block mt-1">Category Logo</small>
                                             </div>
                                         @endif
+
                                     </div>
+
                                 </div>
                             </div>
                         @endif
@@ -166,4 +274,7 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection

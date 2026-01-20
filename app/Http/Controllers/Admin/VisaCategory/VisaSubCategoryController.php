@@ -74,7 +74,6 @@ class VisaSubCategoryController extends Controller
             "title.*"       => "required|string|max:255",
             "description"   => "nullable|array",
             "publish_is"    => "required|in:1,2",
-            // "content_type"  => "required|in:description,bullets,both",
             "toc_id"        => "nullable|array"
         ]);
 
@@ -128,43 +127,36 @@ class VisaSubCategoryController extends Controller
     {
         $content = html_entity_decode($html ?? '');
 
-        // Find all base64 images
+
         $pattern = '/<img[^>]+src="data:image\/([^;]+);base64,([^"]+)"[^>]*>/i';
         preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
 
-            $imageFormat = strtolower($match[1]);   // jpeg, png, webp etc
+            $imageFormat = strtolower($match[1]);
             $base64Image = $match[2];
-
-            // Allow only safe formats
+ 
             $allowed = ['jpeg', 'jpg', 'png', 'gif', 'webp'];
             if (!in_array($imageFormat, $allowed)) {
                 continue;
             }
 
-            // Decode
             $imageData = base64_decode($base64Image);
             if ($imageData === false) {
                 continue;
             }
 
-            // Unique name
             $filename = 'image_' . uniqid() . '.' . $imageFormat;
 
-            // Folder
             $destinationPath = public_path('uploads/content_img');
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0777, true);
             }
 
-            // Save image
             file_put_contents($destinationPath . '/' . $filename, $imageData);
 
-            // Full public URL (API + LIVE SAFE)
             $publicImageUrl = $request->getSchemeAndHttpHost() . '/uploads/content_img/' . $filename;
 
-            // Replace base64 with URL
             $content = str_replace(
                 'data:image/' . $imageFormat . ';base64,' . $base64Image,
                 $publicImageUrl,

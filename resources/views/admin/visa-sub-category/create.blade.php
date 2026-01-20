@@ -50,10 +50,11 @@
             padding: 15px;
             background: #fafafa;
         }
+
     </style>
 
     <div class="content-wrapper d-flex justify-content-center   ">
-        <div class="col-12 col-xl-10 col-lg-10 col-md-11 m-auto">
+        <div class="col-12 col-xl-11 col-lg-10 col-md-11 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between mb-3">
@@ -99,11 +100,10 @@
                         </div>
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
-                            <h4 class="fw-bold">Table Of Content</h4>
+                            <h4 class="fw-bold align-content-center">Table Of Content</h4>
                             <button type="button"
                                 class="btn btn-outline-primary justify-content-end  addSubCategory mt-2 mb-3">+
-                                Add
-                                Table Of Content</button>
+                                Add Table Of Content</button>
                         </div>
                         <div id="subCategoryWrapper">
                             <div class="subCategoryBox toc-card   mb-3  ">
