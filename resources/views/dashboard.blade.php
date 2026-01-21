@@ -60,8 +60,53 @@
                             <i class="fa-solid fa-passport"></i>
                         </div>
                         <div class="ms-3">
-                            <small class="text-muted">Visa Categories</small>
+                            <small class=" fw-bold">Visa Categories</small>
                             <h4 class="fw-bold mb-0">{{ $data['total_visa_count'] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <a href="{{ url('admin/preferred-time') }}" class="text-decoration-none text-dark">
+                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-primary">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <div class="ms-3">
+                            <small class=" fw-bold">Appointment Time</small>
+                            <h4 class="fw-bold mb-0">{{ $data['total_preferred_time'] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <a href="{{ url('admin/company-advantages') }}" class="text-decoration-none text-dark">
+                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-primary">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <div class="ms-3">
+                            <small class=" fw-bold">Company Advantages</small>
+                            <h4 class="fw-bold mb-0">{{ $data['total_company_advantages'] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <a href="{{ url('admin/consultation-method') }}" class="text-decoration-none text-dark">
+                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-primary">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <div class="ms-3">
+                            <small class="  fw-bold">Consultation Method</small>
+                            <h4 class="fw-bold mb-0">{{ $data['total_consultation_method'] }}</h4>
                         </div>
                     </div>
                 </div>
@@ -72,7 +117,7 @@
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="fw-bold mb-0">Recent Enquiries</h6> 
+                    <h6 class="fw-bold mb-0">Recent Enquiries</h6>
                     <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary">
                         View All <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>

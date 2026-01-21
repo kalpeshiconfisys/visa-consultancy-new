@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
         Route::resource('company-advantages', Admin\CompanyAdvantages\CompanyAdvantagesController::class);
+        Route::resource('our-teams', Admin\CompanyAdvantages\OurTeamController::class);
     });
 
 });

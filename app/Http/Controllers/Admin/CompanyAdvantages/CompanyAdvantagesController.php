@@ -23,26 +23,18 @@ class CompanyAdvantagesController extends Controller
 
     public function store(Request $request)
     {
-
-
-
         $input = [
             'title' => $request->title,
             'description' => $request->description,
         ];
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $imgName = time() . rand(1000, 9999) . "." . $file->extension();
             $file->move(public_path('uploads/company-advantages'), $imgName);
             $input['image'] = $imgName;
         }
-
-
         CompanyAdvantage::create($input);
-
-        return redirect()->route('admin.company-advantages.index')
-                         ->with('success', 'Company Advantages  created successfully!');
+        return redirect()->route('admin.company-advantages.index')->with('success', 'Company Advantages created successfully!');
     }
 
     public function show($id)
@@ -63,12 +55,10 @@ class CompanyAdvantagesController extends Controller
     {
         $id = base64_decode($id);
         $data = CompanyAdvantage::findOrFail($id);
-
         $input = [
             'title' => $request->title,
             'description' => $request->description
         ];
-
         if ($request->hasFile('image')) {
             if ($data->image && File::exists(public_path('uploads/company-advantages/' . basename($data->image)))) {
                 File::delete(public_path('uploads/company-advantages/' . basename($data->image)));
@@ -78,23 +68,21 @@ class CompanyAdvantagesController extends Controller
             $file->move(public_path('uploads/company-advantages'), $imgName);
             $input['image'] = $imgName;
         }
-
         $data->update($input);
-
         return redirect()->route('admin.company-advantages.index')
-                         ->with('success', 'Company Advantages updated successfully!');
+            ->with('success', 'Company Advantages updated successfully!');
     }
 
     public function destroy($id)
     {
-              $id = base64_decode($id);
+        $id = base64_decode($id);
         $data = CompanyAdvantage::findOrFail($id);
         if ($data->image && File::exists(public_path('uploads/company-advantages/' . basename($data->image)))) {
-                File::delete(public_path('uploads/company-advantages/' . basename($data->image)));
-            }
+            File::delete(public_path('uploads/company-advantages/' . basename($data->image)));
+        }
         $data->delete();
 
         return redirect()->route('admin.company-advantages.index')
-                         ->with('success', 'Company Advantages deleted successfully!');
+            ->with('success', 'Company Advantages deleted successfully!');
     }
 }

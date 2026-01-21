@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentRequest;
+use App\Models\CompanyAdvantage;
+use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
+use App\Models\PreferredTime;
 use App\Models\VisaCategory;
 use Illuminate\Http\Request;
 
@@ -13,6 +16,9 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $totalVisaCategory  = VisaCategory::count();
+        $preferredTime  = PreferredTime::count();
+        $companyAdvantages  = CompanyAdvantage::count();
+        $consultationmethod  = ConsultationMethod::count();
         $enquiries = \App\Models\Enquiry::latest()->take(5)->get();
         $appointments = \App\Models\AppointmentRequest::with(['preferredtime', 'consultationmethod'])
             ->latest()
@@ -20,6 +26,9 @@ class DashboardController extends Controller
             ->get();
         $data = [
             'total_visa_count' => $totalVisaCategory,
+            'total_preferred_time' => $preferredTime,
+            'total_company_advantages' => $companyAdvantages,
+            'total_consultation_method' => $consultationmethod,
             'total_enquiry' => $enquiries,
             'total_appointment' => $appointments
         ];

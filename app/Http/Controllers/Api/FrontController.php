@@ -7,6 +7,7 @@ use App\Models\AppointmentRequest;
 use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
+use App\Models\OurTeam;
 use App\Models\PreferredTime;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
 
 
 
-class VisaController extends Controller
+class FrontController extends Controller
 {
     public function visa_category_list()
     {
@@ -97,12 +98,12 @@ class VisaController extends Controller
         return $this->success(true, 'Enquiry submitted successfully!', []);
     }
 
-    public function preferredTime(Request $request)
+    public function preferredTime()
     {
          $preferredTime = PreferredTime::all();
         return $this->success(true, 'Enquiry submitted successfully!', $preferredTime);
     }
-    public function consultationMethod(Request $request)
+    public function consultationMethod()
     {
          $consultationMethod = ConsultationMethod::all();
         return $this->success(true, ' Consultation Method successfully!', $consultationMethod);
@@ -145,10 +146,15 @@ class VisaController extends Controller
         return $this->success(true, 'Appointment Request submitted successfully!', []);
     }
 
-    public function companyAdvantages(Request $request)
+    public function companyAdvantages()
     {
          $data = CompanyAdvantage::all();
         return $this->success(true, 'Data successfully!', $data);
     }
-    
+    public function ourTeams( )
+    {
+        $data = OurTeam::all();
+        return $this->success(true, 'Data successfully!', $data);
+    }
+
 }
