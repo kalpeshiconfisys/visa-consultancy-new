@@ -39,8 +39,6 @@
 </style>
 
 <div class="container-fluid py-4">
-
-    <!-- WELCOME SECTION -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
@@ -53,10 +51,7 @@
             </div>
         </div>
     </div>
-
-    <!-- SUMMARY CARDS -->
     <div class="row g-4 mb-4">
-
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/visa-category') }}" class="text-decoration-none text-dark">
                 <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
@@ -72,25 +67,16 @@
                 </div>
             </a>
         </div>
-
-        <!-- Future cards ready (you can add more like Enquiries, Appointments, Users) -->
-
     </div>
-
-    <!-- TABLE SECTION -->
     <div class="row g-4">
-
-        <!-- ENQUIRY LIST -->
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="fw-bold mb-0">Recent Enquiries</h6>
-
+                    <h6 class="fw-bold mb-0">Recent Enquiries</h6> 
                     <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary">
                         View All <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
@@ -103,8 +89,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
                             @forelse($data['total_enquiry'] as $key => $enquiry)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
@@ -125,18 +109,14 @@
                 </div>
             </div>
         </div>
-
-        <!-- APPOINTMENT LIST -->
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h6 class="fw-bold mb-0">Recent Appointments</h6>
-
                     <a href="{{ url('admin/appointment-list') }}" class="btn btn-sm btn-outline-primary">
                         View All <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
@@ -150,8 +130,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
                             @forelse($data['total_appointment'] as $key => $app)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
@@ -173,8 +151,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 @endsection

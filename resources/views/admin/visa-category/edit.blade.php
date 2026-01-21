@@ -44,7 +44,7 @@
         }
     </style>
 
-    <div class="content-wrapper d-flex justify-content-center    ">
+    <div class="content-wrapper d-flex justify-content-center ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
@@ -135,20 +135,16 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
                             <h4 class="fw-bold align-content-center">Table Of Content</h4>
                             <button type="button" class="btn btn-outline-primary addSubCategory mb-3 mt-3">+ Add Table Of
                                 Content</button>
                         </div>
-
                         <div id="subCategoryWrapper">
                             @php
                                 $subContents = $visaCategory->main_table_of_content ?? [];
                             @endphp
-
                             @if (count($subContents) > 0)
                                 @foreach ($subContents as $i => $sub)
                                     <div class="subCategoryBox toc-card p-3 mb-3  " data-index="{{ $i }}">
@@ -157,13 +153,11 @@
                                             <button type="button" class="remove-subcategory-btn"
                                                 title="Remove Table of Content">✕</button>
                                         </div>
-
                                         {{-- <input type="hidden" name="toc_id[]" value="{{ $sub['id'] ?? '' }}"> --}}
                                         <input type="hidden" name="id[]" value="{{ $sub['id'] ?? '' }}">
                                         <label class="fw-bold">Title <span class="text-danger">*</span></label>
                                         <input type="text" name="title[]" class="form-control"
                                             value="{{ $sub['title'] ?? '' }}" required>
-
                                         <div class="mt-2 descBox">
                                             <label class="fw-bold">Description</label>
                                             <textarea name="description[]" id="toc-description" class="form-control" rows="2">{{ $sub['description'] ?? '' }}</textarea>

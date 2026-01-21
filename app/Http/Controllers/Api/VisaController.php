@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppointmentRequest;
+use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
 use App\Models\PreferredTime;
@@ -60,7 +61,7 @@ class VisaController extends Controller
         }
         return $this->success(true, 'Visa Sub Category Data retrieved successfully!', $visaSubCategories);
     }
-    
+
     public function enquiryAdd(Request $request)
     {
         $validator =   Validator::make($request->all(), [
@@ -143,4 +144,11 @@ class VisaController extends Controller
 
         return $this->success(true, 'Appointment Request submitted successfully!', []);
     }
+
+    public function companyAdvantages(Request $request)
+    {
+         $data = CompanyAdvantage::all();
+        return $this->success(true, 'Data successfully!', $data);
+    }
+    
 }

@@ -56,6 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/appointment-list', [DashboardController::class, 'appointmentlist']);
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
+        Route::resource('company-advantages', Admin\CompanyAdvantages\CompanyAdvantagesController::class);
     });
 
 });

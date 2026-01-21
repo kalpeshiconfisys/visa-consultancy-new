@@ -6,7 +6,7 @@
 
 
     <div class="content-wrapper d-flex justify-content-center fw-bold ">
-        <div class="col-12 col-xl-10 col-lg-9 col-md-10 m-auto">
+        <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">

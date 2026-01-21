@@ -151,10 +151,10 @@
                         </div>
                         <div class="d-flex gap-2">
                             <a href="{{ url('admin/visa-category/edit', trim(base64_encode($visaCategory->id), '=')) }}"
-                                class="btn btn-primary btn-sm px-3">
+                                class="btn btn-outline-primary">
                                 <i class="fas fa-edit me-1"></i> Edit
                             </a>
-                            <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger btn-sm px-3">
+                            <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
                                 <i class="bi bi-arrow-left me-1"></i> Back
                             </a>
                         </div>
@@ -202,7 +202,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         @endforeach
                                     </div>

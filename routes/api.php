@@ -17,3 +17,4 @@
     Route::get('/preferred-time', [VisaController::class, 'preferredTime']);
     Route::get('/consultation-method', [VisaController::class, 'consultationMethod']);
     Route::post('/appointment-request', [VisaController::class, 'appointmentRequest']);
+    Route::get('/company-advantages', [VisaController::class, 'companyAdvantages']);
