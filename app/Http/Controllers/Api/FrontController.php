@@ -100,13 +100,13 @@ class FrontController extends Controller
 
     public function preferredTime()
     {
-         $preferredTime = PreferredTime::all();
+         $preferredTime = PreferredTime::get(['id', 'title']);
         return $this->success(true, 'Enquiry submitted successfully!', $preferredTime);
     }
     public function consultationMethod()
     {
-         $consultationMethod = ConsultationMethod::all();
-        return $this->success(true, ' Consultation Method successfully!', $consultationMethod);
+         $consultationMethod = ConsultationMethod::get(['id', 'title']);
+        return $this->success(true, 'Consultation Method successfully!', $consultationMethod);
     }
 
     public function appointmentRequest(Request $request)
@@ -114,7 +114,6 @@ class FrontController extends Controller
         $validator =   Validator::make($request->all(), [
            'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            // 'phone' => 'nullable|string|max:20',
             'preferred_date' => 'nullable|date_format:Y-m-d',
             'preferred_time_id' => 'nullable|exists:preferred_time,id',
             'consultation_method_id' => 'nullable|exists:consultation_methods,id',
@@ -148,12 +147,12 @@ class FrontController extends Controller
 
     public function companyAdvantages()
     {
-         $data = CompanyAdvantage::all();
+         $data = CompanyAdvantage::get(['id', 'title', 'description', 'image']);
         return $this->success(true, 'Data successfully!', $data);
     }
-    public function ourTeams( )
+    public function ourTeams()
     {
-        $data = OurTeam::all();
+        $data = OurTeam::get(['id', 'name', 'designation', 'image']);
         return $this->success(true, 'Data successfully!', $data);
     }
 

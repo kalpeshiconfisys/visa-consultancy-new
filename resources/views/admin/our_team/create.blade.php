@@ -1,10 +1,6 @@
 @extends('admin.layouts.app')
-
 @section('title', 'Add Visa Category')
-
 @section('content')
-
-
     <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
@@ -27,10 +23,9 @@
                                 <div class="mt-3">
                                     <label class="form-label fw-bold">Designation<span
                                             class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="designation" rows="2" placeholder=""
-                                        required> </textarea>
-                                </div>
-
+                                    <input class="form-control" name="designation" rows="2" placeholder=""
+                                        required>
+                                </div> 
                             </div>
                             <div class="col-lg-5 col-md-12">
                                 <div class="mt-0">
@@ -43,13 +38,9 @@
                                             style="width:120px;border-radius:8px;">
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                         <div class="mt-4 d-flex gap-2">
-
                             <button type="submit" name="publish_is" value="2"
                                 class="btn btn-outline-success px-4 ">Save</button>
                         </div>

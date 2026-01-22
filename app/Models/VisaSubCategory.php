@@ -23,6 +23,7 @@ class VisaSubCategory extends Model
         'bullets' => 'array'
     ];
 
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];      
     public function category()
     {
         return $this->belongsTo(VisaCategory::class, 'category_id', 'id');

@@ -1,67 +1,87 @@
 @extends('admin.layouts.app')
-
 @section('title', 'Admin Dashboard')
-
 @section('content')
-
 <style>
     .hover-card {
-        transition: all 0.3s ease;
+        transition: all 0.35s ease;
         cursor: pointer;
+        background: #ffffff;
     }
 
     .hover-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(13, 110, 253, 0.25);
+        border: 1px solid #0d6efd30;
     }
 
     .stat-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 22px;
         color: #fff;
+        background: linear-gradient(135deg, #0d6efd, #4facfe);
+        box-shadow: 0 8px 18px rgba(65, 134, 238, 0.4);
     }
 
     .table thead th {
-        font-size: 14px;
+        font-size: 13px;
         color: #6c757d;
         text-transform: uppercase;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid #dee2e6;
     }
 
-    .card-title {
-        font-weight: 600;
+    .table tbody tr:hover {
+        background-color: #f5f9ff;
+    }
+
+    .welcome-card {
+        background: linear-gradient(135deg, #5996f1, #4facfe);
+        color: #fff;
+        border-radius: 18px;
+        box-shadow: 0 15px 40px rgba(13, 110, 253, 0.35);
+    }
+
+    .welcome-card p {
+        color: #eaf2ff;
+    }
+
+    .section-card {
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
     }
 </style>
 
 <div class="container-fluid py-4">
+
     <div class="row mb-4">
         <div class="col-12">
-            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+            <div class="card border-0 p-4 welcome-card">
                 <h4 class="fw-bold mb-1">
                     Welcome Back, {{ auth()->guard('admin')->user()->name }} 👋
                 </h4>
-                <p class="text-muted mb-0">
+                <p class="mb-0">
                     Manage visa categories, enquiries, appointments and clients from your dashboard.
                 </p>
             </div>
         </div>
     </div>
-    <div class="row g-4 mb-4">
+
+    <div class="row g-4 mb-5">
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/visa-category') }}" class="text-decoration-none text-dark">
-                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon bg-primary">
-                            <i class="fa-solid fa-passport"></i>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-globe"></i>
                         </div>
                         <div class="ms-3">
-                            <small class=" fw-bold">Visa Categories</small>
-                            <h4 class="fw-bold mb-0">{{ $data['total_visa_count'] }}</h4>
+                            <small class="fw-bold text-muted">Visa Categories</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_visa_count'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -69,14 +89,14 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/preferred-time') }}" class="text-decoration-none text-dark">
-                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon bg-primary">
-                            <i class="fa-solid fa-passport"></i>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-clock"></i>
                         </div>
                         <div class="ms-3">
-                            <small class=" fw-bold">Appointment Time</small>
-                            <h4 class="fw-bold mb-0">{{ $data['total_preferred_time'] }}</h4>
+                            <small class="fw-bold text-muted">Appointment Time</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_preferred_time'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -84,14 +104,14 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/company-advantages') }}" class="text-decoration-none text-dark">
-                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon bg-primary">
-                            <i class="fa-solid fa-passport"></i>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-award"></i>
                         </div>
                         <div class="ms-3">
-                            <small class=" fw-bold">Company Advantages</small>
-                            <h4 class="fw-bold mb-0">{{ $data['total_company_advantages'] }}</h4>
+                            <small class="fw-bold text-muted">Company Advantages</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_company_advantages'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -99,25 +119,28 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/consultation-method') }}" class="text-decoration-none text-dark">
-                <div class="card border-0 shadow-sm rounded-4 p-3 hover-card">
+                <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon bg-primary">
-                            <i class="fa-solid fa-passport"></i>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-headset"></i>
                         </div>
                         <div class="ms-3">
-                            <small class="  fw-bold">Consultation Method</small>
-                            <h4 class="fw-bold mb-0">{{ $data['total_consultation_method'] }}</h4>
+                            <small class="fw-bold text-muted">Consultation Method</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_consultation_method'] }}</h3>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
     </div>
+
     <div class="row g-4">
         <div class="col-lg-6">
-            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="card border-0 section-card p-4 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="fw-bold mb-0">Recent Enquiries</h6>
+                    <h6 class="fw-bold mb-0 text-primary">
+                        <i class="fa-solid fa-envelope-open-text me-2"></i> Recent Enquiries
+                    </h6>
                     <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary">
                         View All <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>
@@ -155,9 +178,11 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="card border-0 section-card p-4 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="fw-bold mb-0">Recent Appointments</h6>
+                    <h6 class="fw-bold mb-0 text-primary">
+                        <i class="fa-solid fa-calendar-check me-2"></i> Recent Appointments
+                    </h6>
                     <a href="{{ url('admin/appointment-list') }}" class="btn btn-sm btn-outline-primary">
                         View All <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>

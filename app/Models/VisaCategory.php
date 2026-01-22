@@ -25,6 +25,8 @@ class VisaCategory extends Model
         'bullets' => 'array'
     ];
 
+    protected $hidden = ['created_at', 'updated_at' , 'deleted_at'];
+
     public function getImageAttribute($value)
     {
         if ($value != NULL) {
