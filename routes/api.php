@@ -19,4 +19,5 @@
     Route::post('/appointment-request', [FrontController::class, 'appointmentRequest']);
     Route::get('/company-advantages', [FrontController::class, 'companyAdvantages']);
     Route::get('/our-teams', [FrontController::class, 'ourTeams']);
+    Route::get('/privacy-policy', [FrontController::class, 'privacyPolicy']);
 

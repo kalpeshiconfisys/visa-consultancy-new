@@ -58,6 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
         Route::resource('company-advantages', Admin\CompanyAdvantages\CompanyAdvantagesController::class);
         Route::resource('our-teams', Admin\CompanyAdvantages\OurTeamController::class);
+        Route::resource('our-teams', Admin\CompanyAdvantages\OurTeamController::class);
+
+        Route::get('privacy-policy', [Admin\SettingController::class , 'privacyPolicy']);
+        Route::post('privacy-policy-submit', [Admin\SettingController::class , 'privacyPolicySubmit']);
+
+
     });
 
 });

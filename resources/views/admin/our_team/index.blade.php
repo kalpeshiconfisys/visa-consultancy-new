@@ -10,7 +10,7 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Our Teams List</h4>
                         </div>
                         <a href="{{ route('admin.our-teams.create') }}"
-                            class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
+                            class="btn app-btn-primary custom-edit  d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -33,7 +33,7 @@
                                             <td class="" >{{ $i->name }}</td>
                                             <td class="" >{{ $i->designation }}</td>
                                             <td>
-                                                <div class="d-flex align-items-center gap-2"> 
+                                                <div class="d-flex align-items-center gap-2">
                                                     <a href="{{ route('admin.our-teams.show' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>

@@ -9,6 +9,7 @@ use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
 use App\Models\OurTeam;
 use App\Models\PreferredTime;
+use App\Models\Setting;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
 use Carbon\Carbon;
@@ -153,7 +154,15 @@ class FrontController extends Controller
     public function ourTeams()
     {
         $data = OurTeam::get(['id', 'name', 'designation', 'image']);
+
         return $this->success(true, 'Data successfully!', $data);
     }
 
+    public function privacyPolicy(Request $request){
+
+        $privacy = Setting::where('key' , 'privacy_policy')->first();
+
+        return $this->success(true, 'Data successfully!', $privacy);
+
+    }
 }
