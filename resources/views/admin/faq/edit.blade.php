@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Visa Category')
+@section('title', 'Edit FAQ')
 
 @section('content')
 
@@ -70,7 +70,6 @@
                                     <textarea class="form-control" id="editor" name="answer" rows="5" style="height:400px" required>{{ old('answer', $faq->answer) }}</textarea>
                                 </div>
                             </div>
-
                         </div>
                         <hr>
                         <div class="mt-4 d-flex gap-2">
@@ -79,19 +78,12 @@
                             <button type="submit" name="publish_is" value="2"
                                 class="btn btn-outline-success px-4 ">Update</button>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
-
     <script>
-
-
-
         // $(document).ready(function() {
         //     $('#editor , #toc-description').summernote({
         //         height: 400,
@@ -137,8 +129,5 @@
         //     });
 
         // });
-
-
     </script>
-
 @endsection

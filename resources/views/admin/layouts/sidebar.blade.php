@@ -84,10 +84,7 @@
                     <span class="ms-2 fw-bold ">Our Teams</span>
                 </div>
             </a>
-        </li>
-
-
-
+        </li> 
         <h4 class="h5">Company Settings</h4>
         <li>
             <a href="{{ url('admin/privacy-policy') }}"
@@ -95,6 +92,16 @@
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-shield-halved"></i>
                     <span class="ms-2 fw-bold ">Privacy Policy</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('admin/faq') }}"
+                class="sidenav-menu__link {{ request()->is('admin/faq*') ? 'active' : '' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-question"></i>
+                    <span class="ms-2 fw-bold">FAQ</span>
+
                 </div>
             </a>
         </li>
@@ -132,15 +139,7 @@
             $(this).addClass('active');
         });
 
-        // Close submenu when back arrow is clicked
-        // $('#closePeople').on('click', function() {
-        //     $('#submenuPeople').hide();
-        //     $('.menu-item').removeClass('active');
-        // });
-        // $('#closeCompany').on('click', function() {
-        //     $('#submenuCompany').hide();
-        //     $('.menu-item').removeClass('active');
-        // });
+
         $('#companyMenu').on('click', function() {
             openSubmenu('#submenuCompany');
             $('.menu-item').removeClass('active');

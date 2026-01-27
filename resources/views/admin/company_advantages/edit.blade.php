@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Visa Category')
+@section('title', 'Edit Company Advantage')
 
 @section('content')
- 
+
     <div class="content-wrapper d-flex justify-content-center ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-4 my-4">

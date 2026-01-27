@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Visa Category Details')
+@section('title', 'Blog Details')
 
 @section('content')
     <style>
@@ -201,5 +201,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection

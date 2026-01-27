@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Visa Category Details')
+@section('title', 'Our Team Details')
 @section('content')
     <div class="container-fluid py-4">
         <div class="row mb-4">
@@ -68,5 +68,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Enquiry List')
+@section('title', 'Appointment List')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">

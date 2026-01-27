@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Visa Category')
+@section('title', 'Edit Blog')
 
 @section('content')
 

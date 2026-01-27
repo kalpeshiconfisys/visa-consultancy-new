@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
@@ -14,7 +13,6 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     @stack('css')
 </head>
-
 <body>
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
         @if (session('success'))
@@ -74,6 +72,5 @@
         });
     </script>
     @stack('script')
-</body>
-
+</body> 
 </html>

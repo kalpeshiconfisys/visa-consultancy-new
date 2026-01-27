@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Add Visa Category')
+@section('title', 'Add Our Team')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
@@ -25,7 +25,7 @@
                                             class="text-danger">*</span></label>
                                     <input class="form-control" name="designation" rows="2" placeholder=""
                                         required>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-lg-5 col-md-12">
                                 <div class="mt-0">

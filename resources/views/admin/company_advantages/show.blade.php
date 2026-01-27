@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Visa Category Details')
+@section('title', 'Company Advantage Details')
 
 @section('content')
 
@@ -84,5 +84,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
