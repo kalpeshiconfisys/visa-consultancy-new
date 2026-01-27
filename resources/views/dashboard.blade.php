@@ -57,7 +57,6 @@
 </style>
 
 <div class="container-fluid py-4">
-
     <div class="row mb-4">
         <div class="col-12">
             <div class="card border-0 p-4 welcome-card">
@@ -70,7 +69,6 @@
             </div>
         </div>
     </div>
-
     <div class="row g-4 mb-5">
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('admin/visa-category') }}" class="text-decoration-none text-dark">
@@ -88,15 +86,15 @@
             </a>
         </div>
         <div class="col-xl-3 col-md-6">
-            <a href="{{ url('admin/preferred-time') }}" class="text-decoration-none text-dark">
+            <a href="{{ url('admin/blogs') }}" class="text-decoration-none text-dark">
                 <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
                         <div class="stat-icon">
                             <i class="fa-solid fa-clock"></i>
                         </div>
                         <div class="ms-3">
-                            <small class="fw-bold text-muted">Appointment Time</small>
-                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_preferred_time'] }}</h3>
+                            <small class="fw-bold text-muted">Blogs</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_blog'] }}</h3>
                         </div>
                     </div>
                 </div>

@@ -63,6 +63,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('privacy-policy', [Admin\SettingController::class , 'privacyPolicy']);
         Route::post('privacy-policy-submit', [Admin\SettingController::class , 'privacyPolicySubmit']);
 
+        Route::resource('blogs', Admin\Blog\BlogController::class);
+        Route::resource('faq', Admin\Faq\FaqController::class);
+
+
+
 
     });
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppointmentRequest;
+use App\Models\Blog;
 use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
 use App\Models\Enquiry;
+use App\Models\Faq;
 use App\Models\OurTeam;
 use App\Models\PreferredTime;
 use App\Models\Setting;
@@ -161,8 +163,17 @@ class FrontController extends Controller
     public function privacyPolicy(Request $request){
 
         $privacy = Setting::where('key' , 'privacy_policy')->first();
-
         return $this->success(true, 'Data successfully!', $privacy);
 
+    }
+
+    public function blogs(){
+        $blogs = Blog::all();
+        return $this->success(true, 'Data Successfully!',$blogs);
+    }
+    
+    public function faq(){
+        $faq = Faq::all();
+        return $this->success(true, 'Data Successfully!',$faq);
     }
 }

@@ -20,4 +20,6 @@
     Route::get('/company-advantages', [FrontController::class, 'companyAdvantages']);
     Route::get('/our-teams', [FrontController::class, 'ourTeams']);
     Route::get('/privacy-policy', [FrontController::class, 'privacyPolicy']);
+    Route::get('/blogs', [FrontController::class, 'blogs']);
+    Route::get('/faq', [FrontController::class, 'faq']);
 

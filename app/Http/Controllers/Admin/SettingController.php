@@ -35,5 +35,9 @@ class SettingController extends Controller
         return redirect(url('admin/privacy-policy'))->with('success' , 'updated successfully!');
     }
 
+    public  function faq(){
+        return view('admin.settings.faq');
+    }
+
 
 }
