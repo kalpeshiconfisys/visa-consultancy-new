@@ -47,6 +47,15 @@
                 </div>
             </a>
         </li>
+        <li>
+            <a href="{{ url('admin/country') }}"
+                class="sidenav-menu__link {{ request()->is('admin/country*') ? 'active' : '' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-flag"></i>
+                    <span class="ms-2 fw-bold ">Country</span>
+                </div>
+            </a>
+        </li>
         <h4 class="h5">My Appointment</h4>
         <li>
             <a href="{{ url('admin/preferred-time') }}"
@@ -84,7 +93,7 @@
                     <span class="ms-2 fw-bold ">Our Teams</span>
                 </div>
             </a>
-        </li> 
+        </li>
         <h4 class="h5">Company Settings</h4>
         <li>
             <a href="{{ url('admin/privacy-policy') }}"
