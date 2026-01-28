@@ -7,6 +7,7 @@ use App\Models\AppointmentRequest;
 use App\Models\Blog;
 use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
+use App\Models\Country;
 use App\Models\Enquiry;
 use App\Models\Faq;
 use App\Models\OurTeam;
@@ -171,9 +172,14 @@ class FrontController extends Controller
         $blogs = Blog::all();
         return $this->success(true, 'Data Successfully!',$blogs);
     }
-    
+
     public function faq(){
         $faq = Faq::all();
         return $this->success(true, 'Data Successfully!',$faq);
+    }
+
+    public function country(){
+        $i = Country::all();
+        return $this->success(true, 'Data Successfully!',$i);
     }
 }
