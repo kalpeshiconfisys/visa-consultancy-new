@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\AppointmentRequest;
 use App\Models\Blog;
+use App\Models\Coaching;
 use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
 use App\Models\Country;
@@ -182,5 +183,9 @@ class FrontController extends Controller
         $i = Country::all();
         return $this->success(true, 'Data Successfully!',$i);
     }
-    
+    public function coaching(){
+        $i = Coaching::all();
+        return $this->success(true, 'Data Successfully!',$i);
+    }
+
 }

@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                         
+
                         <div class="mt-4 d-flex gap-2">
                             {{-- <button type="submit" name="publish_is" value="1"
                                 class="btn btn-outline-primary px-4 ">Draft</button> --}}
@@ -171,142 +171,7 @@
 
         });
 
-        $(document).on("click", ".addOutSideBullet", function() {
-            let bulletBox = $(this).closest(".bulletsArea");
-            let html = `
-                <div class="row bulletItem mb-2 align-items-center">
-                    <div class="col-10">
-                        <input type="text" name="category_bullets[]" class="form-control" placeholder="Enter bullet" required>
-                    </div>
-                    <div class="col-2 text-start">
-                        <button type="button" class="bullet-remove-btn removeBullet">✕</button>
-                    </div>
-                </div>`;
-            bulletBox.find(".addOutSideBullet").before(html);
-        });
-
-        $(document).on("click", ".removeBullet", function() {
-            $(this).closest(".bulletItem").remove();
-        });
-
-        let index = $("#subCategoryWrapper .subCategoryBox").length;
-
-        function applyContentRule(box) {
-            let type = $("#contentType").val();
-            if (type === "description") {
-                box.find(".descBox").show();
-                box.find(".bulletsArea").hide();
-            } else if (type === "bullets") {
-                box.find(".descBox").hide();
-                box.find(".bulletsArea").show();
-            } else {
-                box.find(".descBox").show();
-                box.find(".bulletsArea").show();
-            }
-        }
-
-        $("#contentType").on("change", function() {
-            $(".subCategoryBox").each(function() {
-                applyContentRule($(this));
-            });
-        });
-        applyContentRule($(".subCategoryBox"));
-
-        // Add Table Of Content
-        // $(".addSubCategory").on("click", function() {
-        //     let box = $(".subCategoryBox").first().clone();
-        //     box.find("input[type=text]").val("");
-        //     box.find("textarea").val("");
-        //     box.find(".bulletWrapper .bulletItem").not(":first").remove();
-
-        //     box.attr("data-index", index);
-
-        //     // Update bullet input name
-        //     box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
-
-        //     // Show remove button
-        //     box.find(".remove-subcategory-btn").show();
-
-        //     $("#subCategoryWrapper").append(box);
-        //     applyContentRule(box);
-        //     index++;
-        // });
-
-
-        $(".addSubCategory").on("click", function() {
-
-            // 1️⃣ Destroy summernote before cloning
-            $("#subCategoryWrapper textarea[name='description[]']").summernote('destroy');
-
-            let box = $(".subCategoryBox").first().clone();
-
-            // 2️⃣ Clear normal inputs
-            box.find("input[type=text]").val("");
-
-            // 3️⃣ Properly reset textarea (THIS IS IMPORTANT)
-            box.find("textarea")
-                .val("") // backend ma NULL jase
-                .html("") // editor empty rehse
-                .removeAttr("id");
-
-                box.find(".remove-subcategory-btn").show();
-            // 4️⃣ Remove extra bullets
-            box.find(".bulletWrapper .bulletItem").not(":first").remove();
-
-            $("#subCategoryWrapper").append(box);
-
-            // 5️⃣ Re-init Summernote (editor visible rehse)
-            $("#subCategoryWrapper textarea[name='description[]']").each(function() {
-                if (!$(this).next('.note-editor').length) {
-                    $(this).summernote({
-                        height: 400,
-                        toolbar: [
-                            ['style', ['style']],
-                            ['font', ['bold', 'underline', 'clear', 'italic']],
-                            ['color', ['color']],
-                            ['para', ['ul', 'ol', 'paragraph']],
-                            ['table', ['table']],
-                            ['insert', ['link', 'picture']],
-                            ['view', ['codeview', 'help']]
-                        ]
-                    });
-                }
-            });
-        });
-
-
-        // Remove Table Of Content (only extra blocks)
-        $(document).on("click", ".remove-subcategory-btn", function() {
-            let boxes = $("#subCategoryWrapper .subCategoryBox");
-            if (boxes.length > 1) {
-                $(this).closest(".subCategoryBox").remove();
-            } else {
-                alert("Cannot remove the last Table of Content.");
-            }
-        });
-
-
-        $(document).on("click", ".removeBullet", function() {
-            $(this).closest(".bulletItem").remove();
-        });
-
-        $(document).on("click", ".addBullet", function() {
-            let bulletBox = $(this).closest(".bulletsArea");
-            let parentIndex = bulletBox.closest(".subCategoryBox").index(); // get correct index
-            let html = `
-            <div class="row bulletItem mb-2 align-items-center">
-                <div class="col-10">
-                    <input type="text" name="bullets[` + parentIndex + `][]" class="form-control" placeholder="Enter bullet"  >
-                </div>
-                <div class="col-2 text-start">
-                    <button type="button" class="bullet-remove-btn removeBullet">✕</button>
-                </div>
-            </div>
-        `;
-            bulletBox.find(".addBullet").before(html);
-        });
-
-        $("#subCategoryWrapper .subCategoryBox").first().find(".remove-subcategory-btn").hide();
+         
     </script>
 
 @endsection
