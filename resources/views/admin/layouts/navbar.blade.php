@@ -6,7 +6,7 @@
              alt="Logo"
              width="42"
              height="42"
-             class="me-2 rounded shadow-sm"> 
+             class="me-2 rounded shadow-sm">
         <span class="fs-5">Visa Consultancy</span>
     </a>
 </div>

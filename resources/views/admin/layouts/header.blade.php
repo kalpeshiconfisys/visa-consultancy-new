@@ -132,7 +132,41 @@
         <input type="text" placeholder="Search People">
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(function () {
+
+    // Sidebar Open
+    $('#sidebarToggle').on('click', function () {
+        $('.sidebar').addClass('open');
+        $('.sidebar-overlay').fadeIn(200);
+    });
+
+    // Sidebar Close
+    $('.sidebar-overlay').on('click', function () {
+        $('.sidebar').removeClass('open');
+        $(this).fadeOut(200);
+    });
+
+});
+
+/* Avatar Dropdown */
+const avatarBtn = document.getElementById('avatarBtn');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+avatarBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.style.display =
+        dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
+});
+
+document.addEventListener('click', () => {
+    dropdownMenu.style.display = 'none';
+});
+</script>
+
 <script>
     $(function() {
 
