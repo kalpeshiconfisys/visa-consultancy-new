@@ -66,6 +66,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('blogs', Admin\Blog\BlogController::class);
         Route::resource('faq', Admin\Faq\FaqController::class);
         Route::resource('country', Admin\Country\CountryController::class);
+        Route::resource('coaching', Admin\Coaching\CoachingController::class);
     });
 
 });

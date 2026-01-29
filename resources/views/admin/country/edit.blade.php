@@ -58,7 +58,7 @@
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
+                        <div class="row g-4   mt-3 pb-3">
                             <div class="col-lg-7 col-md-12">
                                 <div>
                                     <label class="form-label">Title <span class="text-danger">*</span></label>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                         
                         <div class="mt-4 d-flex gap-2">
                             {{-- <button type="submit" name="publish_is" value="1"
                                 class="btn btn-outline-primary px-4 ">Draft</button> --}}

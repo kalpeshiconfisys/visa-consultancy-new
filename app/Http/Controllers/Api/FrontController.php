@@ -161,7 +161,7 @@ class FrontController extends Controller
         return $this->success(true, 'Data successfully!', $data);
     }
 
-    public function privacyPolicy(Request $request){
+    public function privacyPolicy(){
 
         $privacy = Setting::where('key' , 'privacy_policy')->first();
         return $this->success(true, 'Data successfully!', $privacy);
@@ -182,4 +182,5 @@ class FrontController extends Controller
         $i = Country::all();
         return $this->success(true, 'Data Successfully!',$i);
     }
+    
 }

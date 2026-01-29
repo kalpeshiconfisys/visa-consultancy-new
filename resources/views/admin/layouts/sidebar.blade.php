@@ -56,6 +56,15 @@
                 </div>
             </a>
         </li>
+        <li>
+            <a href="{{ url('admin/coaching') }}"
+                class="sidenav-menu__link {{ request()->is('admin/coaching*') ? 'active' : '' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span class="ms-2 fw-bold ">Coaching</span>
+                </div>
+            </a>
+        </li>
         <h4 class="h5">My Appointment</h4>
         <li>
             <a href="{{ url('admin/preferred-time') }}"

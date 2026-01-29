@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Country')
+@section('title', 'Add Coaching')
 
 @section('content')
 
@@ -56,12 +56,12 @@
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Add Country</h4>
-                        <a href="{{ route('admin.country.index') }}" class="btn btn-outline-danger">
+                        <h4 class="fw-bold m-0">Add Coaching</h4>
+                        <a href="{{ route('admin.coaching.index') }}" class="btn btn-outline-danger">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
-                    <form action="{{ route('admin.country.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.coaching.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row g-4       mt-3 pb-3">

@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+
                         <div class="mt-4 d-flex gap-2">
                             {{-- <button type="submit" name="publish_is" value="1"
                                 class="btn btn-outline-primary px-4 ">Draft</button> --}}
@@ -212,26 +212,7 @@
         });
         applyContentRule($(".subCategoryBox"));
 
-        // Add Table Of Content
-        // $(".addSubCategory").on("click", function() {
-        //     let box = $(".subCategoryBox").first().clone();
-        //     box.find("input[type=text]").val("");
-        //     box.find("textarea").val("");
-        //     box.find(".bulletWrapper .bulletItem").not(":first").remove();
-
-        //     box.attr("data-index", index);
-
-        //     // Update bullet input name
-        //     box.find(".bulletWrapper input[name^='bullets']").attr("name", "bullets[" + index + "][]");
-
-        //     // Show remove button
-        //     box.find(".remove-subcategory-btn").show();
-
-        //     $("#subCategoryWrapper").append(box);
-        //     applyContentRule(box);
-        //     index++;
-        // });
-
+        
 
         $(".addSubCategory").on("click", function() {
 

@@ -90,7 +90,7 @@
                 <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
                         <div class="stat-icon">
-                            <i class="fa-solid fa-clock"></i>
+                            <i class="fa-solid fa-blog"></i>
                         </div>
                         <div class="ms-3">
                             <small class="fw-bold text-muted">Blogs</small>
@@ -101,15 +101,15 @@
             </a>
         </div>
         <div class="col-xl-3 col-md-6">
-            <a href="{{ url('admin/company-advantages') }}" class="text-decoration-none text-dark">
+            <a href="{{ url('admin/country') }}" class="text-decoration-none text-dark">
                 <div class="card border-0 section-card p-3 hover-card">
                     <div class="d-flex align-items-center">
                         <div class="stat-icon">
-                            <i class="fa-solid fa-award"></i>
+                            <i class="fa-solid fa-flag"></i>
                         </div>
                         <div class="ms-3">
-                            <small class="fw-bold text-muted">Company Advantages</small>
-                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_company_advantages'] }}</h3>
+                            <small class="fw-bold text-muted">Country</small>
+                            <h3 class="fw-bold mb-0 text-primary">{{ $data['total_country'] }}</h3>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
 @section('content')
 
     <style>
-    
+
         .bullet-remove-btn {
             width: 32px;
             height: 32px;
@@ -56,7 +56,7 @@
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Add Blog</h4>
+                        <h4 class="fw-bold m-0">Add FAQ</h4>
                         <a href="{{ route('admin.faq.index') }}" class="btn btn-outline-danger">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
@@ -64,7 +64,7 @@
                     <form action="{{ route('admin.faq.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
-                        <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
+                        <div class="row g-4   mt-3 pb-3">
                             <div class="col-lg-12 col-md-12 ">
                                 <div>
                                     <label class="form-label fw-bold">Question<span class="text-danger">*</span></label>

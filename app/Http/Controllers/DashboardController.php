@@ -6,6 +6,7 @@ use App\Models\AppointmentRequest;
 use App\Models\Blog;
 use App\Models\CompanyAdvantage;
 use App\Models\ConsultationMethod;
+use App\Models\Country;
 use App\Models\Enquiry;
 use App\Models\PreferredTime;
 use App\Models\VisaCategory;
@@ -18,7 +19,7 @@ class DashboardController extends Controller
     {
         $totalVisaCategory  = VisaCategory::count();
         $blog  = Blog::count();
-        $companyAdvantages  = CompanyAdvantage::count();
+        $country  = Country::count();
         $consultationmethod  = ConsultationMethod::count();
         $enquiries = \App\Models\Enquiry::latest()->take(5)->get();
         $appointments = \App\Models\AppointmentRequest::with(['preferredtime', 'consultationmethod'])
@@ -28,7 +29,7 @@ class DashboardController extends Controller
         $data = [
             'total_visa_count' => $totalVisaCategory,
             'total_blog' => $blog,
-            'total_company_advantages' => $companyAdvantages,
+            'total_country' => $country,
             'total_consultation_method' => $consultationmethod,
             'total_enquiry' => $enquiries,
             'total_appointment' => $appointments
@@ -55,6 +56,7 @@ class DashboardController extends Controller
         $enquiry = Enquiry::with('visa_category')->latest()->paginate(10);
         return view('admin.enquiry-list', compact('enquiry'));
     }
+    
     public function appointmentlist()
     {
         $appointmentlist = AppointmentRequest::with(['preferredtime', 'consultationmethod'])->latest()->paginate(10);
