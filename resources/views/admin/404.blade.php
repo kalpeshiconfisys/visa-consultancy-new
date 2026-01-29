@@ -1,89 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Visa Consultancy - 404</title>
+    <title>404 | Page Not Found</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Visa Consultancy Admin Dashboard">
-    <meta name="author" content="Your Company">
+    <meta name="description" content="Page not found">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <style>
         body {
             min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #eef2f7);
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
         }
-        .app-card {
-            border-radius: 1rem;
+
+        .error-wrapper {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
         }
-        .page-title {
-            font-size: 4rem;
+
+        .error-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            animation: fadeUp 0.8s ease-in-out;
         }
-        .font-weight-light {
-            font-weight: 300;
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .app-btn-primary {
-            background-color: #0d6efd;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
+
+        .error-code {
+            font-size: 96px;
+            font-weight: 800;
+            color: #0d6efd;
+            line-height: 1;
         }
-        .app-btn-primary:hover {
-            background-color: #0b5ed7;
-            color: #fff;
+
+        .error-title {
+            font-size: 28px;
+            margin-top: 10px;
+            font-weight: 600;
         }
+
+        .error-desc {
+            color: #6c757d;
+            margin: 20px 0 35px;
+            font-size: 16px;
+        }
+
+        .btn-home {
+            padding: 12px 28px;
+            font-size: 16px;
+            border-radius: 50px;
+        }
+
+        .brand-logo img {
+            max-height: 70px;
+            margin-bottom: 30px;
+        }
+
         footer {
-            margin-top: auto;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #adb5bd;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container mb-5 mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-7 col-xl-6 text-center">
+<div class="error-wrapper">
 
-            <!-- Branding -->
-            <div class="mb-5">
-                <a href="{{ url('admin/') }}" class="d-inline-block mb-4">
-                    <img src="{{ asset('assets/images/visa-logo.webp') }}" alt="Visa Logo" class="img-fluid" style="max-height: 80px;">
-                </a>
-            </div>
+    <div class="error-card">
 
-            <!-- 404 Card -->
-            <div class="card p-5 shadow-sm app-card">
-                <h1 class="page-title mb-4">404<br><span class="font-weight-light">Page Not Found</span></h1>
-                <p class="mb-4 text-muted">Sorry, we can't find the page you're looking for.</p>
-                <a class="app-btn-primary" href="{{ url('admin/') }}">Go to Home Page</a>
-            </div>
+        <!-- Logo -->
+        <div class="brand-logo">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/visa-logo.webp') }}" alt="Visa Consultancy">
+            </a>
         </div>
+
+        <!-- Error -->
+        <div class="error-code">404</div>
+        <div class="error-title">Page Not Found</div>
+        <p class="error-desc">
+            The page you are looking for might have been removed,
+            had its name changed, or is temporarily unavailable.
+        </p>
+
+        <!-- Action -->
+        <a href="{{ url('/') }}" class="btn btn-primary btn-home">
+            <i class="fas fa-home me-2"></i>Back to Home
+        </a>
+
     </div>
+
+    <!-- Footer -->
+    <footer>
+        Designed with <i class="fas fa-heart text-danger"></i> by Your Company
+    </footer>
+
 </div>
 
-<!-- Footer -->
-<footer class="text-center py-3">
-    <small class="text-muted">
-        Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="#" target="_blank">Your Company</a>
-    </small>
-</footer>
-
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
 </body>
 </html>

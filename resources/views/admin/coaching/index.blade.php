@@ -22,7 +22,6 @@
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
-                                        <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
@@ -32,11 +31,7 @@
                                             <td class="">{{  $key + 1 }}</td>
                                             <td class="" >{{ $i->title }}</td>
 
-                                            <td class="" >
-                                                {{ $i->created_at
-                                                    ? \Carbon\Carbon::parse($i->created_at)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
-                                                    : '-' }}
-                                            </td>
+                                             
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}

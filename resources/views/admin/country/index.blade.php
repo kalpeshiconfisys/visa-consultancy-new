@@ -10,7 +10,7 @@
                             <h4 class="card-title text-dark fw-bold m-0 ">Country List</h4>
                         </div>
                         <a href="{{ route('admin.country.create') }}"
-                            class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
+                            class="btn app-btn-primary custom-edit d-flex align-items-center justify-content-center btn btn-sm btn-outline-secondary px-2"
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
                         </a>
@@ -22,7 +22,6 @@
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
-                                        <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
@@ -31,12 +30,6 @@
                                         <tr>
                                             <td class="">{{  $key + 1 }}</td>
                                             <td class="" >{{ $i->title }}</td>
-
-                                            <td class="" >
-                                                {{ $i->created_at
-                                                    ? \Carbon\Carbon::parse($i->created_at)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
-                                                    : '-' }}
-                                            </td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
