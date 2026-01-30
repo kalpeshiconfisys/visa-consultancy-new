@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Visa Category')
+@section('title', 'Add Privacy Policy')
 
 @section('content')
 
@@ -73,7 +73,7 @@
 
                         </div>
                         <hr>
-                        <div class="mt-4 d-flex gap-2"> 
+                        <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="2"
                                 class="btn btn-outline-success px-4 ">Save</button>
                         </div>

@@ -24,4 +24,6 @@
     Route::get('/faq', [FrontController::class, 'faq']);
     Route::get('/country', [FrontController::class, 'country']);
     Route::get('/coaching', [FrontController::class, 'coaching']);
+    Route::get('/about-us', [FrontController::class, 'aboutUs']);
+    Route::get('/terms-and-conditions', [FrontController::class, 'termsAndConditions']);
 

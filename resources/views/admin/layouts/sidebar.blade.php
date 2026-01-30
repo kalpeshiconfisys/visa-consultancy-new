@@ -29,7 +29,7 @@
                 </div>
             </a>
         </li>
-        <li>
+        <li>        
             <a href="{{ url('admin/visa-sub-category') }}"
                 class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
@@ -129,6 +129,16 @@
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-file-contract"></i>
                     <span class="ms-2 fw-bold">Terms Conditions</span>
+
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('admin/about-us') }}"
+                class="sidenav-menu__link {{ request()->is('admin/about-us*') ? 'active' : '' }}">
+                <div class="d-flex align-items-center">
+                  <i class="fa-solid fa-question"></i>
+                    <span class="ms-2 fw-bold">About Us</span>
 
                 </div>
             </a>

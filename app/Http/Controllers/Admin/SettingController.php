@@ -63,17 +63,12 @@ class SettingController extends Controller
 
     public function  aboutUs()
     {
-
         $about = Setting::where('key', 'about_us')->first();
-
-
         return view('admin.settings.about_us', compact('about'));
     }
     public function aboutUsSubmit(Request $request)
     {
-
         $privacyPolicyValue  = Setting::where('key','about_us')->first();
-
         $mainContent = $this->processEditorImages($request->about_us, $request);
         if(empty($privacyPolicyValue)){
             Setting::create([
@@ -120,7 +115,4 @@ class SettingController extends Controller
         }
         return $content;
     }
-
-
-
 }

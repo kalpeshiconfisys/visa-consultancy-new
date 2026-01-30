@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Visa Category')
+@section('title', 'Add About Us')
 
 @section('content')
 
@@ -51,6 +51,7 @@
         }
 
     </style>
+
     <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm rounded-4 my-4 main-category-card">

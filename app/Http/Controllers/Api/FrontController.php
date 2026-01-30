@@ -86,9 +86,9 @@ class FrontController extends Controller
         }
 
 
-        $visaCheck = VisaCategory::where('id',$request->visa_type)->first();
+        $visaCheck = VisaCategory::where('id', $request->visa_type)->first();
 
-        if(!$visaCheck){
+        if (!$visaCheck) {
             return $this->error('Visa Category id invalid !');
         }
         $input = [
@@ -105,19 +105,19 @@ class FrontController extends Controller
 
     public function preferredTime()
     {
-         $preferredTime = PreferredTime::get(['id', 'title']);
+        $preferredTime = PreferredTime::get(['id', 'title']);
         return $this->success(true, 'Enquiry submitted successfully!', $preferredTime);
     }
     public function consultationMethod()
     {
-         $consultationMethod = ConsultationMethod::get(['id', 'title']);
+        $consultationMethod = ConsultationMethod::get(['id', 'title']);
         return $this->success(true, 'Consultation Method successfully!', $consultationMethod);
     }
 
     public function appointmentRequest(Request $request)
     {
         $validator =   Validator::make($request->all(), [
-           'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'preferred_date' => 'nullable|date_format:Y-m-d',
             'preferred_time_id' => 'nullable|exists:preferred_time,id',
@@ -138,8 +138,8 @@ class FrontController extends Controller
             'email'     => $request->email,
             'phone'     => $request->phone,
             'preferred_date' => $request->preferred_date
-            ? Carbon::createFromFormat('Y-m-d', $request->preferred_date)->format('Y-m-d')
-            : null,
+                ? Carbon::createFromFormat('Y-m-d', $request->preferred_date)->format('Y-m-d')
+                : null,
             'preferred_time_id'   => $request->preferred_time_id,
             'consultation_method_id'   => $request->consultation_method_id,
             'message'   => $request->message,
@@ -152,7 +152,7 @@ class FrontController extends Controller
 
     public function companyAdvantages()
     {
-         $data = CompanyAdvantage::get(['id', 'title', 'description', 'image']);
+        $data = CompanyAdvantage::get(['id', 'title', 'description', 'image']);
         return $this->success(true, 'Data successfully!', $data);
     }
     public function ourTeams()
@@ -162,30 +162,45 @@ class FrontController extends Controller
         return $this->success(true, 'Data successfully!', $data);
     }
 
-    public function privacyPolicy(){
+    public function privacyPolicy()
+    {
 
-        $privacy = Setting::where('key' , 'privacy_policy')->first();
+        $privacy = Setting::where('key', 'privacy_policy')->first();
         return $this->success(true, 'Data successfully!', $privacy);
-
     }
 
-    public function blogs(){
+    public function blogs()
+    {
         $blogs = Blog::all();
-        return $this->success(true, 'Data Successfully!',$blogs);
+        return $this->success(true, 'Data Successfully!', $blogs);
     }
 
-    public function faq(){
+    public function faq()
+    {
         $faq = Faq::all();
-        return $this->success(true, 'Data Successfully!',$faq);
+        return $this->success(true, 'Data Successfully!', $faq);
     }
 
-    public function country(){
+    public function country()
+    {
         $i = Country::all();
-        return $this->success(true, 'Data Successfully!',$i);
+        return $this->success(true, 'Data Successfully!', $i);
     }
-    public function coaching(){
+    public function coaching()
+    {
         $i = Coaching::all();
-        return $this->success(true, 'Data Successfully!',$i);
+        return $this->success(true, 'Data Successfully!', $i);
     }
+    public function aboutUs()
+    {
 
+        $privacy = Setting::where('key', 'about_us')->first();
+        return $this->success(true, 'Data successfully!', $privacy);
+    }
+    public function termsAndConditions()
+    {
+
+        $privacy = Setting::where('key', 'terms_conditions')->first();
+        return $this->success(true, 'Data successfully!', $privacy);
+    }
 }
