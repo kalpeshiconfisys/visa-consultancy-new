@@ -63,6 +63,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('privacy-policy', [Admin\SettingController::class , 'privacyPolicy']);
         Route::post('privacy-policy-submit', [Admin\SettingController::class , 'privacyPolicySubmit']);
 
+        Route::get('terms-conditions', [Admin\SettingController::class , 'termsAndConditions']);
+        Route::post('terms-conditions-submit', [Admin\SettingController::class , 'tearmsAndConditionsSubmit']);
+
+        Route::get('about-us', [Admin\SettingController::class , 'aboutUs']);
+        Route::post('about-us-submit', [Admin\SettingController::class , 'aboutUsSubmit']);
+
         Route::resource('blogs', Admin\Blog\BlogController::class);
         Route::resource('faq', Admin\Faq\FaqController::class);
         Route::resource('country', Admin\Country\CountryController::class);

@@ -123,6 +123,16 @@
                 </div>
             </a>
         </li>
+        <li>
+            <a href="{{ url('admin/terms-conditions') }}"
+                class="sidenav-menu__link {{ request()->is('admin/terms-conditions*') ? 'active' : '' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-file-contract"></i>
+                    <span class="ms-2 fw-bold">Terms Conditions</span>
+
+                </div>
+            </a>
+        </li>
     </div>
 </div>
 
