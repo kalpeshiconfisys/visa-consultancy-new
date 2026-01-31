@@ -86,11 +86,11 @@
         </li>
         <h4 class="h5">Company Key Highlights</h4>
         <li>
-            <a href="{{ url('admin/company-advantages') }}"
-                class="sidenav-menu__link {{ request()->is('admin/company-advantages*') ? 'active' : '' }}">
+            <a href="{{ url('admin/legal-assistance') }}"
+                class="sidenav-menu__link {{ request()->is('admin/legal-assistance*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-award"></i>
-                    <span class="ms-2 fw-bold ">Company Advantages</span>
+                    <span class="ms-2 fw-bold ">Legal Assistance</span>
                 </div>
             </a>
         </li>

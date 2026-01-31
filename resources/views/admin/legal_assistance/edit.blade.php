@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Company Advantage')
+@section('title', 'Edit Legal Assistance')
 
 @section('content')
 
@@ -9,12 +9,12 @@
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Edit Company Advantages</h4>
-                        <a href="{{ route('admin.company-advantages.index') }}" class="btn btn-outline-danger">
+                        <h4 class="fw-bold m-0">Edit Legal Assistance</h4>
+                        <a href="{{ route('admin.legal-assistance.index') }}" class="btn btn-outline-danger">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
-                    <form action="{{ route('admin.company-advantages.update', trim(base64_encode($data->id), '=')) }}"
+                    <form action="{{ route('admin.legal-assistance.update', trim(base64_encode($data->id), '=')) }}"
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')

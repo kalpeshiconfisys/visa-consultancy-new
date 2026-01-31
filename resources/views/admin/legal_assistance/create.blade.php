@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Comapany Advantage')
+@section('title', 'Add Legal Assistance')
 
 @section('content')
 
@@ -10,12 +10,12 @@
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Add Company Advantages</h4>
-                        <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
+                        <h4 class="fw-bold m-0">Add Legal Assistance</h4>
+                        <a href="{{ url('admin/legal-assistance') }}" class="btn btn-outline-danger">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
-                    <form action="{{ route('admin.company-advantages.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.legal-assistance.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row g-4 border rounded shadow-sm mt-3 pb-3">

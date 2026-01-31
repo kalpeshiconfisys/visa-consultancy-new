@@ -17,7 +17,7 @@
     Route::get('/preferred-time', [FrontController::class, 'preferredTime']);
     Route::get('/consultation-method', [FrontController::class, 'consultationMethod']);
     Route::post('/appointment-request', [FrontController::class, 'appointmentRequest']);
-    Route::get('/company-advantages', [FrontController::class, 'companyAdvantages']);
+    Route::get('/legal-assistance', [FrontController::class, 'legalassistance']);
     Route::get('/testimonials', [FrontController::class, 'testimonials']);
     Route::get('/privacy-policy', [FrontController::class, 'privacyPolicy']);
     Route::get('/blogs', [FrontController::class, 'blogs']);

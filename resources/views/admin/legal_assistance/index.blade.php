@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Company Advantage List')
+@section('title', 'Legal Assistance List')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
@@ -7,9 +7,9 @@
                 <div class="card-body p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0 ">Company Advantages List</h4>
+                            <h4 class="card-title text-dark fw-bold m-0 ">Legal Assistance List</h4>
                         </div>
-                        <a href="{{ route('admin.company-advantages.create') }}"
+                        <a href="{{ route('admin.legal-assistance.create') }}"
                             class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
@@ -33,12 +33,12 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
-                                                    <a href="{{ route('admin.company-advantages.show' , trim(base64_encode($i->id), '=')) }}"
+                                                    <a href="{{ route('admin.legal-assistance.show' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
-                                                    <a href="{{ route('admin.company-advantages.edit' , trim(base64_encode($i->id), '=')) }}"
+                                                    <a href="{{ route('admin.legal-assistance.edit' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
@@ -72,7 +72,7 @@
                                                                     Cancel
                                                                 </button>
                                                                 <form
-                                                                    action="{{ route('admin.company-advantages.destroy' , trim(base64_encode($i->id), '=')) }}"
+                                                                    action="{{ route('admin.legal-assistance.destroy' , trim(base64_encode($i->id), '=')) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')

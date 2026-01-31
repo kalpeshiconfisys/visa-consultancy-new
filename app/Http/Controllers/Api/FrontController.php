@@ -11,6 +11,7 @@ use App\Models\ConsultationMethod;
 use App\Models\Country;
 use App\Models\Enquiry;
 use App\Models\Faq;
+use App\Models\LegalAssistance;
 use App\Models\OurTeam;
 use App\Models\PreferredTime;
 use App\Models\Setting;
@@ -151,9 +152,9 @@ class FrontController extends Controller
         return $this->success(true, 'Appointment Request submitted successfully!', []);
     }
 
-    public function companyAdvantages()
+    public function legalassistance()
     {
-        $data = CompanyAdvantage::get(['id', 'title', 'description', 'image']);
+        $data = LegalAssistance::get(['id', 'title', 'description', 'image']);
         return $this->success(true, 'Data successfully!', $data);
     }
     public function testimonials()
