@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\CompanyAdvantages;
+namespace App\Http\Controllers\Admin\LegalAssistance;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyAdvantage;

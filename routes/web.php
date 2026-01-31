@@ -57,7 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('preferred-time', Admin\Appointment\PreferredTimeController::class);
         Route::resource('consultation-method', Admin\Appointment\ConsultationMethodController::class);
         Route::resource('legal-assistance', Admin\LegalAssistance\LegalAssistanceController::class);
-        Route::resource('testimonials', Admin\CompanyAdvantages\TestimonialsController::class);
+        Route::resource('testimonials', Admin\LegalAssistance\TestimonialsController::class);
 
 
         Route::get('privacy-policy', [Admin\SettingController::class , 'privacyPolicy']);
