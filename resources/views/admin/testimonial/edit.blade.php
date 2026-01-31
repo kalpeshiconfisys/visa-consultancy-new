@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Edit Our Team')
+@section('title', 'Edit Testimonials')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
@@ -7,11 +7,11 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="fw-bold m-0">Edit Our Teams</h4>
-                        <a href="{{ route('admin.our-teams.index') }}" class="btn btn-outline-danger">
+                        <a href="{{ route('admin.testimonials.index') }}" class="btn btn-outline-danger">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
-                    <form action="{{ route('admin.our-teams.update', trim(base64_encode($data->id), '=')) }}"
+                    <form action="{{ route('admin.testimonials.update', trim(base64_encode($data->id), '=')) }}"
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -23,8 +23,8 @@
                                         value="{{ old('name', $data->name) }}" required>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="form-label"> Designation <span class="text-danger">*</span></label>
-                                    <input class="form-control" name="designation" rows="2"  value="{{ old('designation', $data->designation) }}" required>
+                                    <label class="form-label"> Description <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="description" rows="2"   required>{{ old('description', $data->description) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-12">

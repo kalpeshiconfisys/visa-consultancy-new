@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Our Team Details')
+@section('title', 'Testimonials Details')
 @section('content')
     <div class="container-fluid py-4">
         <div class="row mb-4">
@@ -11,14 +11,14 @@
                                 <i class="fas fa-passport me-2"></i>
                                 {{ $data->name }}
                             </h3>
-                            <small class="text-muted">Company Advantages – Detailed Overview</small>
+                            <small class="text-muted">Company testimonial – Detailed Overview</small>
                         </div>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('admin.our-teams.edit', trim(base64_encode($data->id), '=')) }}"
+                            <a href="{{ route('admin.testimonials.edit', trim(base64_encode($data->id), '=')) }}"
                                 class="btn btn-outline-primary">
                                 <i class="fas fa-edit me-1"></i> Edit
                             </a>
-                            <a href="{{ route('admin.our-teams.index') }}" class="btn btn-outline-danger">
+                            <a href="{{ route('admin.testimonials.index') }}" class="btn btn-outline-danger">
                                 <i class="bi bi-arrow-left me-1"></i> Back
                             </a>
                         </div>
@@ -39,7 +39,7 @@
                                     {!! $data->name !!}
                                 </div>
                                 <div class="content-area mt-3">
-                                    {!! $data->designation !!}
+                                    {!! $data->description !!}
                                 </div>
                             </div>
                         </div>

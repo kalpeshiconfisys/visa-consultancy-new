@@ -116,9 +116,6 @@
                             }
                         }
                     },
-                    // Remove this if you want to preserve formatting
-
-
                 }
             });
         });

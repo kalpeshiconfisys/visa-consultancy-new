@@ -29,7 +29,7 @@
                 </div>
             </a>
         </li>
-        <li>        
+        <li>
             <a href="{{ url('admin/visa-sub-category') }}"
                 class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
@@ -95,11 +95,11 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('admin/our-teams') }}"
-                class="sidenav-menu__link {{ request()->is('admin/our-teams*') ? 'active' : '' }}">
+            <a href="{{ url('admin/testimonials') }}"
+                class="sidenav-menu__link {{ request()->is('admin/testimonials*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-tie"></i>
-                    <span class="ms-2 fw-bold ">Our Teams</span>
+                    <span class="ms-2 fw-bold ">Testimonials</span>
                 </div>
             </a>
         </li>

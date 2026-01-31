@@ -14,6 +14,7 @@ use App\Models\Faq;
 use App\Models\OurTeam;
 use App\Models\PreferredTime;
 use App\Models\Setting;
+use App\Models\Testimonial;
 use App\Models\VisaCategory;
 use App\Models\VisaSubCategory;
 use Carbon\Carbon;
@@ -155,9 +156,9 @@ class FrontController extends Controller
         $data = CompanyAdvantage::get(['id', 'title', 'description', 'image']);
         return $this->success(true, 'Data successfully!', $data);
     }
-    public function ourTeams()
+    public function testimonials()
     {
-        $data = OurTeam::get(['id', 'name', 'designation', 'image']);
+        $data = Testimonial::get(['id', 'name', 'description', 'image']);
 
         return $this->success(true, 'Data successfully!', $data);
     }

@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OurTeam extends Model
+class Testimonial extends Model
 {
     use HasFactory;
+
+    protected $table = 'testimonials';
     protected $fillable = [
         'name',
         'image',
-        'designation'
+        'description'
     ];
 
      public function getImageAttribute($value)
     {
         if ($value != NULL) {
-            return asset('uploads/our-team/' . $value);
+            return asset('uploads/testimonial/' . $value);
         }
         return null;
     }

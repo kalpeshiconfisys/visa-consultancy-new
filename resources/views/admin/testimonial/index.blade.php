@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Our Team List')
+@section('title', 'Testimonials List')
 @section('content')
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
@@ -7,9 +7,9 @@
                 <div class="card-body p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0 ">Our Teams List</h4>
+                            <h4 class="card-title text-dark fw-bold m-0 ">Testimonials List</h4>
                         </div>
-                        <a href="{{ route('admin.our-teams.create') }}"
+                        <a href="{{ route('admin.testimonials.create') }}"
                             class="btn app-btn-primary custom-edit  d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
                             style="width:35px; height:35px;">
                             <i class="fas fa-plus"></i>
@@ -22,7 +22,7 @@
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Name</th>
-                                        <th class="text-dark">Desination</th>
+                                        <th class="text-dark">Description</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
@@ -31,14 +31,14 @@
                                         <tr>
                                             <td class="">{{ $data->firstItem() + $key }}</td>
                                             <td class="" >{{ $i->name }}</td>
-                                            <td class="" >{{ $i->designation }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($i->description, 30, '...') }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <a href="{{ route('admin.our-teams.show' , trim(base64_encode($i->id), '=')) }}"
+                                                    <a href="{{ route('admin.testimonials.show' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.our-teams.edit' , trim(base64_encode($i->id), '=')) }}"
+                                                    <a href="{{ route('admin.testimonials.edit' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
@@ -70,7 +70,7 @@
                                                                     Cancel
                                                                 </button>
                                                                 <form
-                                                                    action="{{ route('admin.our-teams.destroy' , trim(base64_encode($i->id), '=')) }}"
+                                                                    action="{{ route('admin.testimonials.destroy' , trim(base64_encode($i->id), '=')) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
