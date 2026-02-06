@@ -3,7 +3,7 @@
 
 @section('content')
 
-<style>
+{{-- <style>
 /* ===============================
    MOTION SAFETY
 ================================*/
@@ -172,6 +172,102 @@
 .btn-outline-primary:hover {
     transform: translateX(4px);
 }
+</style> --}}
+
+
+<style>
+
+:root {
+    --primary: #1F3A2E;
+    --secondary: #C9A24D;
+    --page-bg: #F6F8F7;
+    --card-bg: #FFFFFF;
+    --text-dark: #1F2933;
+    --text-muted: #6B7280;
+}
+
+
+body {
+    background-color: var(--page-bg);
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+}
+
+
+.custom-theme-color {
+    background: linear-gradient(135deg, #1F3A2E, #294D3D);
+    color: #ffffff !important;
+}
+
+
+.custom-theme-color-s {
+    background: linear-gradient(135deg, #C9A24D, #B8913F);
+    color: #ffffff !important;
+}
+
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+
+.section-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+}
+
+
+.welcome-card {
+    border-radius: 20px;
+    color: #fff;
+}
+
+.table thead th {
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.stat-icon-button {
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-weight: 600;
+}
+
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #E5E7EB;
+}
+
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
 </style>
 
 <div class="container-fluid py-4 dashboard ">
@@ -197,7 +293,7 @@
             <a href="{{ url('admin/visa-category') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card ">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon  custom-theme-color"><i class="fa-solid fa-globe "></i></div>
+                        <div class="stat-icon  custom-theme-color-s"><i class="fa-solid fa-globe "></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Visa Categories</small>
                             <h3 class="fw-bold   mb-0">{{ $data['total_visa_count'] }}</h3>
@@ -211,7 +307,7 @@
             <a href="{{ url('admin/blogs') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-blog"></i></div>
+                        <div class="stat-icon custom-theme-color-s"><i class="fa-solid fa-blog"></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Blogs</small>
                             <h3 class="fw-bold   mb-0">{{ $data['total_blog'] }}</h3>
@@ -221,28 +317,29 @@
             </a>
         </div>
 
-        <div class="col-xl-3 col-md-6 stat-col">
-            <a href="{{ url('admin/country') }}" class="text-decoration-none text-dark">
-                <div class="card p-3 section-card hover-card">
-                    <div class="d-flex align-items-center">
-                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-flag"></i></div>
-                        <div class="ms-3">
-                            <small class="text-muted fw-semibold">Countries</small>
-                            <h3 class="fw-bold   mb-0">{{ $data['total_country'] }}</h3>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+
 
         <div class="col-xl-3 col-md-6 stat-col">
             <a href="{{ url('admin/coaching') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-headset"></i></div>
+                        <div class="stat-icon custom-theme-color-s"><i class="fa-solid fa-headset"></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Coaching</small>
                             <h3 class="fw-bold  mb-0">{{ $data['total_coaching'] }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-md-6 stat-col">
+            <a href="{{ url('admin/testimonials') }}" class="text-decoration-none text-dark">
+                <div class="card p-3 section-card hover-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon custom-theme-color-s"><i class="fa-solid fa-headset"></i></div>
+                        <div class="ms-3">
+                            <small class="text-muted fw-semibold">Testimonial</small>
+                            <h3 class="fw-bold  mb-0">{{ $data['total_testimonials'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -257,15 +354,15 @@
         <div class="col-lg-6 stat-col">
             <div class="card p-4 section-card h-100">
                 <div class="d-flex justify-content-between mb-3">
-                    <h6 class="fw-bold   mb-0">
+                    <h6 class="   mb-0">
                         <i class="fa-solid fa-envelope-open-text me-2"></i>Recent Enquiries
                     </h6>
                     <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary stat-icon-button custom-theme-color">
-                        View All →
+                        View All
                     </a>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle">
+                    <table class="table  ">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -277,7 +374,7 @@
                         </thead>
                         <tbody>
                         @forelse($data['total_enquiry'] as $key => $enquiry)
-                            <tr>
+                            <tr class="table-row-muted">
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $enquiry->visa_category->title ?? '-' }}</td>
                                 <td>{{ $enquiry->name }}</td>
@@ -296,15 +393,15 @@
         <div class="col-lg-6 stat-col">
             <div class="card p-4 section-card h-100">
                 <div class="d-flex justify-content-between mb-3">
-                    <h6 class="fw-bold   mb-0">
+                    <h6 class="   mb-0">
                         <i class="fa-solid fa-calendar-check me-2"></i>Recent Appointments
                     </h6>
                     <a href="{{ url('admin/appointment-list') }}" class="btn btn-sm btn-outline-primary stat-icon-button custom-theme-color">
-                        View All →
+                        View All
                     </a>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle">
+                    <table class="table ">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -317,7 +414,7 @@
                         </thead>
                         <tbody>
                         @forelse($data['total_appointment'] as $key => $app)
-                            <tr>
+                            <tr class="table-row-muted">
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $app->name }}</td>
                                 <td>{{ $app->email }}</td>

@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ asset('assets/images/visa-logo.webp') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
         /* ===========================
            GLOBAL
@@ -16,22 +15,22 @@
 
 
         .btn-login {
-  background-color: #263B27;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  border: none;
-  transition: all 0.2s ease;
-}
+            background-color: #263B27;
 
-.btn-login:hover {
-  background-color: #2f4a31;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-  transform: translateY(-1px);
-}
+            border: none;
+            transition: all 0.2s ease;
+        }
 
-.btn-login:active {
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(0);
-}
+        .btn-login:hover {
+            background-color: #2f4a31;
+
+            transform: translateY(-1px);
+        }
+
+        .btn-login:active {
+            
+            transform: translateY(0);
+        }
 
 
 
@@ -62,7 +61,9 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
 
@@ -85,7 +86,7 @@
         /* ===========================
            BUTTON
         ============================ */
-        
+
 
         .btn-login:hover::after {
             opacity: 1;
@@ -171,13 +172,13 @@
         <div class="row h-100">
 
             <!-- LEFT LOGIN -->
-            <div class="col-lg-6 col-md-7 d-flex align-items-center justify-content-center bg-white">
+            <div class="col-lg-5 col-md-7 d-flex align-items-center justify-content-center bg-white">
                 <div class="w-75 login-card">
-                    <div class="text-center mb-4">
+                    <div class="text-left mb-4">
                         <img src="{{ asset('assets/images/visa-logo1.png') }}" width="90">
                     </div>
-                    <h3 class="text-center fw-bold mb-2">Login to Your Visa Portal</h3>
-                    <p class="text-center text-muted mb-4">
+                    <h3 class="text-left fw-bold mb-2">Login to Your Visa Portal</h3>
+                    <p class="text-left text-muted mb-4">
                         Secure access to applications, documents and appointments.
                     </p>
                     <form method="POST" action="{{ route('admin.login.submit') }}">
@@ -190,12 +191,11 @@
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control"
-                                placeholder="••••••••" required>
+                            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
                         </div>
 
-                       <button class="btn btn-login w-100 py-2 mt-2 text-white">
-                        <i class="fa-solid fa-lock me-1"></i> Secure Login
+                        <button class="btn btn-login w-100 py-2 mt-2 text-white">
+                            <i class="fa-solid fa-lock me-1"></i> Secure Login
                         </button>
 
                     </form>
@@ -206,7 +206,7 @@
                 </div>
             </div>
             <!-- RIGHT IMAGE -->
-            <div class="col-lg-6 col-md-5 d-none d-md-block p-0">
+            <div class="col-lg-7 col-md-5 d-none d-md-block p-0">
                 <div class="h-100 login-bg"
                     style="background:url('{{ asset('assets/images/background/hire-visa-consultant.jpg') }}') center/cover no-repeat;">
                 </div>
@@ -217,11 +217,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            setTimeout(function () {
+        $(document).ready(function() {
+            setTimeout(function() {
                 $('.toast').fadeOut(600);
             }, 3500);
         });
     </script>
 </body>
+
 </html>

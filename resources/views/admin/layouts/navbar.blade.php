@@ -1,5 +1,5 @@
-<div class="sticky-top bg-white shadow-sm" style="z-index: 9999;">
-    <div class="d-flex align-items-center px-3 py-2 border-bottom ">
+<div class="sticky-top bg-white  " style="z-index: 9999;">
+    <div class="d-flex align-items-center px-3 py-2 ">
         <a href="{{ url('/admin') }}"
            class="d-flex align-items-center text-decoration-none text-dark fw-bold">
 

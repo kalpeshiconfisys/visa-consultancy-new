@@ -4,44 +4,13 @@
         position: relative;
     }
 
-    /* Avatar Circle */
-    .avatar {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        padding: 2px;
-        background: linear-gradient(135deg, #4A90E2, #8E2DE2);
-        cursor: pointer;
-        transition: .25s ease;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, .25);
-        position: relative;
-    }
-
-    .avatar img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        border: 3px solid #fff;
-        object-fit: cover;
-    }
-
     .avatar:hover {
         transform: scale(1.08);
         box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
     }
 
     /* Online Dot */
-    .avatar::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: #00c853;
-        border: 2px solid white;
-    }
+
 
     /* Dropdown */
     .dropdown {
@@ -99,6 +68,43 @@
     .dropdown .text-danger i {
         color: #ff3d3d;
     }
+
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 20%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #000000; /* premium golden border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    text-align: center;  /* 🔥 FULL IMAGE VISIBLE */
+    justify-content: center;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+/* ================================
+   DROPDOWN
+================================ */
+
+
+
+
+
+
+
+
 </style>
 
 
@@ -113,15 +119,17 @@
         </div>
         <div class="icon-group">
             <div class="avatar-wrapper">
-                <div class="avatar" id="avatarBtn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-                </div>
-                <div class="dropdown" id="dropdownMenu">
-                    <a href="{{ url('admin/logout') }}" class="text-danger">
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout
-                    </a>
-                </div>
-            </div>
+    <div class="avatar" id="avatarBtn">
+        <img src="{{ asset('assets/images/header-logo.png') }}">
+    </div>
+
+    <div class="dropdown" id="dropdownMenu">
+        <a href="{{ url('admin/logout') }}" class="text-danger">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

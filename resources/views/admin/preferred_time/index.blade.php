@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('title', 'Preferred Time List')
 @section('content')
-     
+
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
@@ -44,12 +44,12 @@
                                                     </a> --}}
 
                                                     <a href="{{ route('admin.preferred-time.edit', trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm       px-2">
+                                                        class="btn btn-sm        px-2" title="Edit">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
 
                                                     <button class="btn btn-sm     px-2" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $i->id }}">
+                                                        data-bs-target="#deleteModal{{ $i->id }}" title="Delete">
                                                         <i class="fa-solid fa-trash text-danger me-1"></i>
                                                     </button>
                                                 </div>

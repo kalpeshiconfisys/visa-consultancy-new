@@ -49,8 +49,8 @@
             <div class="card shadow-sm border-0 rounded-4 my-4">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Edit Blog</h4>
-                        <a href="{{ route('admin.blogs.index') }}" class="btn btn-outline-danger">
+                        <h4 class="  m-0">Edit Blog</h4>
+                        <a href="{{ route('admin.blogs.index') }}" class="btn custom-theme-color   text-color">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
@@ -90,7 +90,7 @@
                             {{-- <button type="submit" name="publish_is" value="1"
                                 class="btn btn-outline-primary px-4 ">Draft</button> --}}
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-outline-success px-4 ">Update</button>
+                                class="btn custom-theme-color   text-color px-4 ">Update</button>
                         </div>
 
                     </form>
@@ -170,7 +170,7 @@
             });
 
         });
- 
+
     </script>
 
 @endsection

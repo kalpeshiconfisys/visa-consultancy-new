@@ -43,18 +43,18 @@
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
                                                     <a href="{{ url('admin/visa-category/show/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm    px-2  ">
+                                                        class="btn btn-sm    px-2  " title="View">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
                                                     <a href="{{ url('admin/visa-category/edit/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm    px-2">
+                                                      title="Edit"  class="btn btn-sm    px-2" >
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
                                                     <button class="btn btn-sm    px-2"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $category->id }}">
+                                                        data-bs-target="#deleteModal{{ $category->id }}" title="Delete">
                                                         <i class="fa-solid fa-trash me-1 text-danger"></i>
                                                     </button>
                                                 </div>

@@ -12,7 +12,8 @@
                         <a href="{{ route('admin.legal-assistance.create') }}"
                            class="btn btn-sm d-flex align-items-center px-3 py-1"
                             style="background-color: #263B27; color: #fff; border-radius: 6px;">
-                            <i class="fas fa-plus"></i> Add Legal Assistance
+                            <i class="fas fa-plus"></i>
+                            Add Legal Assistance
                         </a>
                     </div>
                     <div class="card-body">
@@ -39,13 +40,13 @@
                                                     </a> --}}
                                                     {{-- EDIT --}}
                                                     <a href="{{ route('admin.legal-assistance.edit' , trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm    px-2">
+                                                        class="btn btn-sm    px-2" title="Edit">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
                                                     <button class="btn btn-sm  text-danger  px-2"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $i->id }}">
+                                                        data-bs-target="#deleteModal{{ $i->id }}" title="Delete">
                                                         <i class="fa-solid fa-trash me-1"></i>
                                                     </button>
                                                 </div>

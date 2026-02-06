@@ -29,7 +29,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: #ffc107;
+            background: #dc3545;
             border: none;
             color: white;
             font-weight: bold;
@@ -40,7 +40,7 @@
         }
 
         .remove-subcategory-btn:hover {
-            background: #e0a800;
+            background: #dc3545;
         }
 
         .toc-card {
@@ -56,8 +56,8 @@
             <div class="card shadow-sm rounded-4 my-4 main-category-card">
                 <div class="card-body p-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Add Visa Category</h4>
-                        <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
+                        <h4 class="  m-0">Add Visa Category</h4>
+                        <a href="{{ url('admin/visa-category') }}" class="btn custom-theme-color   text-color">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>
@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-2 bulletsArea">
+                                {{-- <div class="mt-2 bulletsArea">
                                     <label class="fw-bold">Bullets <span class="text-danger">*</span></label>
                                     <div class="row bulletItem mb-2 align-items-center">
                                         <div class="col-10">
@@ -123,13 +123,13 @@
                                     <button type="button" class="btn btn-sm btn-outline-success addOutSideBullet  ">
                                         + Add Bullet
                                     </button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <hr>
                         <div class=" d-flex  justify-content-between col-12-sm">
-                            <h4 class="fw-bold align-content-center">Table Of Content</h4>
-                            <button type="button" class="btn btn-outline-primary   addSubCategory mt-3 mb-3">+ Add
+                            <h4 class="  align-content-center">Table Of Content</h4>
+                            <button type="button" class="btn custom-theme-color   text-color   addSubCategory mt-3 mb-3">+ Add
                                 Table Of Content</button>
                         </div>
                         <div id="subCategoryWrapper">
@@ -168,9 +168,9 @@
 
                         <div class="mt-4 d-flex gap-2">
                             <button type="submit" name="publish_is" value="1"
-                                class="btn btn-outline-primary px-4 ">Draft</button>
+                                class="btn custom-theme-color   text-color px-4 ">Draft</button>
                             <button type="submit" name="publish_is" value="2"
-                                class="btn btn-outline-success px-4 ">Publish</button>
+                                class="btn custom-theme-color   text-color px-4 ">Publish</button>
                         </div>
                     </form>
                 </div>

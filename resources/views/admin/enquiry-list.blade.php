@@ -6,8 +6,8 @@
             <div class="card shadow-sm border-0 rounded-0 my-4">
                 <div class="card-body custom-shadow   p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                        <h4 class="card-title text-dark fw-bold m-0">Enquiry List</h4>
-                        <a href="{{ url('admin') }}" class="btn btn-outline-secondary ">
+                        <h4 class="card-title text-dark   m-0">Enquiry List</h4>
+                        <a href="{{ url('admin') }}" class="btn custom-theme-color   text-color ">
                             <i class="bi bi-arrow-left me-1"></i> Back
                         </a>
                     </div>
@@ -26,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($enquiry as $key => $i)
-                                        <tr>
+                                        <tr class="table-row-muted">
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $i->visa_category->title ?? '-' }}</td>
                                             <td>{{ $i->name }}</td>

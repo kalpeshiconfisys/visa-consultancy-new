@@ -151,10 +151,10 @@
                         </div>
                         <div class="d-flex gap-2">
                             <a href="{{ url('admin/visa-category/edit', trim(base64_encode($visaCategory->id), '=')) }}"
-                                class="btn btn-outline-primary">
+                                class="btn custom-theme-color   text-color">
                                 <i class="fas fa-edit me-1"></i> Edit
                             </a>
-                            <a href="{{ url('admin/visa-category') }}" class="btn btn-outline-danger">
+                            <a href="{{ url('admin/visa-category') }}" class="btn custom-theme-color   text-color">
                                 <i class="bi bi-arrow-left me-1"></i> Back
                             </a>
                         </div>

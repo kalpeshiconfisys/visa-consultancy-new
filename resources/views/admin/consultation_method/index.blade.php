@@ -37,12 +37,12 @@
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a> --}}
                                                     <a href="{{ route('admin.consultation-method.edit', trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm    px-2">
+                                                        class="btn btn-sm    px-2" title="Edit" >
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     <button class="btn    px-2"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $i->id }}">
+                                                        data-bs-target="#deleteModal{{ $i->id }}" title="Delete">
                                                         <i class="fa-solid fa-trash me-1 text-danger"></i>
                                                     </button>
                                                 </div>

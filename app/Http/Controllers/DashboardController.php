@@ -10,6 +10,7 @@ use App\Models\ConsultationMethod;
 use App\Models\Country;
 use App\Models\Enquiry;
 use App\Models\PreferredTime;
+use App\Models\Testimonial;
 use App\Models\VisaCategory;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,7 @@ class DashboardController extends Controller
         $blog  = Blog::count();
         $country  = Country::count();
         $coaching  = Coaching::count();
+        $testimonials  = Testimonial::count();
         $enquiries = \App\Models\Enquiry::latest()->take(5)->get();
         $appointments = \App\Models\AppointmentRequest::with(['preferredtime', 'consultationmethod'])
             ->latest()
@@ -33,7 +35,8 @@ class DashboardController extends Controller
             'total_country' => $country,
             'total_coaching' => $coaching,
             'total_enquiry' => $enquiries,
-            'total_appointment' => $appointments
+            'total_appointment' => $appointments,
+            'total_testimonials' =>  $testimonials
         ];
 
         return view('dashboard', compact('data'));

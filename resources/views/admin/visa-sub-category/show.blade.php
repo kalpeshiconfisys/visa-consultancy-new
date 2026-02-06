@@ -71,10 +71,10 @@
                         </div>
                         <div class="d-flex gap-2 mt-3 mt-md-0">
                         <a href="{{ route('admin.visa-sub-category.edit', trim(base64_encode($visaSubCategory->id), '=')) }}"
-                            class="btn btn-outline-primary">
+                            class="btn custom-theme-color   text-color">
                             <i class="fas fa-edit me-1"></i> Edit
                         </a>
-                        <a href="{{ route('admin.visa-sub-category.index') }}" class="btn btn-outline-danger">
+                        <a href="{{ route('admin.visa-sub-category.index') }}" class="btn custom-theme-color   text-color">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>

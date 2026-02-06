@@ -43,7 +43,8 @@ class VisaCategoryController extends Controller
             'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
-        $input['bullets'] = $request->category_bullets ?? [];
+        // $input['bullets'] = $request->category_bullets ?? [];
+        $input['bullets'] =  [];
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -102,7 +103,8 @@ class VisaCategoryController extends Controller
             'publish_is' => $request->publish_is
         ];
         $input['date_modified'] = Carbon::now()->toDateTimeString();
-        $input['bullets'] = $request->category_bullets ?? [];
+        // $input['bullets'] = $request->category_bullets ?? [];
+        $input['bullets'] =  [];
         if ($request->hasFile('image')) {
             if ($visa->image && File::exists(public_path('uploads/visa-category/' . basename($visa->image)))) {
                 File::delete(public_path('uploads/visa-category/' . basename($visa->image)));
@@ -203,7 +205,7 @@ class VisaCategoryController extends Controller
 
         foreach ($matches as $match) {
 
-            $imageFormat = strtolower($match[1]);    
+            $imageFormat = strtolower($match[1]);
             $base64Image = $match[2];
 
 

@@ -566,8 +566,8 @@
      justify-content: space-between;
      padding: 12px 20px;
      /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */
-     border-radius: 6px;
-     margin: 20px;
+     border-radius: 0px;
+     margin-bottom: 20px;
      position: relative;
 
      border-bottom: 1px solid #c7c7c7;
@@ -1931,11 +1931,18 @@
   background-color: #263B27  !important;
   color: #fff;
 }
+.custom-theme-color-s {
+  background-color: #AD8330  !important;
+  color: #fff;
+}
+
+.text-color:hover {
+  color: #fff;
+}
 
 
 
-
- .table-row-muted td {
+.table-row-muted td {
   color: #637381;
   font-weight: 500;
 }
