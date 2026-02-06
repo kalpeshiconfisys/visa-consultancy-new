@@ -9,7 +9,7 @@
         <div class="card shadow-sm rounded-4 my-4">
             <div class="card-body p-4">
                 <div class="d-flex justify-content-between mb-3">
-                    <h4 class="fw-bold">Add FAQ</h4>
+                    <h4 class="fw-bold">FAQ</h4>
                     <button type="button" id="addFaq" class="btn btn-primary">+ Add More</button>
                 </div>
                 <form action="{{ url('admin/faq-submit') }}" method="POST">

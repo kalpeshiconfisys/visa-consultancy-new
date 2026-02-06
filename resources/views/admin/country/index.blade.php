@@ -4,7 +4,7 @@
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
-                <div class="card-body p-4">
+                <div class="card-body  custom-shadow p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title text-dark fw-bold m-0 ">Country List</h4>

@@ -80,7 +80,7 @@ class SettingController extends Controller
                 'value' => $mainContent
             ]);
         }
-        return redirect(url('admin/about_us'))->with('success' , 'updated successfully!');
+        return redirect(url('admin/about-us'))->with('success' , 'updated successfully!');
     }
 
 

@@ -18,7 +18,7 @@ class AuthController extends Controller
         }
         return view('Admin.auth.login');
     }
-    
+
     public function loginSubmit(Request $request)
     {
 

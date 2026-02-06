@@ -4,32 +4,32 @@
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
-                <div class="card-body p-4">
+                <div class="card-body custom-shadow p-4 ">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0 ">Visa Category List</h4>
+                            <h4 class="card-title   m-0 ">Visa Category List</h4>
                         </div>
                         <a href="{{ url('admin/visa-category/create') }}"
-                            class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
-                            style="width:35px; height:35px;">
-                            <i class="fas fa-plus"></i>
+                            class="btn btn-sm d-flex align-items-center px-3 py-1"
+                            style="background-color: #263B27; color: #fff; border-radius: 6px;">
+                            <i class="fas fa-plus"></i>Add Visa Category
                         </a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ">
                         <div class="table-responsive">
-                            <table id="example" class="table table-bordered align-middle " style="min-width: 1000px;">
+
+                            <table id="example" class="table  " style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Title</th>
                                         <th class="text-dark"> Status</th>
-                                        <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($visaCategories as $key => $category)
-                                        <tr>
+                                        <tr   class="table-row-muted" >
                                             <td class="">{{ $visaCategories->firstItem() + $key }}</td>
                                             <td class="" >{{ $category->title }}</td>
                                             <td class="" >
@@ -39,28 +39,23 @@
                                                     <span class="text-success">Publish</span>
                                                 @endif
                                             </td>
-                                            <td class="" >
-                                                {{ $category->date_modified
-                                                    ? \Carbon\Carbon::parse($category->date_modified)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
-                                                    : '-' }}
-                                            </td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
                                                     <a href="{{ url('admin/visa-category/show/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
+                                                        class="btn btn-sm    px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a>
                                                     {{-- EDIT --}}
                                                     <a href="{{ url('admin/visa-category/edit/' . trim(base64_encode($category->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
+                                                        class="btn btn-sm    px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-secondary  custom-trash  px-2"
+                                                    <button class="btn btn-sm    px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $category->id }}">
-                                                        <i class="fa-solid fa-trash me-1"></i>
+                                                        <i class="fa-solid fa-trash me-1 text-danger"></i>
                                                     </button>
                                                 </div>
                                                 {{-- Delete Modal --}}
@@ -107,6 +102,8 @@
                                     @endforelse
                                 </tbody>
                             </table>
+
+
                         </div>
                         <!-- Pagination -->
                         <div class="d-flex justify-content-end mt-1">

@@ -143,8 +143,8 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-3">
                         <div>
-                            <h3 class="fw-bold text-primary mb-1">
-                                <i class="fas fa-passport me-2"></i>
+                            <h3 class="fw-bold text-primary mb-1 text-black">
+                                <i class="fas fa-passport me-2 "></i>
                                 {{ $coaching->title }}
                             </h3>
                             <small class="text-muted">Coaching – Detailed Overview</small>
@@ -168,7 +168,7 @@
                     <div class="col-lg-8">
                         <div class="card border-0 shadow-sm rounded-4 mb-4">
                             <div class="card-body p-4">
-                                <h5 class="fw-bold border-bottom pb-2 mb-3 text-primary">
+                                <h5 class="fw-bold   pb-2 mb-3 text-black">
                                     About This Coaching
                                 </h5>
                                 <div class="content-area mt-3">
@@ -181,7 +181,7 @@
                         @if ($coaching->image )
                             <div class="card border-0 shadow-sm rounded-4 sticky-box">
                                 <div class="card-body p-3">
-                                    <h6 class="fw-bold mb-3 text-primary">
+                                    <h6 class="fw-bold mb-3 text-black">
                                         <i class="fas fa-image me-1"></i>
                                         Media
                                     </h6>

@@ -145,7 +145,7 @@
                                         required>
                                 </div>
                                 <div class="mt-2 descBox">
-                                    <label class="fw-bold">Description</label>
+                                    <label class="fw-bold">Description <span class="text-danger">*</span></label>
                                     <textarea name="description[]" id="toc-description" class="form-control" rows="2"
                                         placeholder="Enter Description"></textarea>
                                 </div>

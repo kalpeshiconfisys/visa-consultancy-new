@@ -62,7 +62,7 @@
 
 .hover-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(13,110,253,.25);
+    /* box-shadow: 0 20px 45px rgba(13,110,253,.25); */
 }
 
 /* ===============================
@@ -77,11 +77,38 @@
     justify-content: center;
     color: #fff;
     font-size: 22px;
-    background: linear-gradient(135deg,#0d6efd,#4facfe);
-    box-shadow: 0 10px 25px rgba(13,110,253,.35);
+    /* box-shadow: 0 5px 10px rgba(13,110,253,.35); */
     transition: transform .4s ease;
 }
+.stat-icon-button {
+    width: auto;
+    height: 35px;
+    padding: 0 22px;
+    border-radius: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+
+
+    /* box-shadow: 0 8px 20px rgba(13,110,253,.35); */
+
+    transition: all .3s ease;
+}
+
+
+
+
+.hover-card:hover .stat-icon-button {
+    transform: scale(1.12);
+}
 .hover-card:hover .stat-icon {
     transform: scale(1.12);
 }
@@ -97,9 +124,9 @@
 ================================*/
 .welcome-card {
     border-radius: 22px;
-    background: linear-gradient(135deg,#5996f1,#4facfe);
+
     color: #fff;
-    box-shadow: 0 20px 45px rgba(13,110,253,.4);
+    /* box-shadow: 0 5px 10px rgba(13,110,253,.4); */
     position: relative;
     overflow: hidden;
 }
@@ -147,12 +174,12 @@
 }
 </style>
 
-<div class="container-fluid py-4 dashboard">
+<div class="container-fluid py-4 dashboard ">
 
     <!-- Welcome -->
     <div class="row mb-4">
         <div class="col-12">
-            <div class="card border-0 p-4 welcome-card">
+            <div class="card border-0 p-4 welcome-card custom-theme-color">
                 <h4 class="fw-bold mb-1">
                     Welcome back, {{ auth()->guard('admin')->user()->name }} 👋
                 </h4>
@@ -164,16 +191,16 @@
     </div>
 
     <!-- Stats -->
-    <div class="row g-4 mb-5">
+    <div class="row g-4 mb-5 ">
 
-        <div class="col-xl-3 col-md-6 stat-col">
+        <div class="col-xl-3 col-md-6 stat-col ">
             <a href="{{ url('admin/visa-category') }}" class="text-decoration-none text-dark">
-                <div class="card p-3 section-card hover-card">
+                <div class="card p-3 section-card hover-card ">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="stat-icon  custom-theme-color"><i class="fa-solid fa-globe "></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Visa Categories</small>
-                            <h3 class="fw-bold text-primary mb-0">{{ $data['total_visa_count'] }}</h3>
+                            <h3 class="fw-bold   mb-0">{{ $data['total_visa_count'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -184,10 +211,10 @@
             <a href="{{ url('admin/blogs') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon"><i class="fa-solid fa-blog"></i></div>
+                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-blog"></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Blogs</small>
-                            <h3 class="fw-bold text-primary mb-0">{{ $data['total_blog'] }}</h3>
+                            <h3 class="fw-bold   mb-0">{{ $data['total_blog'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -198,10 +225,10 @@
             <a href="{{ url('admin/country') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon"><i class="fa-solid fa-flag"></i></div>
+                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-flag"></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Countries</small>
-                            <h3 class="fw-bold text-primary mb-0">{{ $data['total_country'] }}</h3>
+                            <h3 class="fw-bold   mb-0">{{ $data['total_country'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -212,10 +239,10 @@
             <a href="{{ url('admin/coaching') }}" class="text-decoration-none text-dark">
                 <div class="card p-3 section-card hover-card">
                     <div class="d-flex align-items-center">
-                        <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div class="stat-icon custom-theme-color"><i class="fa-solid fa-headset"></i></div>
                         <div class="ms-3">
                             <small class="text-muted fw-semibold">Coaching</small>
-                            <h3 class="fw-bold text-primary mb-0">{{ $data['total_coaching'] }}</h3>
+                            <h3 class="fw-bold  mb-0">{{ $data['total_coaching'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -230,10 +257,10 @@
         <div class="col-lg-6 stat-col">
             <div class="card p-4 section-card h-100">
                 <div class="d-flex justify-content-between mb-3">
-                    <h6 class="fw-bold text-primary mb-0">
+                    <h6 class="fw-bold   mb-0">
                         <i class="fa-solid fa-envelope-open-text me-2"></i>Recent Enquiries
                     </h6>
-                    <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary">
+                    <a href="{{ url('admin/enquiry-list') }}" class="btn btn-sm btn-outline-primary stat-icon-button custom-theme-color">
                         View All →
                     </a>
                 </div>
@@ -269,10 +296,10 @@
         <div class="col-lg-6 stat-col">
             <div class="card p-4 section-card h-100">
                 <div class="d-flex justify-content-between mb-3">
-                    <h6 class="fw-bold text-primary mb-0">
+                    <h6 class="fw-bold   mb-0">
                         <i class="fa-solid fa-calendar-check me-2"></i>Recent Appointments
                     </h6>
-                    <a href="{{ url('admin/appointment-list') }}" class="btn btn-sm btn-outline-primary">
+                    <a href="{{ url('admin/appointment-list') }}" class="btn btn-sm btn-outline-primary stat-icon-button custom-theme-color">
                         View All →
                     </a>
                 </div>

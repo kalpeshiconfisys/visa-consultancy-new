@@ -4,11 +4,12 @@
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
-                <div class="card-body p-4">
+                <div class="card-body custom-shadow   p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0">Enquiry List</h4>
-                        </div>
+                        <h4 class="card-title text-dark fw-bold m-0">Enquiry List</h4>
+                        <a href="{{ url('admin') }}" class="btn btn-outline-secondary ">
+                            <i class="bi bi-arrow-left me-1"></i> Back
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,7 +22,7 @@
                                         <th class="text-dark"> Email</th>
                                         <th class="text-dark"> Phone</th>
                                         <th class="text-dark">Message</th>
-                                        </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($enquiry as $key => $i)
@@ -32,9 +33,10 @@
                                             <td>{{ $i->email }}</td>
                                             <td>{{ $i->phone ?? '-' }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal"
+                                                <button class="btn btn-sm btn-outline-secondary  custom-show  px-2"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#messageModal{{ $i->id }}">
-                                                    <i class="fa-solid fa-eye"></i>
+                                                    <i class="fa-solid fa-eye me-1"></i>
                                                 </button>
                                             </td>
                                         </tr>

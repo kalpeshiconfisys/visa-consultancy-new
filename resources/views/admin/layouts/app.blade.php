@@ -11,6 +11,8 @@
     <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/portal.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     @stack('css')
 </head>
 <body>
@@ -72,5 +74,5 @@
         });
     </script>
     @stack('script')
-</body> 
+</body>
 </html>

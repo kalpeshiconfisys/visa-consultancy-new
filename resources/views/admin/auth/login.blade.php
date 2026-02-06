@@ -8,11 +8,34 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/visa-logo.webp') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /> 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
         /* ===========================
            GLOBAL
         ============================ */
+
+
+        .btn-login {
+  background-color: #263B27;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  background-color: #2f4a31;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-login:active {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+}
+
+
+
+
         body {
             font-family: 'Segoe UI', sans-serif;
             overflow: hidden;
@@ -62,29 +85,7 @@
         /* ===========================
            BUTTON
         ============================ */
-        .btn-login {
-            border-radius: 14px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #0d6efd, #4facfe);
-            border: none;
-            transition: all 0.35s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(13, 110, 253, 0.4);
-        }
-
-        .btn-login::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        
 
         .btn-login:hover::after {
             opacity: 1;
@@ -173,7 +174,7 @@
             <div class="col-lg-6 col-md-7 d-flex align-items-center justify-content-center bg-white">
                 <div class="w-75 login-card">
                     <div class="text-center mb-4">
-                        <img src="{{ asset('assets/images/visa-logo.webp') }}" width="90">
+                        <img src="{{ asset('assets/images/visa-logo1.png') }}" width="90">
                     </div>
                     <h3 class="text-center fw-bold mb-2">Login to Your Visa Portal</h3>
                     <p class="text-center text-muted mb-4">
@@ -193,9 +194,10 @@
                                 placeholder="••••••••" required>
                         </div>
 
-                        <button class="btn btn-login w-100 py-2 mt-2">
-                            <i class="fa-solid fa-lock me-1"></i> Secure Login
+                       <button class="btn btn-login w-100 py-2 mt-2 text-white">
+                        <i class="fa-solid fa-lock me-1"></i> Secure Login
                         </button>
+
                     </form>
 
                     <div class="text-center mt-4 small footer-text">

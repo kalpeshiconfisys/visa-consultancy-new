@@ -63,8 +63,8 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-3">
                         <div>
-                            <h3 class="fw-bold text-primary mb-1">
-                                <i class="fas fa-passport me-2"></i>
+                            <h3 class="fw-bold text-primary mb-1 text-black">
+                                <i class="fas fa-passport me-2  "></i>
                                 {{ $visaSubCategory->title }}
                             </h3>
                            <small class="text-muted">Visa Sub Category Overview</small>
@@ -88,7 +88,7 @@
         <div class="col-lg-11 m-auto">
             <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-3 border-bottom pb-2 mb-3 text-primary">
+                    <h5 class="fw-bold mb-3 border-bottom pb-2 mb-3 text-black">
                         About This Visa
                     </h5>
 
@@ -111,8 +111,8 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body p-4">
 
-                        <h5 class="fw-bold mb-3 text-primary">
-                            <i class="fas fa-list-ul me-2"></i>
+                        <h5 class="fw-bold mb-3 text-black">
+                            <i class="fas fa-list-ul me-2 "></i>
                             Table Of Content
                         </h5>
 
@@ -125,7 +125,7 @@
                                     <div class="d-flex gap-3 align-items-start">
 
                                         <!-- Number -->
-                                        <div class="toc-number">
+                                        <div class="toc-number  custom-theme-color">
                                             {{ $index + 1 }}
                                         </div>
 

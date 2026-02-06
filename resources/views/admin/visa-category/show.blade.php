@@ -143,8 +143,8 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-3">
                         <div>
-                            <h3 class="fw-bold text-primary mb-1">
-                                <i class="fas fa-passport me-2"></i>
+                            <h3 class="fw-bold text-black mb-1 ">
+                                    <i class="fas fa-passport me-2"></i>
                                 {{ $visaCategory->title }}
                             </h3>
                             <small class="text-muted">Visa Category – Detailed Overview</small>
@@ -168,7 +168,7 @@
                     <div class="col-lg-8">
                         <div class="card border-0 shadow-sm rounded-4 mb-4">
                             <div class="card-body p-4">
-                                <h5 class="fw-bold border-bottom pb-2 mb-3 text-primary">
+                                <h5 class="fw-bold border-bottom pb-2 mb-3 text-black">
                                     About This Visa
                                 </h5>
                                 <p class="text-muted fs-6">
@@ -182,15 +182,15 @@
                         @if (!empty($visaCategory->main_table_of_content))
                             <div class="card border-0 shadow-sm rounded-4">
                                 <div class="card-body p-4">
-                                    <h5 class="fw-bold mb-3 text-primary">
-                                        <i class="fas fa-list-ul me-2"></i>
+                                    <h5 class="fw-bold mb-3 text-black">
+                                        <i class="fas fa-list-ul me-2  "></i>
                                         Table Of Content
                                     </h5>
                                     <div class="toc-scroll">
                                         @foreach ($visaCategory->main_table_of_content as $index => $toc)
                                             <div class="toc-item mb-3 p-3">
                                                 <div class="d-flex gap-3 align-items-start toc-row">
-                                                    <div class="toc-number">
+                                                    <div class="toc-number  custom-theme-color">
                                                         {{ $index + 1 }}
                                                     </div>
                                                     <div class="toc-content">
@@ -240,8 +240,8 @@
                             <div class="card border-0 shadow-sm rounded-4 sticky-box">
                                 <div class="card-body p-3">
 
-                                    <h6 class="fw-bold mb-3 text-primary">
-                                        <i class="fas fa-image me-1"></i>
+                                    <h6 class="fw-bold mb-3 text-black">
+                                        <i class="fas fa-image me-1  "></i>
                                         Media
                                     </h6>
 

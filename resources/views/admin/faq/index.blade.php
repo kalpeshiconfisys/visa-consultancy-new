@@ -4,55 +4,49 @@
     <div class="content-wrapper d-flex justify-content-center">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
             <div class="card shadow-sm border-0 rounded-0 my-4">
-                <div class="card-body p-4">
+                <div class="card-body custom-shadow  p-4">
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title text-dark fw-bold m-0 ">FAQ List</h4>
+                            <h4 class="card-title  m-0 ">FAQ List</h4>
                         </div>
                         <a href="{{ route('admin.faq.create') }}"
-                            class="btn app-btn-primary custom-edit   d-flex align-items-center  justify-content-center btn btn-sm btn-outline-secondary  px-2  "
-                            style="width:35px; height:35px;">
-                            <i class="fas fa-plus"></i>
+                            class="btn btn-sm d-flex align-items-center px-3 py-1"
+                            style="background-color: #263B27; color: #fff; border-radius: 6px;">
+                            <i class="fas fa-plus"></i>Add FAQ
                         </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-bordered align-middle " style="min-width: 1000px;">
+                            <table id="example" class="table  " style="min-width: 1000px;">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-dark">#</th>
                                         <th class="text-dark">Question</th>
                                         <th class="text-dark">Answer</th>
-                                        <th class="text-dark">Date</th>
                                         <th class="text-dark">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($faq as $key => $i)
-                                        <tr>
+                                        <tr class="table-row-muted">
                                             <td class="">{{  $key + 1 }}</td>
                                             <td class="" >{{ $i->question }}</td>
                                             <td class="" >{{ $i->answer }}</td>
 
-                                            <td class="" >
-                                                {{ $i->created_at
-                                                    ? \Carbon\Carbon::parse($i->created_at)->timezone('Asia/Kolkata')->format('d/m/Y h:i A')
-                                                    : '-' }}
-                                            </td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     {{-- VIEW --}}
-                                                    <a href="{{ route('admin.faq.show' , trim(base64_encode($i->id), '=')) }}"
+                                                    {{-- <a href="{{ route('admin.faq.show' , trim(base64_encode($i->id), '=')) }}"
                                                         class="btn btn-sm btn-outline-secondary custom-show  px-2  ">
                                                         <i class="fa-solid fa-eye me-1"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     {{-- EDIT --}}
                                                     <a href="{{ route('admin.faq.edit' , trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm btn-outline-secondary  custom-edit  px-2">
+                                                        class="btn btn-sm    px-2">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     {{-- DELETE --}}
-                                                    <button class="btn btn-sm btn-outline-secondary  custom-trash  px-2"
+                                                    <button class="btn btn-sm  text-danger  px-2"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $i->id }}">
                                                         <i class="fa-solid fa-trash me-1"></i>

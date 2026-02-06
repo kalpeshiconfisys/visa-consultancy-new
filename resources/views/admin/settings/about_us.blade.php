@@ -54,19 +54,18 @@
 
     <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">
-            <div class="card shadow-sm rounded-4 my-4 main-category-card">
-                <div class="card-body p-4 ">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Add About Us </h4>
+            <div class="card  ">
+                <div class="card-body custom-shadow   p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <h4 class="  m-0">About Us </h4>
                     </div>
-                    <form action="{{ url('admin/terms-conditions-submit') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/about-us-submit') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
-                        <div class="row g-4 border rounded shadow-sm mt-3 pb-3">
+                        <div class="row g-4   rounded   mt-0 pb-3">
                             <div class="col-lg-12 col-md-12">
-                                <div class="mt-3">
-                                    <label class="form-label fw-bold">Value<span
-                                            class="text-danger">*</span></label>
+                                <div class="mt-0">
+
                                     <textarea class="form-control" id="privacy-policy" name="about_us" rows="5" style="height:400px"
                                         placeholder="Write full details..." required>{!! $about->value ?? '' !!}</textarea>
                                 </div>
