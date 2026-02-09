@@ -1,5 +1,5 @@
 <style>
-    /* Avatar Wrapper */
+
     .avatar-wrapper {
         position: relative;
     }
@@ -9,10 +9,6 @@
         box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
     }
 
-    /* Online Dot */
-
-
-    /* Dropdown */
     .dropdown {
         position: absolute;
         right: 0;
@@ -73,10 +69,10 @@
 .avatar {
     width: 44px;
     height: 44px;
-    border-radius: 20%;
+    border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-    border: 2px solid #000000; /* premium golden border */
+    border: 2px solid #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,23 +84,12 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    text-align: center;  /* 🔥 FULL IMAGE VISIBLE */
+    text-align: center;
     justify-content: center;
     border-radius: 50%;
-    padding: 2px;
+    padding: 5px !important;
 }
-
-/* ================================
-   DROPDOWN
-================================ */
-
-
-
-
-
-
-
-
+ 
 </style>
 
 

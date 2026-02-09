@@ -4,8 +4,7 @@
 
 @section('content')
 
-    <style>
-
+    <style> 
         .bullet-remove-btn {
             width: 32px;
             height: 32px;

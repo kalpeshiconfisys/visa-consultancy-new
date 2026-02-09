@@ -90,6 +90,12 @@
             font-size: 13px;
             color: #adb5bd;
         }
+
+        .custom-theme-color {
+            color: #263B27  !important;
+
+}
+
     </style>
 </head>
 
@@ -102,12 +108,12 @@
         <!-- Logo -->
         <div class="brand-logo">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('assets/images/visa-logo.webp') }}" alt="Visa Consultancy">
+                <img src="{{ asset('assets/images/visa-logo1.png') }}" alt="Visa Consultancy">
             </a>
         </div>
 
         <!-- Error -->
-        <div class="error-code">404</div>
+        <div class="error-code custom-theme-color ">404</div>
         <div class="error-title">Page Not Found</div>
         <p class="error-desc">
             The page you are looking for might have been removed,
@@ -115,7 +121,7 @@
         </p>
 
         <!-- Action -->
-        <a href="{{ url('/') }}" class="btn btn-primary btn-home">
+        <a href="{{ url('/') }}" class="btn  custom-theme-color  btn-home" style="background-color: #263B27 ; color:#fff;">
             <i class="fas fa-home me-2"></i>Back to Home
         </a>
 
@@ -129,6 +135,6 @@
 </div>
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

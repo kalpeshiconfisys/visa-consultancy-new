@@ -1,11 +1,11 @@
 <style>
-    /* ===== REMOVE DEFAULT LEFT PRIMARY INDICATOR ===== */
+
     .sidenav-menu__link::before,
     .sidenav-menu__link::after {
         display: none !important;
     }
 
-    /* Agar border-left laga ho to remove */
+
     .sidenav-menu__link {
         border-left: none !important;
     }
@@ -17,17 +17,17 @@
         border-radius: 8px;
     }
 
-    /* Icon & Text white */
+
     .sidenav-menu__link.active i,
     .sidenav-menu__link.active span {
         color: #fff !important;
     }
 
-    .sidebar i{
+    .sidebar i {
         color: #637381
     }
 
-    .sidebar span{
+    .sidebar span {
         color: #637381;
     }
 </style>
@@ -47,8 +47,9 @@
             <a href="{{ url('admin/dashboard') }}"
                 class="sidenav-menu__link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-gauge-high " ></i>
-                    <span class="ms-2 "  >Dashboard</span>
+                  <i class="fa-solid fa-dashboard"></i>
+
+                    <span class="ms-2 ">Dashboard</span>
                 </div>
             </a>
         </li>
@@ -85,8 +86,7 @@
 
 
         <li>
-            <a href="{{ url('admin/coaching') }}"
-                class="sidenav-menu__link {{ request()->is('admin/coaching*') ? 'active' : '' }}">
+            <a href="{{ url('admin/coaching') }}" class="sidenav-menu__link {{ request()->is('admin/coaching*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-chalkboard-user"></i>
                     <span class="ms-2   ">Coaching</span>

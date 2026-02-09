@@ -5,7 +5,6 @@
 @section('content')
 
     <style>
-
         .bullet-remove-btn {
             width: 32px;
             height: 32px;
@@ -49,7 +48,6 @@
             padding: 15px;
             background: #fafafa;
         }
-
     </style>
     <div class="content-wrapper d-flex justify-content-center  ">
         <div class="col-12 col-xl-11 col-lg-9 col-md-10 m-auto">

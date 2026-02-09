@@ -5,13 +5,10 @@
     <meta charset="utf-8">
     <title>Visa Consultancy - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ asset('assets/images/visa-logo.webp') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/header-logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
-        /* ===========================
-           GLOBAL
-        ============================ */
 
 
         .btn-login {
@@ -28,12 +25,9 @@
         }
 
         .btn-login:active {
-            
+
             transform: translateY(0);
         }
-
-
-
 
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -83,18 +77,13 @@
             box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
         }
 
-        /* ===========================
-           BUTTON
-        ============================ */
 
 
         .btn-login:hover::after {
             opacity: 1;
         }
 
-        /* ===========================
-           RIGHT IMAGE
-        ============================ */
+
         .login-bg {
             position: relative;
             animation: zoomBg 12s infinite alternate ease-in-out;
@@ -117,9 +106,7 @@
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.6), rgba(15, 23, 42, 0.3));
         }
 
-        /* ===========================
-           TOAST
-        ============================ */
+
         .custom-alert {
             animation: toastSlide 0.5s ease forwards;
         }
@@ -136,9 +123,7 @@
             }
         }
 
-        /* ===========================
-           FOOTER TEXT
-        ============================ */
+       
         .footer-text {
             opacity: 0.7;
         }
