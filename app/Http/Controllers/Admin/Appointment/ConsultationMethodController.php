@@ -62,7 +62,7 @@ class ConsultationMethodController extends Controller
 
     public function destroy($id)
     {
-              $id = base64_decode($id);
+        $id = base64_decode($id);
         $method = ConsultationMethod::findOrFail($id);
         $method->delete();
 

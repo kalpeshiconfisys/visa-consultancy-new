@@ -21,6 +21,7 @@
                                         <th class="text-dark">Name</th>
                                         <th class="text-dark"> Email</th>
                                         <th class="text-dark"> Phone</th>
+                                        <th class="text-dark"> Date</th>
                                         <th class="text-dark">Message</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,7 @@
                                             <td>{{ $i->name }}</td>
                                             <td>{{ $i->email }}</td>
                                             <td>{{ $i->phone ?? '-' }}</td>
+                                          <td>{{ $i->created_at ? $i->created_at->format('Y-m-d') : '-' }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-outline-secondary  custom-show  px-2"
                                                     data-bs-toggle="modal"

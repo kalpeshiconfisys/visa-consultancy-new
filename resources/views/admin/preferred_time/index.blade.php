@@ -15,7 +15,7 @@
                         <a href="{{ route('admin.preferred-time.create') }}"
                             class="btn btn-sm d-flex align-items-center px-3 py-1"
                             style="background-color: #263B27; color: #fff; border-radius: 6px;">
-                            <i class="fas fa-plus me-1 text-white"></i>
+                            <i class="fas fa-plus"></i>
                             Add Appointment
                         </a>
 

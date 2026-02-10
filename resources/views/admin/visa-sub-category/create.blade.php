@@ -67,7 +67,7 @@
                         @csrf
                         <div class="row g-4 border rounded shadow-sm mt-3 p-3">
                             <div class="row">
-                                <div class="col-6 mb-4">
+                                <div class="col-12 mb-3">
                                     <label class="fw-bold mb-1">Select Visa Category <span
                                             class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control" required>

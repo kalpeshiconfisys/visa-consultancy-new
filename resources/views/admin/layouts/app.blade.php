@@ -18,7 +18,7 @@
 <body>
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
         @if (session('success'))
-            <div class="toast show bg-success text-white custom-alert ">
+            <div class="toast show custom-theme-color   text-color custom-alert ">
                 <div class="d-flex">
                     <div class="toast-body">
                         {{ session('success') }}
@@ -28,7 +28,7 @@
             </div>
         @endif
         @if (session('error'))
-            <div class="toast show bg-danger text-white custom-alert">
+            <div class="toast show custom-theme-color   text-color custom-alert">
                 <div class="d-flex">
                     <div class="toast-body">
                         {{ session('error') }}

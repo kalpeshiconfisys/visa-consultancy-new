@@ -370,6 +370,7 @@ body {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                             <th class="text-dark"> Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -380,6 +381,7 @@ body {
                                 <td>{{ $enquiry->name }}</td>
                                 <td>{{ $enquiry->email }}</td>
                                 <td>{{ $enquiry->phone ?? '-' }}</td>
+                                  <td>{{ $enquiry->created_at ? $enquiry->created_at->format('Y-m-d') : '-' }}</td>
                             </tr>
                         @empty
                             <tr><td colspan="5" class="text-center text-muted">No enquiries</td></tr>

@@ -12,7 +12,8 @@
                         <a href="{{ route('admin.testimonials.create') }}"
                             class="btn btn-sm d-flex align-items-center px-3 py-1"
                             style="background-color: #263B27; color: #fff; border-radius: 6px;">
-                            <i class="fas fa-plus"></i>Add Testimonial
+                            <i class="fas fa-plus"></i>
+                            Add Testimonial
                         </a>
                     </div>
                     <div class="card-body">
@@ -39,7 +40,7 @@
                                                         <i class="fa-solid fa-eye me-1"></i>
                                                     </a> --}}
                                                     <a href="{{ route('admin.testimonials.edit' , trim(base64_encode($i->id), '=')) }}"
-                                                        class="btn btn-sm    px-2" title="Edit">
+                                                        class="btn btn-sm   px-2" title="Edit">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i>
                                                     </a>
                                                     <button class="btn btn-sm  text-danger  px-2"

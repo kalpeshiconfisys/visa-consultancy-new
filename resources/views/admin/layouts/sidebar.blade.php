@@ -66,8 +66,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('admin/visa-sub-category') }}"
-                class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
+            <a href="{{ url('admin/visa-sub-category') }}" class="sidenav-menu__link {{ request()->is('admin/visa-sub-category*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-list-check"></i>
                     <span class="ms-2   ">Visa Sub Category</span>
@@ -82,9 +81,7 @@
                     <span class="ms-2  ">Blogs</span>
                 </div>
             </a>
-        </li>
-
-
+        </li> 
         <li>
             <a href="{{ url('admin/coaching') }}" class="sidenav-menu__link {{ request()->is('admin/coaching*') ? 'active' : '' }}">
                 <div class="d-flex align-items-center">

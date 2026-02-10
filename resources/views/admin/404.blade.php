@@ -10,7 +10,7 @@
     <meta name="description" content="Page not found">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/header-logo.png') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -121,8 +121,11 @@
         </p>
 
         <!-- Action -->
-        <a href="{{ url('/') }}" class="btn  custom-theme-color  btn-home" style="background-color: #263B27 ; color:#fff;">
-            <i class="fas fa-home me-2"></i>Back to Home
+        <a href="{{ url('/') }}" class="btn  custom-theme-color  text-white btn-home" style="background-color: #263B27 ; color:#fff;">
+            <div class="text-white">
+                <i class="fas fa-home me-2"></i>
+                Back to Home
+            </div>
         </a>
 
     </div>

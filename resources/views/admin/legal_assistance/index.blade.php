@@ -12,7 +12,7 @@
                         <a href="{{ route('admin.legal-assistance.create') }}"
                            class="btn btn-sm d-flex align-items-center px-3 py-1"
                             style="background-color: #263B27; color: #fff; border-radius: 6px;">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-plus "></i>
                             Add Legal Assistance
                         </a>
                     </div>

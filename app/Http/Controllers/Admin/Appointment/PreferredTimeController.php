@@ -47,7 +47,7 @@ class PreferredTimeController extends Controller
     }
 
     public function update(Request $request, $id)
-    { 
+    {
         $id = base64_decode($id);
 
          $request->validate([

@@ -24,15 +24,7 @@
                             </a>
                             <a href="{{ route('admin.preferred-time.index') }}" class="btn btn-outline-danger">
                                 <i class="bi bi-arrow-left"></i> Back
-                            </a>
-                            {{-- <form action="{{ url('admin/visa-category/destroy', trim(base64_encode($visaCategory->id), '=')) }}"
-                              method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm px-4">
-                                    <i class="fas fa-trash me-1"></i> Delete
-                                </button>
-                        </form> --}}
+                            </a> 
                         </div>
                     </div>
                 </div>
@@ -51,7 +43,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
